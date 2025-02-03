@@ -1,3 +1,7 @@
+# 2D KTU platformer žaidimas
+
+Dabar sukūriau Godot 2d Platformer šabloną. Galima apsidairyt ir pamatysit kaip kas atrodo.
+
 # 2D Platformer
 
 This demo is a pixel art 2D platformer with graphics and sound.
