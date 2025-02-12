@@ -39,7 +39,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_knmjc"]
 _data = {
-"move": SubResource("1")
+&"move": SubResource("1")
 }
 
 [sub_resource type="Animation" id="2"]
@@ -60,7 +60,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_frb4n"]
 _data = {
-"move": SubResource("2")
+&"move": SubResource("2")
 }
 
 [node name="Level" type="Node2D"]
@@ -1295,7 +1295,7 @@ position = Vector2(707, 400)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform"]
 callback_mode_process = 0
 libraries = {
-"": SubResource("AnimationLibrary_knmjc")
+&"": SubResource("AnimationLibrary_knmjc")
 }
 autoplay = "move"
 
@@ -1305,7 +1305,7 @@ position = Vector2(-28, 645)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform2"]
 callback_mode_process = 0
 libraries = {
-"": SubResource("AnimationLibrary_frb4n")
+&"": SubResource("AnimationLibrary_frb4n")
 }
 autoplay = "move"
 
