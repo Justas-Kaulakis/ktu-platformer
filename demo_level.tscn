@@ -3,3 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://2pd6cj5ouwwe" path="res://level/demo_level.tscn" id="1_1pl5s"]
 
 [node name="Demo level" instance=ExtResource("1_1pl5s")]
+
+[node name="Background tiles" parent="." index="0"]
+z_index = -2
+
+[node name="Collision tiles" parent="." index="1"]
+top_level = true
+visibility_layer = 2
