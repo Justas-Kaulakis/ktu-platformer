@@ -8,7 +8,7 @@ func _ready() -> void:
 	add_theme_font_size_override("font_size", 32)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta) -> void:
 	var current = get_owner().get_node("Sprite2D/PlatformGun").platform_count
 	var count = get_owner().get_node("Sprite2D/PlatformGun").count
 	#var current = get_owner().get_node("player/PlatformGun").platform_count

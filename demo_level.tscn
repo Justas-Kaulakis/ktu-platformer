@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0kbafooreyoy"]
+[gd_scene load_steps=3 format=3 uid="uid://d0kbafooreyoy"]
 
 [ext_resource type="PackedScene" uid="uid://2pd6cj5ouwwe" path="res://level/demo_level.tscn" id="1_1pl5s"]
+[ext_resource type="Script" uid="uid://cesow5kou7cvs" path="res://collision_tiles.gd" id="2_t5d6x"]
 
 [node name="Demo level" instance=ExtResource("1_1pl5s")]
 
@@ -9,4 +10,6 @@ z_index = -2
 
 [node name="Collision tiles" parent="." index="1"]
 top_level = true
-visibility_layer = 2
+script = ExtResource("2_t5d6x")
+
+[connection signal="mouse_entered" from="Player" to="Player" method="_on_mouse_entered"]

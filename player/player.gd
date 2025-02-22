@@ -19,10 +19,10 @@ var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var shoot_timer := $ShootAnimation as Timer
 @onready var sprite := $Sprite2D as Sprite2D
 @onready var jump_sound := $Jump as AudioStreamPlayer2D
-@onready var gun = sprite.get_node(^"platform_gun") as Gun
+@onready var gun = sprite.get_node(^"PlatformGun") as Gun
 @onready var camera := $Camera as Camera2D
 var _double_jump_charged := false
-
+@onready var PlatformGun = get_node("/root/Demo level/Player/Sprite2D/PlatformGun")
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
@@ -86,3 +86,13 @@ func try_jump() -> void:
 		return
 	velocity.y = JUMP_VELOCITY
 	jump_sound.play()
+	
+func mouse_entered():
+	PlatformGun.can_shoot = 0
+	print("enter")
+	
+func _mouse_exit():
+	PlatformGun.can_shoot = 1
+	print("exit")
+func _mouse_shape_enter(shape_idx: int) -> void:
+	print("enter2")

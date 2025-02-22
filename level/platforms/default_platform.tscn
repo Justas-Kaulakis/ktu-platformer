@@ -3,21 +3,21 @@
 [ext_resource type="Script" uid="uid://cuibkqw5ibd31" path="res://level/platforms/default_platform.gd" id="1_xus38"]
 [ext_resource type="Texture2D" uid="uid://bobm8pter5f5s" path="res://level/platforms/default_platform.png" id="1_xxgxg"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xus38"]
-radius = 12.0
-height = 176.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xus38"]
+size = Vector2(24, 168)
 
 [node name="StaticBody2D" type="StaticBody2D"]
+z_index = -1
 collision_layer = 16
 collision_mask = 3
+input_pickable = true
 script = ExtResource("1_xus38")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -1
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_xxgxg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
-shape = SubResource("CapsuleShape2D_xus38")
+shape = SubResource("RectangleShape2D_xus38")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("1_xxgxg")
