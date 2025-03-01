@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://d1qfv1g70w27v"]
 
-[ext_resource type="Script" path="res://audio_manager.gd" id="1_vv1ii"]
+[ext_resource type="Script" uid="uid://n2qukh88jwwk" path="res://audio_manager.gd" id="1_vv1ii"]
 [ext_resource type="AudioStream" uid="uid://cfr32kjvbe8rf" path="res://audio/bg_music (1).mp3" id="2_7o23b"]
 [ext_resource type="AudioStream" uid="uid://4br3ykkmw6ey" path="res://audio/bg_music (3).mp3" id="3_chryb"]
 [ext_resource type="AudioStream" uid="uid://b2jxci8ojrxpf" path="res://audio/bg_music (4).mp3" id="4_wccx2"]
@@ -25,7 +25,7 @@ clip_1/stream = ExtResource("6_83bvo")
 clip_1/auto_advance = 0
 _transitions = {
 Vector2i(1, -1): {
-"fade_beats": 1,
+"fade_beats": 1.0,
 "fade_mode": 3,
 "from_time": 0,
 "to_time": 1
