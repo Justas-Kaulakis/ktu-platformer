@@ -278,7 +278,7 @@ vframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_0kjfc")
+"": SubResource("AnimationLibrary_0kjfc")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -290,12 +290,12 @@ self_modulate = Color(1, 1, 1, 0.12)
 material = SubResource("6")
 emitting = false
 amount = 32
-texture = ExtResource("1")
 lifetime = 0.5
 one_shot = true
 speed_scale = 1.2
 explosiveness = 0.7
 draw_order = 215832976
+texture = ExtResource("1")
 emission_shape = 1
 emission_sphere_radius = 16.0
 spread = 180.0
@@ -304,6 +304,8 @@ color_ramp = SubResource("7")
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3")
+bus = &"SFX"
 
 [node name="Explode" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2")
+bus = &"SFX"

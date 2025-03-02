@@ -19,10 +19,10 @@ var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var shoot_timer := $ShootAnimation as Timer
 @onready var sprite := $Sprite2D as Sprite2D
 @onready var jump_sound := $Jump as AudioStreamPlayer2D
-@onready var gun = sprite.get_node(^"Gun") as Gun
+@onready var gun = sprite.get_node(^"PlatformGun") as Gun
 @onready var camera := $Camera as Camera2D
 var _double_jump_charged := false
-
+@onready var PlatformGun = get_node("/root/Demo level/Player/Sprite2D/PlatformGun")
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
@@ -47,18 +47,18 @@ func _physics_process(delta: float) -> void:
 	floor_stop_on_slope = not platform_detector.is_colliding()
 	move_and_slide()
 
-	var is_shooting := false
-	if Input.is_action_just_pressed("shoot" + action_suffix):
-		is_shooting = gun.shoot(sprite.scale.x)
+	#var is_shooting := false
+	#if Input.is_action_just_pressed("shoot" + action_suffix):
+	#	is_shooting = gun.shoot(sprite.scale.x)
 
-	var animation := get_new_animation(is_shooting)
-	if animation != animation_player.current_animation and shoot_timer.is_stopped():
-		if is_shooting:
-			shoot_timer.start()
+	var animation := get_new_animation()
+	if animation != animation_player.current_animation: #and shoot_timer.is_stopped():
+	#	if is_shooting:
+	#		shoot_timer.start()
 		animation_player.play(animation)
 
 
-func get_new_animation(is_shooting := false) -> String:
+func get_new_animation() -> String:
 	var animation_new: String
 	if is_on_floor():
 		if absf(velocity.x) > 0.1:
@@ -70,8 +70,8 @@ func get_new_animation(is_shooting := false) -> String:
 			animation_new = "falling"
 		else:
 			animation_new = "jumping"
-	if is_shooting:
-		animation_new += "_weapon"
+	#if is_shooting:
+	#	animation_new += "_weapon"
 	return animation_new
 
 
@@ -86,7 +86,13 @@ func try_jump() -> void:
 		return
 	velocity.y = JUMP_VELOCITY
 	jump_sound.play()
-
-
-func _on_coin_collected() -> void:
-	pass # Replace with function body.
+	
+func mouse_entered():
+	PlatformGun.can_shoot = 0
+	print("enter")
+	
+func _mouse_exit():
+	PlatformGun.can_shoot = 1
+	print("exit")
+func _mouse_shape_enter(shape_idx: int) -> void:
+	print("enter2")
