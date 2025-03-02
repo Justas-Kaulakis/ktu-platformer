@@ -1,10 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://vh7pmputa7r3"]
+[gd_scene load_steps=19 format=3 uid="uid://vh7pmputa7r3"]
 
 [ext_resource type="Texture2D" uid="uid://bmx4mn1lddj8j" path="res://player/male_hero_done.png" id="2_qjkh3"]
 [ext_resource type="Script" uid="uid://bo8vshlkb74dq" path="res://player/player.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://cs6id1t2vxalj" path="res://player/platform_gun.tscn" id="3_yw30f"]
 [ext_resource type="AudioStream" uid="uid://sjod173axgwf" path="res://player/jump.wav" id="5"]
-[ext_resource type="AudioStream" uid="uid://b01brytl75mwa" path="res://player/shoot.wav" id="6"]
-[ext_resource type="Script" uid="uid://duj80kqe8y88d" path="res://player/gun.gd" id="8"]
 
 [sub_resource type="Animation" id="Animation_boad6"]
 length = 0.001
@@ -245,17 +244,7 @@ hframes = 3
 vframes = 3
 frame = 7
 
-[node name="Gun" type="Marker2D" parent="Sprite2D"]
-position = Vector2(45.1557, -13.8709)
-script = ExtResource("8")
-
-[node name="Shoot" type="AudioStreamPlayer2D" parent="Sprite2D/Gun"]
-position = Vector2(39.7449, -11.3612)
-stream = ExtResource("6")
-
-[node name="Cooldown" type="Timer" parent="Sprite2D/Gun"]
-wait_time = 0.3
-one_shot = true
+[node name="PlatformGun" parent="Sprite2D" instance=ExtResource("3_yw30f")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.25, -30)
