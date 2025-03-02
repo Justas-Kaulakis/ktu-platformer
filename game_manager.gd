@@ -3,6 +3,8 @@ extends Node
 @onready var input_settings: Control = $"../UI/Input Settings"
 
 var is_game_paused = false
+var max_health = 3
+var current_health = max_health
 
 func _ready() -> void:
 	Engine.time_scale = 1
@@ -19,3 +21,15 @@ func _input(event):
 			Engine.time_scale = 1
 			input_settings.visible = false
 		get_tree().root.get_viewport().set_input_as_handled()
+	
+
+func _process(_delta) -> void:
+	if current_health <= 0:
+		reset_level()
+
+func update_health(amount):
+	current_health += amount
+	#print("Current health: " + str(current_health))
+	
+func reset_level():
+	get_tree().reload_current_scene()

@@ -13,4 +13,4 @@ func _process(_delta) -> void:
 	var count = get_owner().count
 	#var current = get_owner().get_node("player/PlatformGun").platform_count
 	#var count = get_owner().get_node("player/PlatformGun").count
-	set_text(str(current)+"/"+str(count))
+	set_text("Ammo: " + str(current)+"/"+str(count))

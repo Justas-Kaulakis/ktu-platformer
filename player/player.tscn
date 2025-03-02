@@ -1,9 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://vh7pmputa7r3"]
+[gd_scene load_steps=21 format=3 uid="uid://vh7pmputa7r3"]
 
 [ext_resource type="Texture2D" uid="uid://bmx4mn1lddj8j" path="res://player/male_hero_done.png" id="2_qjkh3"]
 [ext_resource type="Script" uid="uid://bo8vshlkb74dq" path="res://player/player.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://cs6id1t2vxalj" path="res://player/platform_gun.tscn" id="3_yw30f"]
 [ext_resource type="AudioStream" uid="uid://sjod173axgwf" path="res://player/jump.wav" id="5"]
+[ext_resource type="Script" uid="uid://df55hiq4jemgy" path="res://player/health_bar.gd" id="6_boad6"]
+[ext_resource type="Script" uid="uid://cqatl8d70xc6n" path="res://player/area_2d.gd" id="6_g6k8r"]
 
 [sub_resource type="Animation" id="Animation_boad6"]
 length = 0.001
@@ -283,3 +285,25 @@ position = Vector2(97, -78)
 scale = Vector2(2, 2)
 action = "shoot"
 visibility_mode = 1
+
+[node name="platform_counter" type="Label" parent="."]
+z_index = 1
+offset_left = -480.0
+offset_top = -210.0
+offset_right = -440.0
+offset_bottom = -187.0
+
+[node name="Health Bar" type="Label" parent="."]
+z_index = 1
+offset_left = -480.0
+offset_top = -240.0
+offset_right = -440.0
+offset_bottom = -217.0
+script = ExtResource("6_boad6")
+
+[node name="PlatformCollisionCheck" type="Area2D" parent="."]
+script = ExtResource("6_g6k8r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformCollisionCheck"]
+position = Vector2(-1.19209e-06, -6.875)
+scale = Vector2(0.999998, 0.999998)
