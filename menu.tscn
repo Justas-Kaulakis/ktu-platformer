@@ -3,6 +3,21 @@
 [ext_resource type="Script" uid="uid://dsoegp5evqwhp" path="res://menu.gd" id="1_lti8b"]
 [ext_resource type="Texture2D" uid="uid://fnxru7p14r5i" path="res://spritesheet.png" id="3_mae5d"]
 
+[sub_resource type="Animation" id="Animation_ytr4m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_4hy44"]
 resource_name = "menu"
 length = 3.00003
@@ -19,21 +34,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_ytr4m"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Spritesheet:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l48gv"]
@@ -70,6 +70,7 @@ offset_top = 391.0
 offset_right = 922.0
 offset_bottom = 871.0
 scale = Vector2(0.212787, 0.151342)
+mouse_default_cursor_shape = 2
 
 [node name="Play" type="Button" parent="."]
 layout_direction = 4
@@ -80,6 +81,7 @@ offset_right = 145.0
 offset_bottom = 652.0
 scale = Vector2(22.4754, 0.163969)
 size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
 metadata/_edit_group_ = true
 
 [node name="Options" type="Button" parent="."]
@@ -89,6 +91,7 @@ offset_top = 277.0
 offset_right = 513.0
 offset_bottom = 691.0
 scale = Vector2(0.333333, 0.166667)
+mouse_default_cursor_shape = 2
 
 [node name="Spritesheet" type="Sprite2D" parent="."]
 position = Vector2(401.5, 242.5)

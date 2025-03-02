@@ -6,6 +6,21 @@
 [ext_resource type="AudioStream" uid="uid://b01brytl75mwa" path="res://player/shoot.wav" id="6"]
 [ext_resource type="Script" uid="uid://duj80kqe8y88d" path="res://player/gun.gd" id="8"]
 
+[sub_resource type="Animation" id="Animation_boad6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
 [sub_resource type="Animation" id="1"]
 resource_name = "crouch"
 length = 0.01
@@ -120,6 +135,10 @@ tracks/0/keys = {
 "values": [46]
 }
 
+[sub_resource type="Animation" id="Animation_g6k8r"]
+resource_name = "new idle"
+step = 0.142857
+
 [sub_resource type="Animation" id="8"]
 length = 0.6
 loop_mode = 1
@@ -168,25 +187,6 @@ tracks/0/keys = {
 "values": [34, 35, 36, 37]
 }
 
-[sub_resource type="Animation" id="Animation_g6k8r"]
-resource_name = "new idle"
-step = 0.142857
-
-[sub_resource type="Animation" id="Animation_boad6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [7]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jnr5f"]
 _data = {
 &"RESET": SubResource("Animation_boad6"),
@@ -221,10 +221,26 @@ one_shot = true
 target_position = Vector2(0, 6)
 collision_mask = 8
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jnr5f")
+}
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(0, -28)
+offset = Vector2(0, 50)
+limit_left = -750
+limit_top = -250
+limit_right = 1425
+limit_bottom = 440
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(12.5, -30)
-scale = Vector2(-1, 1)
+position = Vector2(1.25, -30)
+rotation = 3.14159
+scale = Vector2(0.999999, -0.999999)
 texture = ExtResource("2_qjkh3")
+offset = Vector2(12.5, 0)
+flip_h = true
 hframes = 3
 vframes = 3
 frame = 7
@@ -240,19 +256,6 @@ stream = ExtResource("6")
 [node name="Cooldown" type="Timer" parent="Sprite2D/Gun"]
 wait_time = 0.3
 one_shot = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_jnr5f")
-}
-
-[node name="Camera" type="Camera2D" parent="."]
-position = Vector2(0, -28)
-offset = Vector2(0, 50)
-limit_left = -750
-limit_top = -250
-limit_right = 1425
-limit_bottom = 440
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.25, -30)
