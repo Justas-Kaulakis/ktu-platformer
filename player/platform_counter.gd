@@ -9,8 +9,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta) -> void:
-	var current = get_owner().get_node("Sprite2D/PlatformGun").platform_count
-	var count = get_owner().get_node("Sprite2D/PlatformGun").count
+	var current = get_owner().platform_count
+	var count = get_owner().count
 	#var current = get_owner().get_node("player/PlatformGun").platform_count
 	#var count = get_owner().get_node("player/PlatformGun").count
 	set_text("Ammo: " + str(current)+"/"+str(count))

@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1qfv1g70w27v"]
+
+[ext_resource type="Script" uid="uid://n2qukh88jwwk" path="res://audio_manager.gd" id="1_vv1ii"]
+[ext_resource type="AudioStream" uid="uid://cfr32kjvbe8rf" path="res://audio/bg_music (1).mp3" id="2_7o23b"]
+[ext_resource type="AudioStream" uid="uid://4br3ykkmw6ey" path="res://audio/bg_music (3).mp3" id="3_chryb"]
+[ext_resource type="AudioStream" uid="uid://b2jxci8ojrxpf" path="res://audio/bg_music (4).mp3" id="4_wccx2"]
+[ext_resource type="AudioStream" uid="uid://bfi5n0sufa286" path="res://audio/bg_music (5).mp3" id="5_6by8b"]
+[ext_resource type="AudioStream" uid="uid://b2ak46qlr7r2y" path="res://audio/bg_music (2).mp3" id="6_83bvo"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_u2xqa"]
+shuffle = true
+stream_count = 4
+stream_0 = ExtResource("2_7o23b")
+stream_1 = ExtResource("3_chryb")
+stream_2 = ExtResource("4_wccx2")
+stream_3 = ExtResource("5_6by8b")
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_8wfci"]
+clip_count = 2
+clip_0/name = &"GamePlayMusic"
+clip_0/stream = SubResource("AudioStreamPlaylist_u2xqa")
+clip_0/auto_advance = 0
+clip_1/name = &"MenuMusic"
+clip_1/stream = ExtResource("6_83bvo")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(1, -1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+}
+}
+
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("bg_music_player")]
+script = ExtResource("1_vv1ii")
+bg_music_player = NodePath("BackgroundMusicPlayer")
+
+[node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamInteractive_8wfci")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
