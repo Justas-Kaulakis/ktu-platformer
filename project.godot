@@ -19,9 +19,7 @@ where the player can jump, walk on slopes, fire bullets,
 interact with enemies, and more. It contains one closed
 level, and the player is invincible, unlike the enemies."
 config/tags=PackedStringArray("2d", "demo", "official", "physics", "tilemap")
-run/main_scene="uid://d0kbafooreyoy"
 config/features=PackedStringArray("4.4")
-config/icon="res://icon.webp"
 
 [autoload]
 
@@ -30,12 +28,11 @@ AudioGlobal="*res://audio_global.gd"
 [display]
 
 window/size/viewport_width=800
-window/size/viewport_height=480
+window/size/viewport_height=448
 window/size/window_width_override=1600
 window/size/window_height_override=960
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_height"
-window/stretch/scale_mode="integer"
+window/stretch/aspect="ignore"
 
 [dotnet]
 

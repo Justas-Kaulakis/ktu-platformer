@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://d1qfv1g70w27v"]
 
 [ext_resource type="Script" uid="uid://n2qukh88jwwk" path="res://audio_manager.gd" id="1_vv1ii"]
-[ext_resource type="AudioStream" uid="uid://cfr32kjvbe8rf" path="res://audio/bg_music (1).mp3" id="2_7o23b"]
-[ext_resource type="AudioStream" uid="uid://4br3ykkmw6ey" path="res://audio/bg_music (3).mp3" id="3_chryb"]
-[ext_resource type="AudioStream" uid="uid://b2jxci8ojrxpf" path="res://audio/bg_music (4).mp3" id="4_wccx2"]
-[ext_resource type="AudioStream" uid="uid://bfi5n0sufa286" path="res://audio/bg_music (5).mp3" id="5_6by8b"]
-[ext_resource type="AudioStream" uid="uid://b2ak46qlr7r2y" path="res://audio/bg_music (2).mp3" id="6_83bvo"]
+[ext_resource type="AudioStream" uid="uid://cfr32kjvbe8rf" path="res://assets/audio/bg_music (1).mp3" id="2_7o23b"]
+[ext_resource type="AudioStream" uid="uid://4br3ykkmw6ey" path="res://assets/audio/bg_music (3).mp3" id="3_chryb"]
+[ext_resource type="AudioStream" uid="uid://b2jxci8ojrxpf" path="res://assets/audio/bg_music (4).mp3" id="4_wccx2"]
+[ext_resource type="AudioStream" uid="uid://bfi5n0sufa286" path="res://assets/audio/bg_music (5).mp3" id="5_6by8b"]
+[ext_resource type="AudioStream" uid="uid://b2ak46qlr7r2y" path="res://assets/audio/bg_music (2).mp3" id="6_83bvo"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_u2xqa"]
 shuffle = true

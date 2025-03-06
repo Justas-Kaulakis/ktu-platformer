@@ -5,12 +5,12 @@ const count = 3
 var platform_count = count
 var can_shoot_player = 1 #checks if mouse is on player
 var can_shoot = 1 # checks if mouse is on created platform
-var tiles: TileMapLayer = null
+@onready var tiles = $"/root/Demo level/Layers/CollisionTiles"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-	tiles = get_node("/root/Demo level/Collision tiles")
+	print(tiles)
+	#pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
