@@ -1,6 +1,9 @@
 extends Node
 
 @onready var input_settings: Control = $"../UI/Input Settings"
+@onready var take_hit_sound: AudioStreamPlayer = $"../TakeHit"
+@onready var death_sound: AudioStreamPlayer = $"../Death"
+
 
 var is_game_paused = false
 var max_health = 3
@@ -25,10 +28,12 @@ func _input(event):
 
 func _process(_delta) -> void:
 	if current_health <= 0:
+		death_sound.play()
 		reset_level()
 
 func update_health(amount):
 	current_health += amount
+	take_hit_sound.play()
 	#print("Current health: " + str(current_health))
 	
 func reset_level():

@@ -23,6 +23,7 @@ clip_0/auto_advance = 0
 clip_1/name = &"MenuMusic"
 clip_1/stream = ExtResource("6_83bvo")
 clip_1/auto_advance = 0
+initial_clip = 1
 _transitions = {
 Vector2i(1, -1): {
 "fade_beats": 1.0,

@@ -71,4 +71,5 @@ func _input(event):
 
 
 func _on_reset_to_default_pressed() -> void:
+	
 	create_action_list()
