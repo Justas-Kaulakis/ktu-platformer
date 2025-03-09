@@ -2,14 +2,6 @@ extends Node
 # https://www.youtube.com/watch?v=07Kyqqg31FI&t=25s&ab_channel=DevWorm
 @onready var bg_music_player: AudioStreamPlayer = $BackgroundMusicPlayer
 
-
-@onready var _jump: AudioStreamPlayer = $SFX/jump
-@onready var _run: AudioStreamPlayer = $SFX/run
-@onready var _place_platform: AudioStreamPlayer = $SFX/place_platform
-@onready var _take_hit: AudioStreamPlayer = $SFX/take_hit
-@onready var _die: AudioStreamPlayer = $SFX/die
-
-
 var sound: Dictionary[StringName, AudioStreamPlayer]
 
 var current_area: Global.Area
@@ -17,11 +9,11 @@ var current_area: Global.Area
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	sound = {
-		"jump": _jump,
-		"run": _run,
-		"place_platform": _place_platform,
-		"take_hit": _take_hit,
-		"die": _die
+		"jump": $SFX/jump,
+		"run": $SFX/run,
+		"place_platform": $SFX/place_platform,
+		"take_hit": $SFX/take_hit,
+		"die": $SFX/die
 	}
 	#print(player_sfx.stream["initial_clip"])
 	#player_sfx.stream["initial_clip"] = 1
@@ -47,9 +39,11 @@ func update_music_for_scene():
 func play_player_sfx(sfx_name: StringName) -> void:
 	if not sound.has(sfx_name):
 		printerr("sfx sound does not exist: ", sfx_name)
-	sound[sfx_name].play()
+	else: 
+		sound[sfx_name].play()
 
 func stop_player_sfx(sfx_name: StringName) -> void:
 	if not sound.has(sfx_name):
 		printerr("sfx sound does not exist: ", sfx_name)
-	sound[sfx_name].stop()
+	else: 
+		sound[sfx_name].stop()

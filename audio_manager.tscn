@@ -50,7 +50,7 @@ stream_count = 2
 stream_0/stream = ExtResource("7_l55mp")
 stream_0/volume = -20.0
 stream_1/stream = SubResource("AudioStreamRandomizer_fckgx")
-stream_1/volume = -5.0
+stream_1/volume = -10.0
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_astvc"]
 stream_count = 2
