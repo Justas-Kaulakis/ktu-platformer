@@ -23,7 +23,8 @@ config/features=PackedStringArray("4.4")
 
 [autoload]
 
-AudioGlobal="*res://audio_global.gd"
+Global="*res://global.gd"
+AudioManager="*res://audio_manager.tscn"
 
 [display]
 

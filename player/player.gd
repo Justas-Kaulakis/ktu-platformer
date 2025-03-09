@@ -15,8 +15,8 @@ var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
 @onready var shoot_timer := $ShootAnimation as Timer
 @onready var sprite := $Sprite2D as Sprite2D
-@onready var jump_sound := $Jump as AudioStreamPlayer
-@onready var running_sound := $Running as AudioStreamPlayer
+#@onready var jump_sound := $Jump as AudioStreamPlayer
+#@onready var running_sound := $Running as AudioStreamPlayer
 @onready var camera := $Camera as Camera2D
 var _double_jump_charged := false
 @onready var PlatformGun = $Sprite2D/PlatformGun
@@ -53,10 +53,10 @@ func _physics_process(delta: float) -> void:
 	var new_animation := get_new_animation()
 	if animation_player.current_animation != "run" and \
 		new_animation == "run":
-		running_sound.play()
+		AudioManager.play_player_sfx("run")
 	elif animation_player.current_animation == "run" and \
 		new_animation != "run":
-		running_sound.stop()
+		AudioManager.stop_player_sfx("run")
 		
 	if new_animation != animation_player.current_animation: #and shoot_timer.is_stopped():
 	#	if is_shooting:
@@ -82,15 +82,13 @@ func get_new_animation() -> String:
 
 
 func try_jump() -> void:
-	if is_on_floor():
-		jump_sound.pitch_scale = 1.0
-	elif _double_jump_charged:
+	if not is_on_floor():
+		if not _double_jump_charged:
+			return
 		_double_jump_charged = false
 		velocity.x *= 2.5
-	else:
-		return
 	velocity.y = JUMP_VELOCITY
-	jump_sound.play()
+	AudioManager.play_player_sfx("jump")
 	
 func mouse_entered():
 	PlatformGun.can_shoot = 0
