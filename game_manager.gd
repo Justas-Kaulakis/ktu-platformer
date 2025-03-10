@@ -25,10 +25,12 @@ func _input(event):
 
 func _process(_delta) -> void:
 	if current_health <= 0:
+		AudioManager.play_player_sfx("die")
 		reset_level()
 
 func update_health(amount):
 	current_health += amount
+	AudioManager.play_player_sfx("take_hit")
 	#print("Current health: " + str(current_health))
 	
 func reset_level():

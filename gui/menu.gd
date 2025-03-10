@@ -1,6 +1,9 @@
 extends Control
 
 
+func _on_ready() -> void:
+	Global.current_area = Global.Area.MENU
+
 func _on_play_pressed() -> void:
 	get_tree().change_scene_to_file("res://level/demo_level.tscn")
 

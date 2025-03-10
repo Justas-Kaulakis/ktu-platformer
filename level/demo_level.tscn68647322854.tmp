@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://2pd6cj5ouwwe"]
+[gd_scene load_steps=8 format=4 uid="uid://2pd6cj5ouwwe"]
 
 [ext_resource type="Script" uid="uid://ckssc4csvyg4" path="res://level/demo_level.gd" id="1_hexfe"]
+[ext_resource type="PackedScene" uid="uid://d1qfv1g70w27v" path="res://audio_manager.tscn" id="2_ef1ie"]
 [ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://player/player.tscn" id="3_ps1br"]
 [ext_resource type="TileSet" uid="uid://q1prew1alqhu" path="res://level/tileset.tres" id="3_pt6hw"]
 [ext_resource type="PackedScene" uid="uid://c3ary26xq7cf7" path="res://level/spikes.tscn" id="4_pt6hw"]
@@ -53,5 +54,7 @@ position = Vector2(435, 380)
 
 [node name="Input Settings" parent="UI" instance=ExtResource("5_jc0yy")]
 visible = false
+
+[node name="AudioManager" parent="." instance=ExtResource("2_ef1ie")]
 
 [node name="Game Manager" parent="." instance=ExtResource("7_iox5r")]

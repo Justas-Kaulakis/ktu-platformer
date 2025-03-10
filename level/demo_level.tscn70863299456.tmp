@@ -1,11 +1,27 @@
-[gd_scene load_steps=7 format=4 uid="uid://2pd6cj5ouwwe"]
+[gd_scene load_steps=13 format=4 uid="uid://2pd6cj5ouwwe"]
 
 [ext_resource type="Script" uid="uid://ckssc4csvyg4" path="res://level/demo_level.gd" id="1_hexfe"]
+[ext_resource type="PackedScene" uid="uid://d1qfv1g70w27v" path="res://audio_manager.tscn" id="2_ef1ie"]
 [ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://player/player.tscn" id="3_ps1br"]
 [ext_resource type="TileSet" uid="uid://q1prew1alqhu" path="res://level/tileset.tres" id="3_pt6hw"]
 [ext_resource type="PackedScene" uid="uid://c3ary26xq7cf7" path="res://level/spikes.tscn" id="4_pt6hw"]
 [ext_resource type="PackedScene" uid="uid://d2u0fqa00o42h" path="res://gui/input_settings.tscn" id="5_jc0yy"]
 [ext_resource type="PackedScene" uid="uid://m2sqnkv38q0p" path="res://game_manager.tscn" id="7_iox5r"]
+[ext_resource type="AudioStream" uid="uid://c1eehakkdge8w" path="res://assets/audio/stone_break.wav" id="8_jc0yy"]
+[ext_resource type="AudioStream" uid="uid://8k76gl1pwbyd" path="res://assets/audio/death_scream.mp3" id="9_totxb"]
+[ext_resource type="AudioStream" uid="uid://drf6obp21c2ts" path="res://assets/audio/noise.wav" id="10_o2xhk"]
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_iox5r"]
+stream_count = 1
+stream_0/stream = ExtResource("8_jc0yy")
+stream_0/volume = -20.0
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_8bulf"]
+stream_count = 2
+stream_0/stream = ExtResource("9_totxb")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("10_o2xhk")
+stream_1/volume = 0.0
 
 [node name="Demo level" type="Node2D"]
 auto_translate_mode = 2
@@ -54,4 +70,13 @@ position = Vector2(435, 380)
 [node name="Input Settings" parent="UI" instance=ExtResource("5_jc0yy")]
 visible = false
 
+[node name="AudioManager" parent="." instance=ExtResource("2_ef1ie")]
+
 [node name="Game Manager" parent="." instance=ExtResource("7_iox5r")]
+
+[node name="TakeHit" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamSynchronized_iox5r")
+bus = &"SFX"
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamSynchronized_8bulf")

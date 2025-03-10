@@ -1,7 +1,6 @@
 extends Label
 
 @onready var game_manager = get_node("/root/Demo level/Game Manager")
-
 var previous_health = -1
 var max
 

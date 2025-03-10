@@ -1,8 +1,5 @@
 class_name Player extends CharacterBody2D
 
-
-signal coin_collected()
-
 const WALK_SPEED = 300.0
 const ACCELERATION_SPEED = WALK_SPEED * 6.0
 @export var JUMP_VELOCITY = -725.0
@@ -18,10 +15,14 @@ var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
 @onready var shoot_timer := $ShootAnimation as Timer
 @onready var sprite := $Sprite2D as Sprite2D
-@onready var jump_sound := $Jump as AudioStreamPlayer2D
+#@onready var jump_sound := $Jump as AudioStreamPlayer
+#@onready var running_sound := $Running as AudioStreamPlayer
 @onready var camera := $Camera as Camera2D
 var _double_jump_charged := false
 @onready var PlatformGun = $Sprite2D/PlatformGun
+
+var was_on_floor := false
+
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		_double_jump_charged = true
@@ -44,16 +45,23 @@ func _physics_process(delta: float) -> void:
 
 	floor_stop_on_slope = not platform_detector.is_colliding()
 	move_and_slide()
-
+	
 	#var is_shooting := false
 	#if Input.is_action_just_pressed("shoot" + action_suffix):
 	#	is_shooting = gun.shoot(sprite.scale.x)
 
-	var animation := get_new_animation()
-	if animation != animation_player.current_animation: #and shoot_timer.is_stopped():
+	var new_animation := get_new_animation()
+	if animation_player.current_animation != "run" and \
+		new_animation == "run":
+		AudioManager.play_player_sfx("run")
+	elif animation_player.current_animation == "run" and \
+		new_animation != "run":
+		AudioManager.stop_player_sfx("run")
+		
+	if new_animation != animation_player.current_animation: #and shoot_timer.is_stopped():
 	#	if is_shooting:
 	#		shoot_timer.start()
-		animation_player.play(animation)
+		animation_player.play(new_animation)
 
 
 func get_new_animation() -> String:
@@ -74,16 +82,13 @@ func get_new_animation() -> String:
 
 
 func try_jump() -> void:
-	if is_on_floor():
-		jump_sound.pitch_scale = 1.0
-	elif _double_jump_charged:
+	if not is_on_floor():
+		if not _double_jump_charged:
+			return
 		_double_jump_charged = false
 		velocity.x *= 2.5
-		jump_sound.pitch_scale = 1.5
-	else:
-		return
 	velocity.y = JUMP_VELOCITY
-	jump_sound.play()
+	AudioManager.play_player_sfx("jump")
 	
 func mouse_entered():
 	PlatformGun.can_shoot = 0
@@ -92,5 +97,5 @@ func mouse_entered():
 func _mouse_exit():
 	PlatformGun.can_shoot = 1
 	print("exit")
-func _mouse_shape_enter(shape_idx: int) -> void:
+func _mouse_shape_enter(_shape_idx: int) -> void:
 	print("enter2")

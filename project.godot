@@ -23,14 +23,15 @@ config/features=PackedStringArray("4.4")
 
 [autoload]
 
-AudioGlobal="*res://audio_global.gd"
+Global="*res://global.gd"
+AudioManager="*res://audio_manager.tscn"
 
 [display]
 
 window/size/viewport_width=800
 window/size/viewport_height=448
 window/size/window_width_override=1600
-window/size/window_height_override=960
+window/size/window_height_override=892
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
 
