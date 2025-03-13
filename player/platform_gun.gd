@@ -34,7 +34,7 @@ func _process(_delta: float) -> void:
 			#tiles.set_cell(node_coord, tiles.get_cell_source_id(Vector2i(15,5)), Vector2i(15,5))
 		if platform_count > 0:
 			if can_shoot and can_shoot_player == 1 and tiles.get_cell_source_id(node_coord) == -1:
-				AudioManager.play_player_sfx("put_platform")
+				AudioManager.play_player_sfx("place_platform")
 				var new_platform = dynamic_platform.instantiate()
 				get_tree().root.add_child(new_platform)
 				new_platform.global_position = get_global_mouse_position()
