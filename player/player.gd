@@ -39,9 +39,9 @@ func _physics_process(delta: float) -> void:
 
 	if not is_zero_approx(velocity.x):
 		if velocity.x > 0.0:
-			sprite.scale.x = 1.0
+			sprite.scale.x = 0.35
 		else:
-			sprite.scale.x = -1.0
+			sprite.scale.x = -0.35
 
 	floor_stop_on_slope = not platform_detector.is_colliding()
 	move_and_slide()
