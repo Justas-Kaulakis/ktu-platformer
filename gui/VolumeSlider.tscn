@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq4upsqp61b6v"]
+
+[ext_resource type="Script" uid="uid://b6j3g865sj25e" path="res://gui/volume_slider.gd" id="1_l4644"]
+[ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="1_rempp"]
+
+[node name="VolumeSlider" type="HBoxContainer"]
+script = ExtResource("1_l4644")
+
+[node name="Container" type="Container" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="SliderLabel" type="Label" parent="Container"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("1_rempp")
+text = "volume"
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 10
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]

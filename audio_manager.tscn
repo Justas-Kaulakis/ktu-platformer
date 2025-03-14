@@ -48,7 +48,7 @@ stream_0/stream = ExtResource("8_v0gdi")
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_86pii"]
 stream_count = 2
 stream_0/stream = ExtResource("7_l55mp")
-stream_0/volume = -20.0
+stream_0/volume = -18.0
 stream_1/stream = SubResource("AudioStreamRandomizer_fckgx")
 stream_1/volume = -10.0
 
@@ -64,7 +64,7 @@ script = ExtResource("1_vv1ii")
 
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_8wfci")
-volume_db = -20.0
+volume_db = -16.0
 autoplay = true
 bus = &"Music"
 
@@ -76,6 +76,7 @@ bus = &"SFX"
 
 [node name="run" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("13_k4pvn")
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="place_platform" type="AudioStreamPlayer" parent="SFX"]
@@ -85,7 +86,7 @@ bus = &"SFX"
 
 [node name="take_hit" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("9_op7ad")
-volume_db = -10.0
+volume_db = -7.0
 bus = &"SFX"
 
 [node name="die" type="AudioStreamPlayer" parent="SFX"]

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://player/player.tscn" id="3_ps1br"]
 [ext_resource type="TileSet" uid="uid://q1prew1alqhu" path="res://level/tileset.tres" id="3_pt6hw"]
 [ext_resource type="PackedScene" uid="uid://c3ary26xq7cf7" path="res://level/spikes.tscn" id="4_pt6hw"]
-[ext_resource type="PackedScene" uid="uid://d2u0fqa00o42h" path="res://gui/input_settings.tscn" id="5_jc0yy"]
+[ext_resource type="PackedScene" uid="uid://d2u0fqa00o42h" path="res://gui/OptionsPanel.tscn" id="5_jc0yy"]
 [ext_resource type="PackedScene" uid="uid://m2sqnkv38q0p" path="res://game_manager.tscn" id="7_iox5r"]
 
 [node name="Demo level" type="Node2D"]
@@ -51,7 +51,7 @@ position = Vector2(435, 380)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Input Settings" parent="UI" instance=ExtResource("5_jc0yy")]
+[node name="OptionsPanel" parent="UI" instance=ExtResource("5_jc0yy")]
 visible = false
 
 [node name="Game Manager" parent="." instance=ExtResource("7_iox5r")]

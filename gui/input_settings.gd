@@ -1,7 +1,7 @@
 extends Control
 
 @onready var input_button = preload("res://gui/input_button.tscn")
-@onready var action_list = $"PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/List of Actions"
+@onready var action_list: VBoxContainer = $"List of Actions"
 
 var input_actions = {
 	"move_left": "Move leftwards",

@@ -43,6 +43,7 @@ theme_override_constants/margin_bottom = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 
 [node name="Action Label" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
