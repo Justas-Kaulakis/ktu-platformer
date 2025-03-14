@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp5clbmpibopj"
-path="res://.godot/imported/male hero done(3).png-7a8e87ade6361c3f2313ab1f008010ba.ctex"
+uid="uid://br43b7j3m7qyo"
+path="res://.godot/imported/male hero sprite walking.png-3f482d33b75957b412d7f22637606a86.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/male hero done(3).png"
-dest_files=["res://.godot/imported/male hero done(3).png-7a8e87ade6361c3f2313ab1f008010ba.ctex"]
+source_file="res://player/male hero sprite walking.png"
+dest_files=["res://.godot/imported/male hero sprite walking.png-3f482d33b75957b412d7f22637606a86.ctex"]
 
 [params]
 

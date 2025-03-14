@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=4 uid="uid://vh7pmputa7r3"]
 
-[ext_resource type="Texture2D" uid="uid://br43b7j3m7qyo" path="res://player/male hero done(5).png" id="2_g6k8r"]
+[ext_resource type="Texture2D" uid="uid://br43b7j3m7qyo" path="res://player/male hero sprite walking.png" id="2_g6k8r"]
 [ext_resource type="Script" uid="uid://bo8vshlkb74dq" path="res://player/player.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://cs6id1t2vxalj" path="res://player/platform_gun.tscn" id="3_yw30f"]
 [ext_resource type="Script" uid="uid://df55hiq4jemgy" path="res://player/health_bar.gd" id="6_boad6"]
