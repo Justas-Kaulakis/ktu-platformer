@@ -18,13 +18,13 @@ func update_platform_count(current, max):
 		add_theme_color_override("font_color", Color(1, 1, 0))
 	else:
 		add_theme_color_override("font_color", Color(0, 1, 0))
-	set_text("Ammo: " + str(current)+"/"+str(max))
+	set_text("Platforms: " + str(current)+"/"+str(max))
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	max_pcount = PlatformGun.count
 	add_theme_font_size_override("font_size", 32)
-	set_text("Ammo: " + str(PlatformGun.platform_count)+"/"+str(max_pcount))
+	set_text("Platforms: " + str(PlatformGun.platform_count)+"/"+str(max_pcount))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta) -> void:
