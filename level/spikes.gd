@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var game_manager = get_node_or_null("/root/Demo level/Game Manager")
+@onready var game_manager = get_tree().current_scene.get_node("Game Manager")
 @onready var timer: Timer = $"Damage Timer"
 
 var damage = -0.6

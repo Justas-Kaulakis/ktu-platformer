@@ -3,7 +3,7 @@ extends Node
 @onready var options_panel: Control = get_tree().current_scene.get_node("UI/Options Menu")
 
 var is_game_paused = false
-var max_health = 3
+var max_health = 10
 var current_health = max_health
 
 func _ready() -> void:
