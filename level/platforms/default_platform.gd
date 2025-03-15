@@ -1,10 +1,10 @@
 extends StaticBody2D
 
-@onready var game_manager = get_node("/root/Demo level/Game Manager")
-@onready var PlatformGun = get_node("/root/Demo level/Player/Sprite2D/PlatformGun")
+@onready var game_manager = get_tree().current_scene.get_node("Game Manager")
+@onready var platform_gun = get_tree().current_scene.get_node("Player/Sprite2D/PlatformGun")
 
 func reload():
-	PlatformGun.can_shoot = 1
+	platform_gun.can_shoot = 1
 	queue_free()
 
 # Called when the node enters the scene tree for the first time.
@@ -17,7 +17,7 @@ func _process(_delta: float) -> void:
 		reload()
 
 func _mouse_enter():
-	PlatformGun.can_shoot = 0
+	platform_gun.can_shoot = 0
 	
 func _mouse_exit():
-	PlatformGun.can_shoot = 1
+	platform_gun.can_shoot = 1

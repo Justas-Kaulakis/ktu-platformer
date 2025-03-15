@@ -5,8 +5,8 @@ const count = 3
 var platform_count = count
 var can_shoot_player = 1 #checks if mouse is on player
 var can_shoot = 1 # checks if mouse is on created platform
-@onready var tiles = $"/root/Demo level/Layers/CollisionTiles" as TileMapLayer
-@onready var game_manager = get_node("/root/Demo level/Game Manager")
+@onready var tiles = get_tree().current_scene.get_node("Layers/Collision Tiles") as TileMapLayer
+@onready var game_manager = get_tree().current_scene.get_node("Game Manager")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

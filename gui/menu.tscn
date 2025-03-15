@@ -102,7 +102,7 @@ hframes = 4
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="OptionsPanel" parent="UI" instance=ExtResource("3_lnc0w")]
+[node name="Options Menu" parent="UI" instance=ExtResource("3_lnc0w")]
 visible = false
 
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

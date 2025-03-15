@@ -1,6 +1,6 @@
 extends Label
 
-@onready var game_manager = get_node("/root/Demo level/Game Manager")
+@onready var game_manager = get_tree().current_scene.get_node("Game Manager")
 var previous_health = -1
 var max
 
