@@ -5,6 +5,7 @@ enum Area {MENU, GAMEPLAY}
 var current_area: Area 
 var music_volume: int
 var sfx_volume: int
+const initial_volume_value = 0.5
 
 
 # Called when the node enters the scene tree for the first time.
