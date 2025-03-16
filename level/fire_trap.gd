@@ -18,11 +18,11 @@ func _on_damage_timer_timeout() -> void:
 	current_damage += damage_increment
 	game_manager.update_health(current_damage)
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	game_manager.update_health(current_damage)
 	timer.start()
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_body_exited(_body: Node2D) -> void:
 	timer.stop()
 	while current_damage < 0:
 		current_damage += damage_increment * -4

@@ -23,6 +23,10 @@ var _double_jump_charged := false
 
 var was_on_floor := false
 
+
+func _ready() -> void:
+	AudioManager.stop_all_player_sfx()
+
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		_double_jump_charged = true
