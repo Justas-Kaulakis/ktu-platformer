@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://vh7pmputa7r3"]
+[gd_scene load_steps=23 format=4 uid="uid://vh7pmputa7r3"]
 
 [ext_resource type="Texture2D" uid="uid://br43b7j3m7qyo" path="res://player/male hero sprite walking.png" id="2_g6k8r"]
 [ext_resource type="Script" uid="uid://bo8vshlkb74dq" path="res://player/player.gd" id="3"]
@@ -215,6 +215,9 @@ format = 3
 loop_end = 17000
 mix_rate = 96000
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6k8r"]
+size = Vector2(20, 56.25)
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
 collision_mask = 30
@@ -256,7 +259,7 @@ vframes = 4
 position = Vector2(-6.70003, -9.99998)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.00014, -28.3999)
+position = Vector2(1.25, -28.75)
 scale = Vector2(1, -1)
 shape = SubResource("11")
 
@@ -270,8 +273,9 @@ monitoring = false
 monitorable = false
 script = ExtResource("6_g6k8r")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformCollisionCheck"]
-position = Vector2(-1.19209e-06, -6.875)
+[node name="DO_NOT_REMOVE" type="CollisionShape2D" parent="PlatformCollisionCheck"]
+position = Vector2(1.25, -29.375)
+shape = SubResource("RectangleShape2D_g6k8r")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
