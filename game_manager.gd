@@ -3,13 +3,13 @@ extends Node
 @onready var options_panel: Control = get_tree().current_scene.get_node("UI/Options Menu")
 
 var is_game_paused = false
-var max_health = 3
+var is_poisoned = false
+
+var max_health = 10
 var current_health = max_health
 
 func _ready() -> void:
 	Engine.time_scale = 1
-	#print("Input Settings found: ", options_panel)
-	#get_tree().root.print_tree_pretty()
 
 func _input(event):
 	if event.is_action_pressed("pause_game"):
@@ -30,7 +30,6 @@ func _process(_delta) -> void:
 func update_health(amount):
 	current_health += amount
 	AudioManager.play_player_sfx("take_hit")
-	#print("Current health: " + str(current_health))
 	
 func reset_level():
 	get_tree().reload_current_scene()
