@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://vh7pmputa7r3"]
+[gd_scene load_steps=19 format=4 uid="uid://vh7pmputa7r3"]
 
 [ext_resource type="Texture2D" uid="uid://br43b7j3m7qyo" path="res://player/male hero sprite walking.png" id="2_g6k8r"]
 [ext_resource type="Script" uid="uid://bo8vshlkb74dq" path="res://player/player.gd" id="3"]
@@ -39,40 +39,6 @@ tracks/0/keys = {
 "values": [42]
 }
 
-[sub_resource type="Animation" id="2"]
-resource_name = "falling"
-length = 0.01
-step = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [48]
-}
-
-[sub_resource type="Animation" id="3"]
-resource_name = "falling_weapon"
-length = 0.5
-step = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [26]
-}
-
 [sub_resource type="Animation" id="4"]
 length = 1.28573
 loop_mode = 1
@@ -105,44 +71,12 @@ tracks/0/keys = {
 "values": [34, 35, 36, 37]
 }
 
-[sub_resource type="Animation" id="6"]
-length = 0.5
-step = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [45]
-}
-
-[sub_resource type="Animation" id="7"]
-length = 0.5
-step = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [46]
-}
-
 [sub_resource type="Animation" id="Animation_g6k8r"]
 resource_name = "new idle"
 step = 0.142857
 
 [sub_resource type="Animation" id="8"]
-length = 0.90001
+length = 0.7
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -194,12 +128,8 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_boad6"),
 &"crouch": SubResource("1"),
-&"falling": SubResource("2"),
-&"falling_weapon": SubResource("3"),
 &"idle": SubResource("4"),
 &"idle_weapon": SubResource("5"),
-&"jumping": SubResource("6"),
-&"jumping_weapon": SubResource("7"),
 &"new idle": SubResource("Animation_g6k8r"),
 &"run": SubResource("8"),
 &"run_weapon": SubResource("9"),
@@ -219,7 +149,6 @@ mix_rate = 96000
 size = Vector2(20, 56.25)
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(0.8, 0.8)
 collision_mask = 30
 floor_constant_speed = true
 platform_on_leave = 2
@@ -246,7 +175,7 @@ limit_top = -250
 limit_bottom = 440
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.155, -29)
+position = Vector2(0.155, -31)
 rotation = 3.14159
 scale = Vector2(0.35, -0.35)
 texture = ExtResource("2_g6k8r")

@@ -34,22 +34,22 @@ rendering_quadrant_size = 8
 [node name="Ground spikes" type="Node2D" parent="."]
 
 [node name="Spikes" parent="Ground spikes" instance=ExtResource("4_pt6hw")]
-position = Vector2(206, 380)
+position = Vector2(184, 382)
 
 [node name="Spikes2" parent="Ground spikes" instance=ExtResource("4_pt6hw")]
-position = Vector2(250, 380)
+position = Vector2(206, 382)
 
 [node name="Spikes3" parent="Ground spikes" instance=ExtResource("4_pt6hw")]
-position = Vector2(295, 380)
+position = Vector2(228, 382)
 
 [node name="Spikes4" parent="Ground spikes" instance=ExtResource("4_pt6hw")]
-position = Vector2(341, 381)
+position = Vector2(250, 382)
 
 [node name="Spikes5" parent="Ground spikes" instance=ExtResource("4_pt6hw")]
-position = Vector2(388, 380)
+position = Vector2(162, 382)
 
 [node name="Spikes6" parent="Ground spikes" instance=ExtResource("4_pt6hw")]
-position = Vector2(435, 380)
+position = Vector2(272, 382)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
