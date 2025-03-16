@@ -12,7 +12,7 @@ func _on_ready() -> void:
 	await get_tree().process_frame
 	current_damage = initial_damage
 	timer.wait_time = delay
-	timer.timeout.connect(_on_damage_timer_timeout)
+	#timer.timeout.connect(_on_damage_timer_timeout)
 
 func _on_damage_timer_timeout() -> void:
 	current_damage += damage_increment
