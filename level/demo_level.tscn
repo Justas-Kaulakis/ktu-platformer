@@ -1,15 +1,17 @@
-[gd_scene load_steps=7 format=4 uid="uid://2pd6cj5ouwwe"]
+[gd_scene load_steps=9 format=4 uid="uid://2pd6cj5ouwwe"]
 
-[ext_resource type="Script" uid="uid://ckssc4csvyg4" path="res://level/demo_level.gd" id="1_hexfe"]
+[ext_resource type="Script" uid="uid://2k6j0oirpcr" path="res://level/scene_manager.gd" id="1_iox5r"]
 [ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://player/player.tscn" id="3_ps1br"]
 [ext_resource type="TileSet" uid="uid://q1prew1alqhu" path="res://level/tileset.tres" id="3_pt6hw"]
 [ext_resource type="PackedScene" uid="uid://c3ary26xq7cf7" path="res://level/spikes.tscn" id="4_pt6hw"]
 [ext_resource type="PackedScene" uid="uid://d2u0fqa00o42h" path="res://gui/OptionsPanel.tscn" id="5_jc0yy"]
 [ext_resource type="PackedScene" uid="uid://m2sqnkv38q0p" path="res://game_manager.tscn" id="7_iox5r"]
+[ext_resource type="PackedScene" uid="uid://cvbjpguukek2x" path="res://level/LevelChangeDoor.tscn" id="7_pt6hw"]
+[ext_resource type="PackedScene" uid="uid://bbmuw1ik7wxda" path="res://level/SceneManager.tscn" id="8_o2xhk"]
 
 [node name="Demo level" type="Node2D"]
 auto_translate_mode = 2
-script = ExtResource("1_hexfe")
+script = ExtResource("1_iox5r")
 metadata/_edit_vertical_guides_ = [1593.0]
 
 [node name="Player" parent="." instance=ExtResource("3_ps1br")]
@@ -30,24 +32,23 @@ tile_set = ExtResource("3_pt6hw")
 rendering_quadrant_size = 8
 
 [node name="Ground spikes" type="Node2D" parent="."]
+position = Vector2(61, 0)
 
 [node name="Spikes" parent="Ground spikes" instance=ExtResource("4_pt6hw")]
-position = Vector2(184, 382)
+position = Vector2(112, 376)
+scale = Vector2(4, 4)
 
 [node name="Spikes2" parent="Ground spikes" instance=ExtResource("4_pt6hw")]
-position = Vector2(206, 382)
-
-[node name="Spikes3" parent="Ground spikes" instance=ExtResource("4_pt6hw")]
-position = Vector2(228, 382)
-
-[node name="Spikes4" parent="Ground spikes" instance=ExtResource("4_pt6hw")]
-position = Vector2(250, 382)
+position = Vector2(272, 376)
+scale = Vector2(4, 4)
 
 [node name="Spikes5" parent="Ground spikes" instance=ExtResource("4_pt6hw")]
-position = Vector2(162, 382)
+position = Vector2(192, 376)
+scale = Vector2(4, 4)
 
 [node name="Spikes6" parent="Ground spikes" instance=ExtResource("4_pt6hw")]
-position = Vector2(272, 382)
+position = Vector2(352, 376)
+scale = Vector2(4, 4)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -55,3 +56,8 @@ position = Vector2(272, 382)
 visible = false
 
 [node name="Game Manager" parent="." instance=ExtResource("7_iox5r")]
+
+[node name="SceneManager" parent="." instance=ExtResource("8_o2xhk")]
+
+[node name="LevelChangeDoor" parent="SceneManager" instance=ExtResource("7_pt6hw")]
+position = Vector2(1397, 210)

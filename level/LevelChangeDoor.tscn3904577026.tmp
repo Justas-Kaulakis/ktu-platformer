@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnt4ubknhd6li"]
+
+[ext_resource type="Texture2D" uid="uid://ljm3i3au5m6y" path="res://assets/textures/door.png" id="2_6sm08"]
+
+[sub_resource type="GDScript" id="GDScript_qfxvh"]
+script/source = "extends Area2D
+
+@onready var current_level = get_parent().name
+func _on_body_entered(body: Node2D) -> void:
+	handle_level_changed(current_level)
+	print(current_level)
+	
+
+func handle_level_changed(current_level_name: String):
+	match current_level_name:
+		\"Demo level\":
+			print(\"demo\")
+			get_tree().change_scdene_to_file(\"res://level/level_1.tscn\")
+		\"level 1\":
+			print(\"1\")
+			get_tree().change_scene_to_file(\"res://level/demo_level.tscn\")
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1mho"]
+size = Vector2(78.75, 136.542)
+
+[node name="NextLevelDoor" type="Area2D"]
+z_index = -1
+script = SubResource("GDScript_qfxvh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_6sm08")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -12.7969)
+scale = Vector2(0.75, 0.75)
+shape = SubResource("RectangleShape2D_x1mho")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -15,7 +15,7 @@ func _on_ready() -> void:
 func _on_damage_timer_timeout() -> void:
 	game_manager.update_health(damage)
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	if !game_manager.is_poisoned:
 		await get_tree().create_timer(0.1).timeout
 		game_manager.is_poisoned = true
@@ -23,7 +23,7 @@ func _on_body_entered(body: Node2D) -> void:
 		game_manager.is_poisoned = false
 	timer.start()
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_body_exited(_body: Node2D) -> void:
 	timer.stop()
 	var elapsed_time = 0
 	while elapsed_time <= poison_duration and game_manager.is_poisoned:

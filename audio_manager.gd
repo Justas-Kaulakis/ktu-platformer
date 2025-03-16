@@ -47,3 +47,7 @@ func stop_player_sfx(sfx_name: StringName) -> void:
 		printerr("sfx sound does not exist: ", sfx_name)
 	else: 
 		sound[sfx_name].stop()
+
+func stop_all_player_sfx() -> void:
+	for name in sound:
+		sound[name].stop()

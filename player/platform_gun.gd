@@ -26,6 +26,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		var global_scaled = tiles.get_global_mouse_position() 
 		var node_coord = tiles.local_to_map(tiles.to_local(global_scaled))
+		
 		#var _selected_tile = tiles.get_cell_tile_data(_node_coord)
 		#print(node_coord)
 		#if tiles.get_cell_source_id(node_coord) != -1:
