@@ -7,6 +7,10 @@ var music_volume: int
 var sfx_volume: int
 const initial_volume_value = 0.5
 
+# PLAYER DATA
+var max_health: float = 3.
+var max_platform_count = 3
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

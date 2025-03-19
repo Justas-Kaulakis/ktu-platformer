@@ -1,32 +1,38 @@
 extends Area2D
 
-@onready var game_manager = get_tree().current_scene.get_node("Game Manager")
+#@onready var game_manager = get_tree().current_scene.get_node("Game Manager")
 @onready var timer: Timer = $"Damage Timer"
 
-var initial_damage = -0.1
-var damage_increment = -0.05
+@export var initial_damage = 0.1
+@export var damage_increment = 0.05
 var current_damage
-var delay = 0.1
+@export var damage_delay = 0.3
+
+
 
 func _on_ready() -> void:
 	await get_tree().process_frame
 	current_damage = initial_damage
-	timer.wait_time = delay
+	timer.wait_time = damage_delay
 	#timer.timeout.connect(_on_damage_timer_timeout)
 
 func _on_damage_timer_timeout() -> void:
-	current_damage += damage_increment
-	game_manager.update_health(current_damage)
+	for body in get_overlapping_bodies():
+		if body is Player:
+			current_damage += damage_increment
+			body.take_damage(current_damage)
 
-func _on_body_entered(_body: Node2D) -> void:
-	game_manager.update_health(current_damage)
-	timer.start()
+func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body.take_damage(current_damage)
+		timer.start()
 
-func _on_body_exited(_body: Node2D) -> void:
-	timer.stop()
-	while current_damage < 0:
-		current_damage += damage_increment * -4
-		if current_damage < 0:
-			game_manager.update_health(current_damage)
-		await get_tree().create_timer(delay).timeout
-	current_damage = initial_damage
+func _on_body_exited(body: Node2D) -> void:
+	if body is Player:
+		timer.stop()
+		while current_damage > 0:
+			current_damage -= damage_increment * 4
+			if current_damage > 0:
+				body.take_damage(current_damage)
+			await get_tree().create_timer(damage_delay).timeout
+		current_damage = initial_damage

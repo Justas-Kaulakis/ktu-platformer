@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@onready var game_manager = get_tree().current_scene.get_node("Game Manager")
+@onready var player = get_tree().current_scene.get_node("Player") as Player
 @onready var platform_gun = get_tree().current_scene.get_node("Player/Sprite2D/PlatformGun")
 
 func reload():
@@ -13,8 +13,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("reload") or game_manager.current_health <= 0:
-		reload()
+	if Input.is_action_just_pressed("reload") or player.current_health <= 0:
+			reload()
 
 func _mouse_enter():
 	platform_gun.can_shoot = 0

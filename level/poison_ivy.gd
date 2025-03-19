@@ -1,33 +1,36 @@
 extends Area2D
 
-@onready var game_manager = get_tree().current_scene.get_node("Game Manager")
+#@onready var game_manager = get_tree().current_scene.get_node("Game Manager")
 @onready var timer: Timer = $"Damage Timer"
 
-var damage = -0.25
-var delay = 0.75
-var poison_duration = delay * 3 # seconds
+@export var damage = 0.5
+@export var damage_interval = 0.8
+var poison_duration = damage_interval * 3 # seconds
 
-func _on_ready() -> void:
+func _ready() -> void:
 	await get_tree().process_frame
-	timer.wait_time = delay
-	#timer.timeout.connect(_on_damage_timer_timeout)
-	
+	timer.wait_time = damage_interval
+
 func _on_damage_timer_timeout() -> void:
-	game_manager.update_health(damage)
+	for body in get_overlapping_bodies():
+		if body is Player:
+			body.take_damage(damage)
+			break
 
-func _on_body_entered(_body: Node2D) -> void:
-	if !game_manager.is_poisoned:
-		await get_tree().create_timer(0.1).timeout
-		game_manager.is_poisoned = true
-	else:
-		game_manager.is_poisoned = false
-	timer.start()
+func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		if !body.is_poisoned:
+			await get_tree().create_timer(0.1).timeout
+			body.is_poisoned = true
+		else:
+			body.is_poisoned = false
+		timer.start()
 
-func _on_body_exited(_body: Node2D) -> void:
+func _on_body_exited(body: Player) -> void:
 	timer.stop()
 	var elapsed_time = 0
-	while elapsed_time <= poison_duration and game_manager.is_poisoned:
-		elapsed_time += delay
-		game_manager.update_health(damage)
-		await get_tree().create_timer(delay).timeout
-	game_manager.is_poisoned = false
+	while elapsed_time <= poison_duration and body.is_poisoned:
+		elapsed_time += damage_interval
+		body.take_damage(damage)
+		await get_tree().create_timer(damage_interval).timeout
+	body.is_poisoned = false
