@@ -1,14 +1,12 @@
-class_name Player extends CharacterBody2D
+extends CharacterBody2D
+
+class_name Player
 
 const WALK_SPEED = 300.0
 const ACCELERATION_SPEED = WALK_SPEED * 6.0
 @export var JUMP_VELOCITY = -725.0
 ## Maximum speed at which the player can fall.
 const TERMINAL_VELOCITY = 700
-
-## The player listens for input actions appended with this suffix.[br]
-## Used to separate controls for multiple players in splitscreen.
-@export var action_suffix := ""
 
 var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var platform_detector := $PlatformDetector as RayCast2D
@@ -20,25 +18,29 @@ var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var camera := $Camera as Camera2D
 var _double_jump_charged := false
 @onready var PlatformGun = $Sprite2D/PlatformGun
+@onready var player_ui: CanvasLayer = $"Player UI"
+
 
 var was_on_floor := false
-
+var current_health: float
+var is_poisoned = false
 
 func _ready() -> void:
-	AudioManager.stop_all_player_sfx()
+	current_health = Global.max_health
+	AudioManager.stop_player_sfx("run")
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		_double_jump_charged = true
-	if Input.is_action_just_pressed("jump" + action_suffix):
+	if Input.is_action_just_pressed("jump"):
 		try_jump()
-	elif Input.is_action_just_released("jump" + action_suffix) and velocity.y < 0.0:
+	elif Input.is_action_just_released("jump") and velocity.y < 0.0:
 		# The player let go of jump early, reduce vertical momentum.
 		velocity.y *= 0.6
 	# Fall.
 	velocity.y = minf(TERMINAL_VELOCITY, velocity.y + gravity * delta)
 
-	var direction := Input.get_axis("move_left" + action_suffix, "move_right" + action_suffix) * WALK_SPEED
+	var direction := Input.get_axis("move_left", "move_right") * WALK_SPEED
 	velocity.x = move_toward(velocity.x, direction, ACCELERATION_SPEED * delta)
 
 	if not is_zero_approx(velocity.x):
@@ -50,10 +52,6 @@ func _physics_process(delta: float) -> void:
 	floor_stop_on_slope = not platform_detector.is_colliding()
 	move_and_slide()
 	
-	#var is_shooting := false
-	#if Input.is_action_just_pressed("shoot" + action_suffix):
-	#	is_shooting = gun.shoot(sprite.scale.x)
-
 	var new_animation := get_new_animation()
 	if animation_player.current_animation != "run" and \
 		new_animation == "run":
@@ -103,3 +101,18 @@ func _mouse_exit():
 	print("exit")
 func _mouse_shape_enter(_shape_idx: int) -> void:
 	print("enter2")
+
+func take_damage(damage_amount: float) -> void:
+	current_health -= damage_amount
+	player_ui.update_health_bar(current_health)
+	if current_health > 0:
+		AudioManager.play_player_sfx("take_hit")
+	else:
+		die()
+
+
+func die():
+	AudioManager.play_player_sfx("die")
+	# Reikia naudot call_referred nes die() kviečiamas sinale
+	# jis leidžia root apdorot visa physics ir tada iškvies reload_current_scene
+	get_tree().call_deferred("reload_current_scene")

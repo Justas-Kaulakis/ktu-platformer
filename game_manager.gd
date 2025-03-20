@@ -22,6 +22,7 @@ func _input(event):
 			options_panel.visible = false
 		get_tree().root.get_viewport().set_input_as_handled()
 
+"""
 func _process(_delta) -> void:
 	if current_health <= 0:
 		AudioManager.play_player_sfx("die")
@@ -33,3 +34,5 @@ func update_health(amount):
 	
 func reset_level():
 	get_tree().reload_current_scene()
+
+"""
