@@ -145,7 +145,7 @@ loop_end = 17000
 mix_rate = 96000
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6k8r"]
-size = Vector2(20, 56.25)
+size = Vector2(122, 56.25)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 30
@@ -202,7 +202,7 @@ monitorable = false
 script = ExtResource("6_g6k8r")
 
 [node name="DO_NOT_REMOVE" type="CollisionShape2D" parent="PlatformCollisionCheck"]
-position = Vector2(1.25, -29.375)
+position = Vector2(0, -29.375)
 shape = SubResource("RectangleShape2D_g6k8r")
 
 [node name="Player UI" type="CanvasLayer" parent="."]
