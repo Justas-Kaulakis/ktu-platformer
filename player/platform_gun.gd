@@ -1,6 +1,6 @@
 extends Node2D
 
-const dynamic_platform = preload("res://level/platforms/default_platform.tscn")
+const dynamic_platform = preload("res://level/platforms/gravity_platform.tscn")
 var platform_count = Global.max_platform_count
 var can_shoot_player = 1 #checks if mouse is on player
 var can_shoot = 1 # checks if mouse is on created platform
