@@ -26,6 +26,6 @@ func _mouse_exit():
 	
 
 
-func _on_body_entered(body: Node) -> void:
+func _on_body_entered(body: TileMapLayer) -> void:
 	set_deferred("freeze", true)
 	#set_deferred("rotation", 0)
