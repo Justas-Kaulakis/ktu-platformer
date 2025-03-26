@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br43b7j3m7qyo"
-path="res://.godot/imported/male hero sprite walking.png-3f482d33b75957b412d7f22637606a86.ctex"
+uid="uid://bacqivj1ju3rk"
+path="res://.godot/imported/female hero.png-4441f974739377f220d3b0203c25c62f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/male hero sprite walking.png"
-dest_files=["res://.godot/imported/male hero sprite walking.png-3f482d33b75957b412d7f22637606a86.ctex"]
+source_file="res://player/female hero.png"
+dest_files=["res://.godot/imported/female hero.png-4441f974739377f220d3b0203c25c62f.ctex"]
 
 [params]
 

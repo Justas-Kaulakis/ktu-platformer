@@ -75,9 +75,9 @@ func get_new_animation() -> String:
 			animation_new = "idle"
 	else:
 		if velocity.y > 0.0:
-			animation_new = "idle" # "falling"
+			animation_new = "falling" # "falling"
 		else:
-			animation_new = "idle" # "jumping"
+			animation_new = "jumping" # "jumping"
 	#if is_shooting:
 	#	animation_new += "_weapon"
 	return animation_new
