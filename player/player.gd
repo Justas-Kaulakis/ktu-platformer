@@ -24,10 +24,13 @@ var _double_jump_charged := false
 var was_on_floor := false
 var current_health: float
 var is_poisoned = false
+var checkpoint_manager
+
 
 func _ready() -> void:
 	current_health = Global.max_health
 	AudioManager.stop_player_sfx("run")
+	checkpoint_manager = get_parent().get_node("CheckpointManager")
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
@@ -108,6 +111,7 @@ func take_damage(damage_amount: float) -> void:
 	if current_health > 0:
 		AudioManager.play_player_sfx("take_hit")
 	else:
+		Input.action_press("reload")
 		die()
 
 
@@ -115,4 +119,9 @@ func die():
 	AudioManager.play_player_sfx("die")
 	# Reikia naudot call_referred nes die() kviečiamas sinale
 	# jis leidžia root apdorot visa physics ir tada iškvies reload_current_scene
-	get_tree().call_deferred("reload_current_scene")
+	position = checkpoint_manager.last_location
+	PlatformGun.reload()
+	current_health = Global.max_health
+	player_ui.update_health_bar(current_health)
+	#get_tree().call_deferred("reload_current_scene")
+	
