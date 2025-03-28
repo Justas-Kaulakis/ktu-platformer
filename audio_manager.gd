@@ -49,5 +49,5 @@ func stop_player_sfx(sfx_name: StringName) -> void:
 		sound[sfx_name].stop()
 
 func stop_all_player_sfx() -> void:
-	for name in sound:
-		sound[name].stop()
+	for sound_name in sound:
+		sound[sound_name].stop()

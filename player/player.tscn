@@ -210,22 +210,15 @@ script = ExtResource("5_boad6")
 
 [node name="Health Bar" type="Label" parent="Player UI"]
 z_index = -5
-offset_left = 12.0
-offset_top = 4.0
-offset_right = 62.0
-offset_bottom = 27.0
+offset_right = 99.0
+offset_bottom = 45.0
 theme_override_font_sizes/font_size = 32
 text = "health"
 
 [node name="platform_counter" type="Label" parent="Player UI"]
 z_index = -5
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 13.0
-offset_top = -184.0
-offset_right = 63.0
-offset_bottom = -161.0
-grow_vertical = 2
+offset_top = 49.0
+offset_right = 99.0
+offset_bottom = 94.0
 theme_override_font_sizes/font_size = 32
 text = "ammo"

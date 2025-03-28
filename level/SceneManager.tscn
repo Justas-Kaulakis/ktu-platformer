@@ -1,6 +1,90 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbmuw1ik7wxda"]
+[gd_scene load_steps=7 format=3 uid="uid://cm6hm7ets3581"]
 
-[ext_resource type="Script" uid="uid://2k6j0oirpcr" path="res://level/scene_manager.gd" id="1_rwhdu"]
+[ext_resource type="Script" uid="uid://b4e3gkjj7otc2" path="res://level/scene_manager.gd" id="1_rwhdu"]
+[ext_resource type="PackedScene" uid="uid://2pd6cj5ouwwe" path="res://level/demo_level.tscn" id="2_3nqb2"]
+
+[sub_resource type="Animation" id="Animation_mrtg6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorOverlay/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0313726, 0.0196078, 0.054902, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q4j3a"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorOverlay/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0313726, 0.0196078, 0.054902, 0), Color(0.0313726, 0.0196078, 0.054902, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2ig83"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorOverlay/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0313726, 0.0196078, 0.054902, 1), Color(0.0313726, 0.0196078, 0.054902, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mxco1"]
+_data = {
+&"RESET": SubResource("Animation_mrtg6"),
+&"fade_in": SubResource("Animation_q4j3a"),
+&"fade_out": SubResource("Animation_2ig83")
+}
 
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_rwhdu")
+
+[node name="CurrentLevelLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Demo level" parent="CurrentLevelLayer" instance=ExtResource("2_3nqb2")]
+
+[node name="NextLevelLayer" type="CanvasLayer" parent="."]
+process_mode = 4
+layer = -1
+visible = false
+
+[node name="ColorOverlay" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="ColorRect" type="ColorRect" parent="ColorOverlay"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0313726, 0.0196078, 0.054902, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mxco1")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -7,6 +7,7 @@
 size = Vector2(12, 12)
 
 [node name="Fire Trap" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_0iyyv")
 
 [node name="Fire Trap Sprite" type="Sprite2D" parent="."]

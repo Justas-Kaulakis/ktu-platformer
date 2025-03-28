@@ -1,6 +1,6 @@
 extends Node
 
-@onready var options_panel: Control = get_tree().current_scene.get_node("UI/Options Menu")
+@onready var options_panel: Control = $"../UI/Options Menu"
 
 var is_game_paused = false
 var is_poisoned = false

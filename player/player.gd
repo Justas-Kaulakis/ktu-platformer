@@ -13,8 +13,6 @@ var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
 @onready var shoot_timer := $ShootAnimation as Timer
 @onready var sprite := $Sprite2D as Sprite2D
-#@onready var jump_sound := $Jump as AudioStreamPlayer
-#@onready var running_sound := $Running as AudioStreamPlayer
 @onready var camera := $Camera as Camera2D
 var _double_jump_charged := false
 @onready var PlatformGun = $Sprite2D/PlatformGun
@@ -24,10 +22,17 @@ var _double_jump_charged := false
 var was_on_floor := false
 var current_health: float
 var is_poisoned = false
+var is_dead := false
+
+signal player_died
 
 func _ready() -> void:
+	is_dead = false
 	current_health = Global.max_health
 	AudioManager.stop_player_sfx("run")
+	if get_tree().current_scene.name == "SceneManager":
+		if not player_died.is_connected(get_tree().current_scene.on_player_died):
+			player_died.connect(get_tree().current_scene.on_player_died)
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
@@ -103,8 +108,11 @@ func _mouse_shape_enter(_shape_idx: int) -> void:
 	print("enter2")
 
 func take_damage(damage_amount: float) -> void:
+	if is_dead:
+		return
 	current_health -= damage_amount
 	player_ui.update_health_bar(current_health)
+	#print("Updated player ui: ", player_ui.health_bar.text)
 	if current_health > 0:
 		AudioManager.play_player_sfx("take_hit")
 	else:
@@ -112,7 +120,10 @@ func take_damage(damage_amount: float) -> void:
 
 
 func die():
+	is_dead = true
 	AudioManager.play_player_sfx("die")
-	# Reikia naudot call_referred nes die() kviečiamas sinale
-	# jis leidžia root apdorot visa physics ir tada iškvies reload_current_scene
-	get_tree().call_deferred("reload_current_scene")
+	print("Player died")
+	if player_died.has_connections():
+		player_died.emit() # handles level restart in SceneManager
+	else:
+		printerr("Death signal not connected. Try running scene from SceneManager")

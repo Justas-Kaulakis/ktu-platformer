@@ -4,12 +4,13 @@ const dynamic_platform = preload("res://level/platforms/gravity_platform.tscn")
 var platform_count = Global.max_platform_count
 var can_shoot_player = 1 #checks if mouse is on player
 var can_shoot = 1 # checks if mouse is on created platform
-@onready var tiles = get_tree().current_scene.get_node("Layers/Collision Tiles") as TileMapLayer
-@onready var game_manager = get_tree().current_scene.get_node("Game Manager")
+@onready var tiles = $"../../../Layers/Collision Tiles" as TileMapLayer
+@onready var game_manager = $"../../../Game Manager"
 @onready var player_ui: CanvasLayer = $"../../Player UI"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print(get_tree().current_scene)
 	print(tiles)
 	#pass # Replace with function body.
 
@@ -39,7 +40,7 @@ func _process(_delta: float) -> void:
 			tiles.get_cell_source_id(node_coord) == -1 and !game_manager.is_game_paused:
 				AudioManager.play_player_sfx("place_platform")
 				var new_platform = dynamic_platform.instantiate()
-				get_tree().current_scene.add_child(new_platform)
+				Global.get_current_level().add_child(new_platform)
 				new_platform.global_position = get_global_mouse_position()
 				platform_count -= 1
 				player_ui.update_platform_count(platform_count)

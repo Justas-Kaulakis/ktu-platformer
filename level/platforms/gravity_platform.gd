@@ -1,7 +1,7 @@
 extends RigidBody2D
 
-@onready var game_manager = get_tree().current_scene.get_node("Game Manager")
-@onready var platform_gun = get_tree().current_scene.get_node("Player/Sprite2D/PlatformGun")
+@onready var game_manager = $"../Game Manager"
+@onready var platform_gun = $"../Player/Sprite2D/PlatformGun"
 
 func reload():
 	queue_free()
@@ -26,6 +26,6 @@ func _mouse_exit():
 	
 
 
-func _on_body_entered(body: TileMapLayer) -> void:
+func _on_body_entered(_body) -> void:
 	set_deferred("freeze", true)
 	#set_deferred("rotation", 0)
