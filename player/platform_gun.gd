@@ -1,6 +1,8 @@
 extends Node2D
 
-const dynamic_platform = preload("res://level/platforms/gravity_platform.tscn")
+const default_platform = preload("res://level/platforms/default_platform.tscn")
+const gravity_platform = preload("res://level/platforms/gravity_platform.tscn")
+const breakable_platform = preload("res://level/platforms/breakable_platform.tscn")
 var platform_count = Global.max_platform_count
 var can_shoot_player = 1 #checks if mouse is on player
 var can_shoot = 1 # checks if mouse is on created platform
@@ -38,7 +40,7 @@ func _process(_delta: float) -> void:
 			if can_shoot and can_shoot_player == 1 and \
 			tiles.get_cell_source_id(node_coord) == -1 and !game_manager.is_game_paused:
 				AudioManager.play_player_sfx("place_platform")
-				var new_platform = dynamic_platform.instantiate()
+				var new_platform = breakable_platform.instantiate()
 				get_tree().current_scene.add_child(new_platform)
 				new_platform.global_position = get_global_mouse_position()
 				platform_count -= 1
