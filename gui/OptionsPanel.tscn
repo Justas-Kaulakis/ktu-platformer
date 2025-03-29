@@ -62,7 +62,7 @@ layout_mode = 2
 layout_mode = 2
 mouse_filter = 1
 theme_override_fonts/font = ExtResource("3_vr50r")
-text = "Remap controls"
+text = "Controls"
 vertical_alignment = 1
 
 [node name="Control" type="Control" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/RemapControls/Heading"]
