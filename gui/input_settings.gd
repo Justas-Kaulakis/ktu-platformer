@@ -4,6 +4,7 @@ extends Control
 @onready var action_list: VBoxContainer = $"List of Actions"
 
 var input_actions = {
+	"pause_game": "Pause and open settings",
 	"move_left": "Move leftwards",
 	"move_right": "Move rightwards",
 	"jump": "Jump",
@@ -16,7 +17,7 @@ var action_to_remap = null
 var remapping_button = null
 
 func create_action_list():
-	InputMap.load_from_project_settings()
+	#InputMap.load_from_project_settings()
 	for item in action_list.get_children():
 		item.queue_free()
 	
@@ -38,9 +39,16 @@ func create_action_list():
 		
 func update_action_list(button, event):
 	button.find_child("Input Label").text = event.as_text().trim_suffix(" (Physical)")
+
+func load_controls():
+	var controls = ConfigHandler.load_controls()
 	
+	for action in controls.keys():
+		InputMap.action_erase_events(action)
+		InputMap.action_add_event(action, controls[action])
 
 func _ready() -> void:
+	load_controls()
 	create_action_list()
 	
 func _on_input_button_pressed(button, action):
@@ -48,7 +56,7 @@ func _on_input_button_pressed(button, action):
 		is_remapping = true
 		action_to_remap = action
 		remapping_button = button
-		button.find_child("Input Label").text = "Input key..."
+		button.find_child("Input Label").text = "Press any key or button..."
 		
 func _input(event):
 	if is_remapping:
@@ -61,6 +69,7 @@ func _input(event):
 			
 			InputMap.action_erase_events(action_to_remap)
 			InputMap.action_add_event(action_to_remap, event)
+			ConfigHandler.save_controls(action_to_remap, event)
 			update_action_list(remapping_button, event)
 			
 			is_remapping = false
@@ -71,4 +80,9 @@ func _input(event):
 
 
 func _on_reset_to_default_pressed() -> void:
+	InputMap.load_from_project_settings()
+	for action in input_actions:
+		var events = InputMap.action_get_events(action)
+		if events.size() > 0:
+			ConfigHandler.save_controls(action, events[0])
 	create_action_list()
