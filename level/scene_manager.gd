@@ -1,14 +1,15 @@
 class_name SceneManager extends Node
 
-#@onready var current_level: Node2D = $"CurrentLevelLayer/Demo level"
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var current_level_layer: CanvasLayer = $CurrentLevelLayer
 @onready var next_level_layer: CanvasLayer = $NextLevelLayer
+@onready var player_ui: PlayerUI = $"Player UI"
 
 var next_level: Node2D
 
 func _ready() -> void:
 	current_level_layer.get_child(0).level_changed.connect(handle_level_changed)
+	#connect_player_signals()
 
 const level_path: Dictionary[Global.Level, String] = {
 	Global.Level.DEMO: "res://level/demo_level.tscn",
@@ -34,7 +35,11 @@ func swap_to(new_level_ind: Global.Level):
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	match anim_name:
 		"fade_in":
-			current_level_layer.get_child(0).queue_free()
+			var old_level: Node2D = current_level_layer.get_child(0)
+			if old_level.has_method("cleanup"):
+				old_level.cleanup()
+			else:
+				printerr("Last scene ["+ old_level.name +"] doesn't have cleanup() function")
 			next_level.reparent(current_level_layer)
 			next_level = null
 			anim.play("fade_out")

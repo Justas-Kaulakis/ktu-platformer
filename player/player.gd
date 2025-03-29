@@ -13,26 +13,48 @@ var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
 @onready var shoot_timer := $ShootAnimation as Timer
 @onready var sprite := $Sprite2D as Sprite2D
-@onready var camera := $Camera as Camera2D
 var _double_jump_charged := false
-@onready var PlatformGun = $Sprite2D/PlatformGun
-@onready var player_ui: CanvasLayer = $"Player UI"
+@onready var platform_gun = $Sprite2D/PlatformGun
+#@onready var player_ui: CanvasLayer = $"Player UI"
 
+var _current_health: float = Global.max_health:  # Private variable with setter
+	set(value):
+		_current_health = value
+		health_changed.emit(_current_health) # Updated PlayerUI
+	get:
+		return _current_health
 
 var was_on_floor := false
-var current_health: float
 var is_poisoned = false
 var is_dead := false
 
 signal player_died
+signal health_changed(new_health)
 
 func _ready() -> void:
 	is_dead = false
-	current_health = Global.max_health
 	AudioManager.stop_player_sfx("run")
-	if get_tree().current_scene.name == "SceneManager":
-		if not player_died.is_connected(get_tree().current_scene.on_player_died):
-			player_died.connect(get_tree().current_scene.on_player_died)
+	if get_tree().current_scene is SceneManager:
+		var scene_manager = get_tree().current_scene as SceneManager
+		player_died.connect(scene_manager.on_player_died, CONNECT_ONE_SHOT)
+		var player_ui = scene_manager.get_node("Player UI") as PlayerUI
+		health_changed.connect(player_ui.update_health_bar)
+	else:
+		printerr("SceneManager not found")
+	# Emit initial signal to update the UI
+	health_changed.emit(_current_health)
+
+func disconnect_signals():
+	if get_tree().current_scene is SceneManager:
+		var scene_manager = get_tree().current_scene as SceneManager
+		if player_died.is_connected(scene_manager.on_player_died):
+			player_died.disconnect(scene_manager.on_player_died)
+		var player_ui = scene_manager.get_node("Player UI") as PlayerUI
+		if health_changed.is_connected(player_ui.update_health_bar):
+			health_changed.disconnect(player_ui.update_health_bar)
+	
+	$Sprite2D/PlatformGun.disconnect_signals()
+
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
@@ -98,11 +120,11 @@ func try_jump() -> void:
 	AudioManager.play_player_sfx("jump")
 	
 func mouse_entered():
-	PlatformGun.can_shoot = 0
+	platform_gun.can_shoot = 0
 	print("enter")
 	
 func _mouse_exit():
-	PlatformGun.can_shoot = 1
+	platform_gun.can_shoot = 1
 	print("exit")
 func _mouse_shape_enter(_shape_idx: int) -> void:
 	print("enter2")
@@ -110,20 +132,21 @@ func _mouse_shape_enter(_shape_idx: int) -> void:
 func take_damage(damage_amount: float) -> void:
 	if is_dead:
 		return
-	current_health -= damage_amount
-	player_ui.update_health_bar(current_health)
-	#print("Updated player ui: ", player_ui.health_bar.text)
-	if current_health > 0:
+	_current_health -= damage_amount
+	if _current_health > 0:
 		AudioManager.play_player_sfx("take_hit")
 	else:
 		die()
 
 
 func die():
+	if is_dead:
+		return
 	is_dead = true
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(2, false)
 	AudioManager.play_player_sfx("die")
 	print("Player died")
-	if player_died.has_connections():
-		player_died.emit() # handles level restart in SceneManager
-	else:
+	if !player_died.has_connections():
 		printerr("Death signal not connected. Try running scene from SceneManager")
+	player_died.emit() # handles level restart in SceneManager

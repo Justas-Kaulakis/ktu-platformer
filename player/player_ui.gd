@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name PlayerUI extends CanvasLayer
 
 @onready var health_bar: Label = $"Health Bar"
 @onready var platform_counter: Label = $platform_counter

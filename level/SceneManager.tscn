@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cm6hm7ets3581"]
+[gd_scene load_steps=8 format=3 uid="uid://cm6hm7ets3581"]
 
 [ext_resource type="Script" uid="uid://b4e3gkjj7otc2" path="res://level/scene_manager.gd" id="1_rwhdu"]
 [ext_resource type="PackedScene" uid="uid://2pd6cj5ouwwe" path="res://level/demo_level.tscn" id="2_3nqb2"]
+[ext_resource type="Script" uid="uid://bhbkej600a8et" path="res://player/player_ui.gd" id="3_3nqb2"]
 
 [sub_resource type="Animation" id="Animation_mrtg6"]
 length = 0.001
@@ -59,6 +60,25 @@ _data = {
 
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_rwhdu")
+
+[node name="Player UI" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource("3_3nqb2")
+
+[node name="Health Bar" type="Label" parent="Player UI"]
+z_index = -5
+offset_right = 99.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 32
+text = "health"
+
+[node name="platform_counter" type="Label" parent="Player UI"]
+z_index = -5
+offset_top = 49.0
+offset_right = 99.0
+offset_bottom = 94.0
+theme_override_font_sizes/font_size = 32
+text = "ammo"
 
 [node name="CurrentLevelLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true

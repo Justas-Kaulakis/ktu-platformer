@@ -10,4 +10,11 @@ func _ready() -> void:
 
 func _on_exit_door_reached(_body: Node2D) -> void:
 	print("emitting level_changed")
-	emit_signal("level_changed")
+	level_changed.emit()
+
+
+func cleanup():
+	# another level is loaded while this scene is still active, so
+	# the current player has to disconnect all of it's signals
+	$Player.disconnect_signals()
+	queue_free()
