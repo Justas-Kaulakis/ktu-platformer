@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc7o7t0ramd6y"
-path="res://.godot/imported/robot.webp-39f680d53df0b170662860aae7393568.ctex"
+uid="uid://cplgxrccwlfph"
+path="res://.godot/imported/gun orange.png-19494e86b8e7c22ce7d905a94b29e901.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/robot.webp"
-dest_files=["res://.godot/imported/robot.webp-39f680d53df0b170662860aae7393568.ctex"]
+source_file="res://player/gun orange.png"
+dest_files=["res://.godot/imported/gun orange.png-19494e86b8e7c22ce7d905a94b29e901.ctex"]
 
 [params]
 
