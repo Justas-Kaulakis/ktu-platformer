@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://vh7pmputa7r3"]
+[gd_scene load_steps=24 format=4 uid="uid://vh7pmputa7r3"]
 
 [ext_resource type="Texture2D" uid="uid://bwr3wmpyqhm7i" path="res://player/male hero.png" id="2_qjkh3"]
 [ext_resource type="Script" uid="uid://bo8vshlkb74dq" path="res://player/player.gd" id="3"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ey4aqpyssh4f" path="res://player/bar red.png" id="6_rgyib"]
 [ext_resource type="Texture2D" uid="uid://lquuwaaxeral" path="res://player/bar overlay.png" id="7_hg6s5"]
 [ext_resource type="Texture2D" uid="uid://su37hwp6eyyd" path="res://player/bar green.png" id="8_8t03j"]
-[ext_resource type="Script" uid="uid://5mx1fa64jwa7" path="res://player/texture_progress_bar.gd" id="9_hg6s5"]
+[ext_resource type="Script" path="res://player/texture_progress_bar.gd" id="9_hg6s5"]
 
 [sub_resource type="Animation" id="Animation_boad6"]
 length = 0.001
@@ -42,6 +42,22 @@ tracks/0/keys = {
 "values": [42]
 }
 
+[sub_resource type="Animation" id="Animation_rgyib"]
+resource_name = "falling"
+step = 0.142857
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.142857, 0.54, 0.714286),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [19, 20, 20, 21]
+}
+
 [sub_resource type="Animation" id="4"]
 length = 1.28573
 loop_mode = 1
@@ -72,6 +88,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [34, 35, 36, 37]
+}
+
+[sub_resource type="Animation" id="Animation_qjkh3"]
+resource_name = "jumping"
+length = 49.0007
+step = 0.142857
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.39, 0.571429),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 17, 19]
 }
 
 [sub_resource type="Animation" id="Animation_g6k8r"]
@@ -125,39 +158,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [34, 35, 36, 37]
-}
-
-[sub_resource type="Animation" id="Animation_qjkh3"]
-resource_name = "jumping"
-length = 49.0007
-step = 0.142857
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.39, 0.571429),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [15, 16, 17, 17, 19]
-}
-
-[sub_resource type="Animation" id="Animation_rgyib"]
-resource_name = "falling"
-step = 0.142857
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.142857, 0.54, 0.714286),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [19, 20, 20, 21]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jnr5f"]

@@ -11,6 +11,8 @@ const initial_volume_value = 0.5
 var max_health: float = 4.
 var max_platform_count = 3
 
+# Powerup info
+var double_jump = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

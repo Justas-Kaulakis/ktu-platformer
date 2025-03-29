@@ -30,7 +30,7 @@ func _ready() -> void:
 	AudioManager.stop_player_sfx("run")
 
 func _physics_process(delta: float) -> void:
-	if is_on_floor():
+	if is_on_floor() and Global.double_jump == true:
 		_double_jump_charged = true
 	if Input.is_action_just_pressed("jump"):
 		try_jump()
@@ -85,7 +85,7 @@ func get_new_animation() -> String:
 
 func try_jump() -> void:
 	if not is_on_floor():
-		if not _double_jump_charged:
+		if not _double_jump_charged or !Global.double_jump:
 			return
 		_double_jump_charged = false
 		velocity.x *= 2.5
