@@ -8,7 +8,7 @@ var sfx_volume: int
 const initial_volume_value = 0.5
 
 # PLAYER DATA
-var max_health: float = 3.
+var max_health: float = 4.
 var max_platform_count = 3
 
 

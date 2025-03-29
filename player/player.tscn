@@ -1,10 +1,14 @@
-[gd_scene load_steps=18 format=4 uid="uid://vh7pmputa7r3"]
+[gd_scene load_steps=22 format=4 uid="uid://vh7pmputa7r3"]
 
 [ext_resource type="Texture2D" uid="uid://br43b7j3m7qyo" path="res://player/male hero sprite walking.png" id="2_g6k8r"]
 [ext_resource type="Script" uid="uid://bo8vshlkb74dq" path="res://player/player.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://cs6id1t2vxalj" path="res://player/platform_gun.tscn" id="3_yw30f"]
 [ext_resource type="Script" uid="uid://bhbkej600a8et" path="res://player/player_ui.gd" id="5_boad6"]
 [ext_resource type="Script" uid="uid://cqatl8d70xc6n" path="res://player/area_2d.gd" id="6_g6k8r"]
+[ext_resource type="Texture2D" uid="uid://ey4aqpyssh4f" path="res://player/bar red.png" id="6_rgyib"]
+[ext_resource type="Texture2D" uid="uid://lquuwaaxeral" path="res://player/bar overlay.png" id="7_hg6s5"]
+[ext_resource type="Texture2D" uid="uid://su37hwp6eyyd" path="res://player/bar green.png" id="8_8t03j"]
+[ext_resource type="Script" uid="uid://5mx1fa64jwa7" path="res://player/texture_progress_bar.gd" id="9_hg6s5"]
 
 [sub_resource type="Animation" id="Animation_boad6"]
 length = 0.001
@@ -208,15 +212,6 @@ shape = SubResource("RectangleShape2D_g6k8r")
 [node name="Player UI" type="CanvasLayer" parent="."]
 script = ExtResource("5_boad6")
 
-[node name="Health Bar" type="Label" parent="Player UI"]
-z_index = -5
-offset_left = 12.0
-offset_top = 4.0
-offset_right = 62.0
-offset_bottom = 27.0
-theme_override_font_sizes/font_size = 32
-text = "health"
-
 [node name="platform_counter" type="Label" parent="Player UI"]
 z_index = -5
 anchors_preset = 4
@@ -229,3 +224,17 @@ offset_bottom = -161.0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "ammo"
+
+[node name="Health" type="TextureProgressBar" parent="Player UI"]
+offset_left = 12.0
+offset_top = 8.99999
+offset_right = 286.0
+offset_bottom = 34.0
+scale = Vector2(0.606559, 1.05487)
+max_value = 4.0
+step = 0.1
+value = 4.0
+texture_under = ExtResource("6_rgyib")
+texture_over = ExtResource("7_hg6s5")
+texture_progress = ExtResource("8_8t03j")
+script = ExtResource("9_hg6s5")
