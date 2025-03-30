@@ -7,6 +7,7 @@ const ACCELERATION_SPEED = WALK_SPEED * 6.0
 @export var JUMP_VELOCITY = -725.0
 ## Maximum speed at which the player can fall.
 const TERMINAL_VELOCITY = 700
+const WALL_JUMP_FACTOR = 150
 
 var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var platform_detector := $PlatformDetector as RayCast2D
@@ -32,7 +33,7 @@ func _ready() -> void:
 	AudioManager.stop_player_sfx("run")
 
 func _physics_process(delta: float) -> void:
-	if is_on_floor():
+	if is_on_floor() and Global.double_jump == true:
 		_double_jump_charged = true
 	if Input.is_action_just_pressed("jump"):
 		try_jump()
@@ -86,8 +87,10 @@ func get_new_animation() -> String:
 
 
 func try_jump() -> void:
-	if not is_on_floor():
-		if not _double_jump_charged:
+	if Global.wall_jump and is_on_wall_only():
+		velocity.x = get_wall_normal().x * WALL_JUMP_FACTOR
+	elif not is_on_floor():
+		if not _double_jump_charged or !Global.double_jump:
 			return
 		_double_jump_charged = false
 		velocity.x *= 2.5

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7vhnpulw5yfq"]
+
+[ext_resource type="Script" uid="uid://bb2x6dqrcpuod" path="res://level/powerups/powerup_wall_jump.gd" id="1_4sl8c"]
+[ext_resource type="Texture2D" uid="uid://dxtuo25k1csa0" path="res://assets/textures/powerups/powerup_wall_jump.png" id="1_jbwyc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sl8c"]
+size = Vector2(6, 12)
+
+[node name="Wall Jump Powerup" type="Area2D"]
+script = ExtResource("1_4sl8c")
+
+[node name="Powerup Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_jbwyc")
+
+[node name="Powerup Collision" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_4sl8c")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
