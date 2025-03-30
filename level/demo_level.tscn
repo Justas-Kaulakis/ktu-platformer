@@ -177,4 +177,4 @@ visible = false
 position = Vector2(1397, 210)
 
 [node name="Checkpoint" parent="." instance=ExtResource("10_o2xhk")]
-position = Vector2(844, 225)
+position = Vector2(825, 354)

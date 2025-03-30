@@ -19,30 +19,19 @@ func _input(event):
 			options_panel.visible = false
 		get_tree().root.get_viewport().set_input_as_handled()
 
-func apply_powerup(name, duration):
-	match name:
+func apply_powerup(powerup_name, duration):
+	match powerup_name:
 		"double_jump":
 			Global.double_jump = true
+			AudioManager.play_sfx("pickup_power_up")
 			await get_tree().create_timer(duration).timeout
 			Global.double_jump = false
+			AudioManager.play_sfx("pickup_power_down")
 		"wall_jump":
 			Global.wall_jump = true
+			AudioManager.play_sfx("pickup_power_up")
 			await get_tree().create_timer(duration).timeout
 			Global.wall_jump = false
+			AudioManager.play_sfx("pickup_power_down")
 		_:
 			print("Kas skaitys, tas gaidys")
-
-"""
-func _process(_delta) -> void:
-	if current_health <= 0:
-		AudioManager.play_player_sfx("die")
-		reset_level()
-
-func update_health(amount):
-	current_health += amount
-	AudioManager.play_player_sfx("take_hit")
-	
-func reset_level():
-	get_tree().reload_current_scene()
-
-"""

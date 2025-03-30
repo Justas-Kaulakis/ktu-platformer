@@ -24,6 +24,6 @@ func _mouse_enter():
 func _mouse_exit():
 	platform_gun.can_shoot = 1
 	
-func _on_body_entered(body: TileMapLayer) -> void:
+func _on_body_entered(_body: TileMapLayer) -> void:
 	set_deferred("freeze", true)
 	#set_deferred("rotation", 0)
