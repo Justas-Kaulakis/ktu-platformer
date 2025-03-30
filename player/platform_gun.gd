@@ -1,4 +1,4 @@
-extends Node2D
+class_name PlatormGun extends Node2D
 
 const default_platform = preload("res://level/platforms/default_platform.tscn")
 const gravity_platform = preload("res://level/platforms/gravity_platform.tscn")
@@ -32,7 +32,7 @@ func _process(_delta: float) -> void:
 		if platform_count > 0:
 			if can_shoot and can_shoot_player == 1 and \
 			tiles.get_cell_source_id(node_coord) == -1 and !game_manager.is_game_paused:
-				AudioManager.play_player_sfx("place_platform")
+				AudioManager.play_sfx("place_platform")
 				var new_platform = selected_platform.instantiate()
 				get_tree().current_scene.add_child(new_platform)
 				new_platform.global_position = get_global_mouse_position()

@@ -121,8 +121,8 @@ platform_3={
 [layer_names]
 
 2d_physics/layer_1="player"
-2d_physics/layer_2="enemies"
-2d_physics/layer_3="coins"
+2d_physics/layer_2="traps"
+2d_physics/layer_3="powerups"
 2d_physics/layer_4="platforms"
 2d_physics/layer_5="ground"
 

@@ -185,7 +185,6 @@ position = Vector2(772, 185)
 
 [node name="Wall Jump Powerup" parent="." instance=ExtResource("12_4h366")]
 position = Vector2(489, 328)
-scale = Vector2(4, 4)
 
 [node name="Checkpoint" parent="." instance=ExtResource("11_hdc4k")]
 position = Vector2(597, 191)
