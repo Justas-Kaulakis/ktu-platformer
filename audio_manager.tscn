@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d1qfv1g70w27v"]
+[gd_scene load_steps=21 format=3 uid="uid://d1qfv1g70w27v"]
 
 [ext_resource type="Script" uid="uid://n2qukh88jwwk" path="res://audio_manager.gd" id="1_vv1ii"]
 [ext_resource type="AudioStream" uid="uid://cfr32kjvbe8rf" path="res://assets/audio/bg_music (1).mp3" id="2_7o23b"]
@@ -13,6 +13,8 @@
 [ext_resource type="AudioStream" uid="uid://bpiq36mvtgq2g" path="res://assets/audio/death_scream.wav" id="12_k4pvn"]
 [ext_resource type="AudioStream" uid="uid://cp3klfpt2qs74" path="res://assets/audio/noise.mp3" id="13_fckgx"]
 [ext_resource type="AudioStream" uid="uid://bmbwuppg1027g" path="res://assets/audio/running.wav" id="13_k4pvn"]
+[ext_resource type="AudioStream" uid="uid://dgpp1jlgo5dr8" path="res://assets/audio/power-up.wav" id="14_fckgx"]
+[ext_resource type="AudioStream" uid="uid://ct0r0v0m3o8b0" path="res://assets/audio/power-down.wav" id="15_86pii"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_u2xqa"]
 shuffle = true
@@ -91,4 +93,14 @@ bus = &"SFX"
 
 [node name="die" type="AudioStreamPlayer" parent="SFX"]
 stream = SubResource("AudioStreamSynchronized_astvc")
+bus = &"SFX"
+
+[node name="pickup_power_up" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("14_fckgx")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="pickup_power_down" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("15_86pii")
+volume_db = -11.0
 bus = &"SFX"

@@ -30,7 +30,7 @@ var is_poisoned = false
 func _ready() -> void:
 	Global.last_location = position
 	current_health = Global.max_health
-	AudioManager.stop_player_sfx("run")
+	AudioManager.stop_sfx("run")
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor() and Global.double_jump == true:
@@ -58,10 +58,10 @@ func _physics_process(delta: float) -> void:
 	var new_animation := get_new_animation()
 	if animation_player.current_animation != "run" and \
 		new_animation == "run":
-		AudioManager.play_player_sfx("run")
+		AudioManager.play_sfx("run")
 	elif animation_player.current_animation == "run" and \
 		new_animation != "run":
-		AudioManager.stop_player_sfx("run")
+		AudioManager.stop_sfx("run")
 		
 	if new_animation != animation_player.current_animation: #and shoot_timer.is_stopped():
 	#	if is_shooting:
@@ -95,7 +95,7 @@ func try_jump() -> void:
 		_double_jump_charged = false
 		velocity.x *= 2.5
 	velocity.y = JUMP_VELOCITY
-	AudioManager.play_player_sfx("jump")
+	AudioManager.play_sfx("jump")
 	
 func mouse_entered():
 	PlatformGun.can_shoot = 0
@@ -111,14 +111,14 @@ func take_damage(damage_amount: float) -> void:
 	current_health -= damage_amount
 	player_ui.update_health_bar(current_health)
 	if current_health > 0:
-		AudioManager.play_player_sfx("take_hit")
+		AudioManager.play_sfx("take_hit")
 	else:
 		Input.action_press("reload")
 		die()
 
 
 func die():
-	AudioManager.play_player_sfx("die")
+	AudioManager.play_sfx("die")
 	# Reikia naudot call_referred nes die() kviečiamas sinale
 	# jis leidžia root apdorot visa physics ir tada iškvies reload_current_scene
 	position = Global.last_location
