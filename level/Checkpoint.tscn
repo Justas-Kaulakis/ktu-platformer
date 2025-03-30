@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dt1g4d40uoijb"]
+[gd_scene load_steps=4 format=3 uid="uid://dt1g4d40uoijb"]
 
 [ext_resource type="Script" uid="uid://dseufwt7xgi3h" path="res://level/checkpoint.gd" id="1_laa2w"]
+[ext_resource type="Texture2D" uid="uid://dbb1630rkvr01" path="res://assets/textures/checkpoint.png" id="2_lcpyi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcpyi"]
 size = Vector2(20, 78)
@@ -12,5 +13,9 @@ script = ExtResource("1_laa2w")
 shape = SubResource("RectangleShape2D_lcpyi")
 
 [node name="RespawnPoint" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_lcpyi")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
