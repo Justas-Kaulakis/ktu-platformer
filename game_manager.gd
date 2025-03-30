@@ -5,9 +5,6 @@ extends Node
 var is_game_paused = false
 var is_poisoned = false
 
-var max_health = 10
-var current_health = max_health
-
 func _ready() -> void:
 	Engine.time_scale = 1
 
@@ -21,6 +18,19 @@ func _input(event):
 			Engine.time_scale = 1
 			options_panel.visible = false
 		get_tree().root.get_viewport().set_input_as_handled()
+
+func apply_powerup(name, duration):
+	match name:
+		"double_jump":
+			Global.double_jump = true
+			await get_tree().create_timer(duration).timeout
+			Global.double_jump = false
+		"wall_jump":
+			Global.wall_jump = true
+			await get_tree().create_timer(duration).timeout
+			Global.wall_jump = false
+		_:
+			print("Kas skaitys, tas gaidys")
 
 """
 func _process(_delta) -> void:
