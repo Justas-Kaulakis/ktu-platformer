@@ -36,7 +36,6 @@ func play_sfx(sfx_name: StringName) -> void:
 	if not sound.has(sfx_name):
 		printerr("sfx sound does not exist: ", sfx_name)
 	else: 
-		print("Playing: " + sfx_name)
 		sound[sfx_name].play()
 
 func stop_sfx(sfx_name: StringName) -> void:

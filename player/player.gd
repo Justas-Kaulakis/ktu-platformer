@@ -113,7 +113,6 @@ func take_damage(damage_amount: float) -> void:
 	if current_health > 0:
 		AudioManager.play_sfx("take_hit")
 	else:
-		Input.action_press("reload")
 		die()
 
 

@@ -7,6 +7,7 @@
 size = Vector2(18, 2)
 
 [node name="Spikes" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_lfmb4")
 
 [node name="Spikes\' Sprite" type="Sprite2D" parent="."]
