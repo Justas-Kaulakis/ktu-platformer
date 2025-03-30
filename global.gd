@@ -13,6 +13,7 @@ var max_platform_count = 3
 
 # Powerup info
 var double_jump = false
+var wall_jump = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
