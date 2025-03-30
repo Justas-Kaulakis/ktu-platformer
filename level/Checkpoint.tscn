@@ -1,22 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt1g4d40uoijb"]
+[gd_scene load_steps=7 format=3 uid="uid://dt1g4d40uoijb"]
 
 [ext_resource type="Script" uid="uid://dseufwt7xgi3h" path="res://level/checkpoint.gd" id="1_laa2w"]
-[ext_resource type="Texture2D" uid="uid://dbb1630rkvr01" path="res://assets/textures/checkpoint.png" id="2_lcpyi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcpyi"]
-size = Vector2(20, 78)
+size = Vector2(40, 80)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_laa2w"]
+load_path = "res://.godot/imported/checkpoint2.png-a1d9926596903bf622c56c1fe7eb3c3c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcpyi"]
+atlas = SubResource("CompressedTexture2D_laa2w")
+region = Rect2(0, 0, 7, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qvvbj"]
+load_path = "res://.godot/imported/checkpoint2.png-a1d9926596903bf622c56c1fe7eb3c3c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3b78"]
+atlas = SubResource("CompressedTexture2D_qvvbj")
+region = Rect2(7, 0, 8, 16)
 
 [node name="Checkpoint" type="Area2D"]
 z_index = -1
 script = ExtResource("1_laa2w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_lcpyi")
 
 [node name="RespawnPoint" type="Marker2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_lcpyi")
+[node name="off" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_lcpyi")
+
+[node name="on" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_m3b78")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

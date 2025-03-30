@@ -5,5 +5,6 @@ extends Area2D
 
 
 func _on_body_entered(_body: Node2D) -> void:
+	AudioManager.play_sfx("door_opened")
 	var current_level_name = str(current_level)
 	SceneManager.handle_level_changed(current_level_name)

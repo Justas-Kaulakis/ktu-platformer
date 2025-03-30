@@ -1,21 +1,14 @@
 extends Node
 # https://www.youtube.com/watch?v=07Kyqqg31FI&t=25s&ab_channel=DevWorm
 @onready var bg_music_player: AudioStreamPlayer = $BackgroundMusicPlayer
-@onready var sound: Dictionary[StringName, AudioStreamPlayer] = {
-	# PLAYER SOUNDS
-	"jump": $SFX/jump,
-	"run": $SFX/run,
-	"place_platform": $SFX/place_platform,
-	"take_hit": $SFX/take_hit,
-	"die": $SFX/die,
-	
-	# LEVEL OBJECTS
-	"pickup_power_up": $SFX/pickup_power_up,
-	"pickup_power_down": $SFX/pickup_power_down,
-}
+var sound: Dictionary[StringName, AudioStreamPlayer]
 @onready var current_area: Global.Area = Global.current_area
 
 func _ready() -> void:
+	for child in $SFX.get_children():
+		if child is AudioStreamPlayer:
+			var sound_name = StringName(child.name)
+			sound[sound_name] = child
 	stop_all_sfx()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -25,7 +25,7 @@ config/features=PackedStringArray("4.4")
 [autoload]
 
 Global="*res://global.gd"
-AudioManager="*res://audio_manager.tscn"
+AudioManager="*res://assets/audio/audio_manager.tscn"
 ConfigHandler="*res://config_handler.gd"
 
 [display]

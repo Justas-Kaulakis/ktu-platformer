@@ -216,7 +216,7 @@ limit_bottom = 440
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.155, -31)
-rotation = 3.14159
+rotation = -3.14159
 scale = Vector2(0.35, -0.35)
 texture = ExtResource("2_qjkh3")
 offset = Vector2(14, 0)

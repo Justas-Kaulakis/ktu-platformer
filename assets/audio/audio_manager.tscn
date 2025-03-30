@@ -1,0 +1,128 @@
+[gd_scene load_steps=26 format=3 uid="uid://d1qfv1g70w27v"]
+
+[ext_resource type="Script" uid="uid://n2qukh88jwwk" path="res://audio_manager.gd" id="1_a1ow3"]
+[ext_resource type="AudioStream" uid="uid://cfr32kjvbe8rf" path="res://assets/audio/bg_music (1).mp3" id="2_mof0l"]
+[ext_resource type="AudioStream" uid="uid://4br3ykkmw6ey" path="res://assets/audio/bg_music (3).mp3" id="3_r5csa"]
+[ext_resource type="AudioStream" uid="uid://b2jxci8ojrxpf" path="res://assets/audio/bg_music (4).mp3" id="4_801yv"]
+[ext_resource type="AudioStream" uid="uid://bfi5n0sufa286" path="res://assets/audio/bg_music (5).mp3" id="5_82512"]
+[ext_resource type="AudioStream" uid="uid://b2ak46qlr7r2y" path="res://assets/audio/bg_music (2).mp3" id="6_edc4s"]
+[ext_resource type="AudioStream" uid="uid://bspyog7mho1xw" path="res://assets/audio/bg_music (6).mp3" id="6_r5csa"]
+[ext_resource type="AudioStream" uid="uid://ntesj5qyusfy" path="res://assets/audio/jump.wav" id="7_ovte3"]
+[ext_resource type="AudioStream" uid="uid://blniwssrmli2u" path="res://assets/audio/male_jump_voice.wav" id="8_f5dq6"]
+[ext_resource type="AudioStream" uid="uid://bmbwuppg1027g" path="res://assets/audio/running.wav" id="9_o8fwl"]
+[ext_resource type="AudioStream" uid="uid://bo4kt7s4fo8x8" path="res://assets/audio/put_platform.wav" id="10_toigg"]
+[ext_resource type="AudioStream" uid="uid://c1eehakkdge8w" path="res://assets/audio/stone_break.wav" id="11_ru2il"]
+[ext_resource type="AudioStream" uid="uid://bpiq36mvtgq2g" path="res://assets/audio/death_scream.wav" id="12_7jg30"]
+[ext_resource type="AudioStream" uid="uid://cp3klfpt2qs74" path="res://assets/audio/noise.mp3" id="13_250xf"]
+[ext_resource type="AudioStream" uid="uid://dgpp1jlgo5dr8" path="res://assets/audio/power-up.wav" id="14_u63kh"]
+[ext_resource type="AudioStream" uid="uid://ct0r0v0m3o8b0" path="res://assets/audio/power-down.wav" id="15_3a8gm"]
+[ext_resource type="AudioStream" uid="uid://stekm88ec73r" path="res://assets/audio/light-up.wav" id="16_cjr6h"]
+[ext_resource type="AudioStream" uid="uid://c62sr23fs3l6f" path="res://assets/audio/flame.wav" id="17_6n5a1"]
+[ext_resource type="AudioStream" uid="uid://mo85d7foqcs0" path="res://assets/audio/door_open.wav" id="18_mof0l"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_u2xqa"]
+shuffle = true
+fade_time = 0.1
+stream_count = 5
+stream_0 = ExtResource("2_mof0l")
+stream_1 = ExtResource("3_r5csa")
+stream_2 = ExtResource("4_801yv")
+stream_3 = ExtResource("5_82512")
+stream_4 = ExtResource("6_r5csa")
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_8wfci"]
+clip_count = 2
+clip_0/name = &"GamePlayMusic"
+clip_0/stream = SubResource("AudioStreamPlaylist_u2xqa")
+clip_0/auto_advance = 0
+clip_1/name = &"MenuMusic"
+clip_1/stream = ExtResource("6_edc4s")
+clip_1/auto_advance = 0
+initial_clip = 1
+_transitions = {
+Vector2i(1, -1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+}
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fckgx"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("8_f5dq6")
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_86pii"]
+stream_count = 2
+stream_0/stream = ExtResource("7_ovte3")
+stream_0/volume = -18.0
+stream_1/stream = SubResource("AudioStreamRandomizer_fckgx")
+stream_1/volume = -10.0
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_astvc"]
+stream_count = 2
+stream_0/stream = ExtResource("12_7jg30")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("13_250xf")
+stream_1/volume = -15.63
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_rk2ev"]
+stream_count = 2
+stream_0/stream = ExtResource("16_cjr6h")
+stream_0/volume = -11.95
+stream_1/stream = ExtResource("17_6n5a1")
+stream_1/volume = -14.29
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_a1ow3")
+
+[node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamInteractive_8wfci")
+volume_db = -16.0
+autoplay = true
+bus = &"Music"
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="jump" type="AudioStreamPlayer" parent="SFX"]
+stream = SubResource("AudioStreamSynchronized_86pii")
+bus = &"SFX"
+
+[node name="run" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("9_o8fwl")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="place_platform" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("10_toigg")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="take_hit" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("11_ru2il")
+volume_db = -7.0
+bus = &"SFX"
+
+[node name="die" type="AudioStreamPlayer" parent="SFX"]
+stream = SubResource("AudioStreamSynchronized_astvc")
+bus = &"SFX"
+
+[node name="pickup_power_up" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("14_u63kh")
+volume_db = -6.0
+bus = &"SFX"
+
+[node name="pickup_power_down" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("15_3a8gm")
+volume_db = -8.0
+bus = &"SFX"
+
+[node name="checkpoint_reached" type="AudioStreamPlayer" parent="SFX"]
+stream = SubResource("AudioStreamSynchronized_rk2ev")
+bus = &"SFX"
+
+[node name="door_opened" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("18_mof0l")
+volume_db = -5.0
+bus = &"Music"

@@ -118,11 +118,9 @@ func take_damage(damage_amount: float) -> void:
 
 func die():
 	AudioManager.play_sfx("die")
-	# Reikia naudot call_referred nes die() kviečiamas sinale
-	# jis leidžia root apdorot visa physics ir tada iškvies reload_current_scene
 	position = Global.last_location
+	is_poisoned = false
 	PlatformGun.reload()
 	current_health = Global.max_health
 	player_ui.update_health_bar(current_health)
-	#get_tree().call_deferred("reload_current_scene")
 	
