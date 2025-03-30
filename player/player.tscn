@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://vh7pmputa7r3"]
+[gd_scene load_steps=26 format=4 uid="uid://vh7pmputa7r3"]
 
 [ext_resource type="Texture2D" uid="uid://bwr3wmpyqhm7i" path="res://player/male hero.png" id="2_qjkh3"]
 [ext_resource type="Script" uid="uid://bo8vshlkb74dq" path="res://player/player.gd" id="3"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://lquuwaaxeral" path="res://player/bar overlay.png" id="7_hg6s5"]
 [ext_resource type="Texture2D" uid="uid://su37hwp6eyyd" path="res://player/bar green.png" id="8_8t03j"]
 [ext_resource type="Script" uid="uid://5mx1fa64jwa7" path="res://player/texture_progress_bar.gd" id="9_hg6s5"]
+[ext_resource type="Texture2D" uid="uid://bobm8pter5f5s" path="res://assets/textures/default_platform.png" id="10_8t03j"]
+[ext_resource type="Script" uid="uid://b5d266mrgldqb" path="res://player/texture_rect.gd" id="11_2ieo8"]
 
 [sub_resource type="Animation" id="Animation_boad6"]
 length = 0.001
@@ -273,3 +275,12 @@ texture_under = ExtResource("6_rgyib")
 texture_over = ExtResource("7_hg6s5")
 texture_progress = ExtResource("8_8t03j")
 script = ExtResource("9_hg6s5")
+
+[node name="TextureRect" type="TextureRect" parent="Player UI"]
+offset_left = 14.0
+offset_top = 69.0
+offset_right = 125.0
+offset_bottom = 89.0
+texture = ExtResource("10_8t03j")
+expand_mode = 1
+script = ExtResource("11_2ieo8")
