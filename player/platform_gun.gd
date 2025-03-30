@@ -46,5 +46,9 @@ func _process(_delta: float) -> void:
 				platform_count -= 1
 				player_ui.update_platform_count(platform_count)
 	if Input.is_action_just_pressed("reload"):
-		platform_count = Global.max_platform_count
-		player_ui.update_platform_count(platform_count)
+		reload()
+
+func reload():
+	platform_count = Global.max_platform_count
+	player_ui.update_platform_count(platform_count)
+	
