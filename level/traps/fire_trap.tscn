@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dacrl11aege5r"]
 
-[ext_resource type="Script" uid="uid://cydtapf6bl5t" path="res://level/fire_trap.gd" id="1_0iyyv"]
+[ext_resource type="Script" uid="uid://cydtapf6bl5t" path="res://level/traps/fire_trap.gd" id="1_0iyyv"]
 [ext_resource type="Texture2D" uid="uid://bpsd62ykc6lu1" path="res://assets/textures/traps/fire_trap.png" id="1_fjrye"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0iyyv"]

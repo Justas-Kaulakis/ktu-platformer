@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cnsmoxui102qc"]
 
-[ext_resource type="Script" uid="uid://b1nok4potp4bl" path="res://level/poison_ivy.gd" id="1_dclbo"]
+[ext_resource type="Script" uid="uid://b1nok4potp4bl" path="res://level/traps/poison_ivy.gd" id="1_dclbo"]
 [ext_resource type="Texture2D" uid="uid://bavs8s3h1iags" path="res://assets/textures/traps/poison_ivy.png" id="1_usexj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dclbo"]

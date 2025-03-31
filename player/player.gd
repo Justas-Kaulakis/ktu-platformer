@@ -14,17 +14,16 @@ var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
 @onready var shoot_timer := $ShootAnimation as Timer
 @onready var sprite := $Sprite2D as Sprite2D
-#@onready var jump_sound := $Jump as AudioStreamPlayer
-#@onready var running_sound := $Running as AudioStreamPlayer
 @onready var camera := $Camera as Camera2D
-var _double_jump_charged := false
 @onready var PlatformGun = $Sprite2D/PlatformGun
 @onready var player_ui: CanvasLayer = $"Player UI"
 
 
+var _double_jump_charged := false
 var was_on_floor := false
 var current_health: float
 var is_poisoned = false
+var keys: Array[StringName] = []
 
 
 func _ready() -> void:
@@ -106,6 +105,16 @@ func _mouse_exit():
 	print("exit")
 func _mouse_shape_enter(_shape_idx: int) -> void:
 	print("enter2")
+
+func pick_up_key(key_color: StringName):
+	AudioManager.play_sfx("collect_key")
+	keys.append(key_color)
+
+func has_key(key_color: StringName):
+	return key_color in keys
+
+func consume_key(key_color: StringName):
+	keys.erase(key_color)
 
 func take_damage(damage_amount: float) -> void:
 	current_health -= damage_amount
