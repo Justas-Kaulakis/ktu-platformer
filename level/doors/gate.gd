@@ -1,26 +1,19 @@
+@tool
 class_name Gate extends StaticBody2D
 
-# Exported variables to set in the inspector
-@export var color_name = "white"
+## The color that is coded into the gate. Only the same color key can open it
+@export_enum("white", "yellow", "red", "blue", "green") var color_name: String = "yellow":
+	set(new_color):
+		color_name = new_color
+		$Indicator.modulate = Color(new_color, 1)
+
 
 var is_open = false
 
-func _ready():
-	# Define a color map for tinting
-	var color_map = {
-		"white": Color(1, 1, 1),
-		"red": Color(1, 0, 0),
-		"blue": Color(0, 0, 1),
-		"green": Color(0, 1, 0)
-	}
-	# Apply the color filter to the sprite
-	$Sprite2D.modulate = color_map[color_name]
-	
-func _on_detection_area_body_entered(player: Player) -> void:
-	# Check if the gate is closed and the body is the player
-	if not is_open:
-		# Check if the player has the matching key
-		if player.has_key(color_name):
+func _on_detection_area_body_entered(player) -> void:
+	if not Engine.is_editor_hint() and player is Player:
+		# Check if the gate is closed and the body is the player
+		if not is_open and player.has_key(color_name):
 			open_gate()
 			# Consume the key after use
 			player.consume_key(color_name)
