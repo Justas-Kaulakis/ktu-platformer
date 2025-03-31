@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d1qfv1g70w27v"]
+[gd_scene load_steps=27 format=3 uid="uid://d1qfv1g70w27v"]
 
 [ext_resource type="Script" uid="uid://n2qukh88jwwk" path="res://audio_manager.gd" id="1_a1ow3"]
 [ext_resource type="AudioStream" uid="uid://cfr32kjvbe8rf" path="res://assets/audio/bg_music (1).mp3" id="2_mof0l"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://stekm88ec73r" path="res://assets/audio/light-up.wav" id="16_cjr6h"]
 [ext_resource type="AudioStream" uid="uid://c62sr23fs3l6f" path="res://assets/audio/flame.wav" id="17_6n5a1"]
 [ext_resource type="AudioStream" uid="uid://mo85d7foqcs0" path="res://assets/audio/door_open.wav" id="18_mof0l"]
+[ext_resource type="AudioStream" uid="uid://chbpkl4841sec" path="res://assets/audio/collect_key.wav" id="20_801yv"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_u2xqa"]
 shuffle = true
@@ -126,3 +127,7 @@ bus = &"SFX"
 stream = ExtResource("18_mof0l")
 volume_db = -5.0
 bus = &"Music"
+
+[node name="collect_key" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("20_801yv")
+volume_db = -10.0

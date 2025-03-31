@@ -10,17 +10,18 @@ load_path = "res://.godot/imported/checkpoint2.png-a1d9926596903bf622c56c1fe7eb3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lcpyi"]
 atlas = SubResource("CompressedTexture2D_laa2w")
-region = Rect2(0, 0, 7, 16)
+region = Rect2(0, 0, 8, 16)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qvvbj"]
 load_path = "res://.godot/imported/checkpoint2.png-a1d9926596903bf622c56c1fe7eb3c3c.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m3b78"]
 atlas = SubResource("CompressedTexture2D_qvvbj")
-region = Rect2(7, 0, 8, 16)
+region = Rect2(8, 0, 8, 16)
 
 [node name="Checkpoint" type="Area2D"]
 z_index = -1
+collision_layer = 32
 script = ExtResource("1_laa2w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

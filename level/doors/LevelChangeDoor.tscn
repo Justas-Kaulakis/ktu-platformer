@@ -1,12 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvbjpguukek2x"]
 
-[ext_resource type="Script" uid="uid://bfyjuhpftixiv" path="res://level/level_change_door.gd" id="1_wusfa"]
+[ext_resource type="Script" uid="uid://bfyjuhpftixiv" path="res://level/doors/level_change_door.gd" id="1_wusfa"]
 [ext_resource type="Texture2D" uid="uid://ljm3i3au5m6y" path="res://assets/textures/door.png" id="2_6sm08"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wusfa"]
 size = Vector2(29.5, 50)
 
 [node name="LevelChangeDoor" type="Area2D"]
+collision_layer = 32
 script = ExtResource("1_wusfa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
