@@ -27,6 +27,7 @@ config/features=PackedStringArray("4.4")
 Global="*res://global.gd"
 AudioManager="*res://assets/audio/audio_manager.tscn"
 ConfigHandler="*res://config_handler.gd"
+SceneManager="*res://level/SceneManager.tscn"
 
 [display]
 

@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var platform_gun = get_tree().current_scene.get_node("Player/Sprite2D/PlatformGun")
+@onready var platform_gun = SceneManager.current_scene.get_node("Player/Sprite2D/PlatformGun")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#get_tree().root.print_tree_pretty()

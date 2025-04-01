@@ -7,8 +7,8 @@ var selected_platform = default_platform
 var platform_count = Global.max_platform_count
 var can_shoot_player = 1 # checks if mouse is on player
 var can_shoot = 1 # checks if mouse is on created platform
-@onready var tiles = get_tree().current_scene.get_node("Layers/Collision Tiles") as TileMapLayer
-@onready var game_manager = get_tree().current_scene.get_node("Game Manager")
+@onready var tiles = SceneManager.current_scene.get_node("Layers/Collision Tiles") as TileMapLayer
+@onready var game_manager = SceneManager.current_scene.get_node("Game Manager")
 @onready var player_ui: CanvasLayer = $"../../Player UI"
 
 # Called when the node enters the scene tree for the first time.
