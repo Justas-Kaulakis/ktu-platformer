@@ -44,7 +44,10 @@ func _physics_process(delta: float) -> void:
 
 	var direction := Input.get_axis("move_left", "move_right") * WALK_SPEED
 	velocity.x = move_toward(velocity.x, direction, ACCELERATION_SPEED * delta)
-
+	
+	if Input.is_action_just_pressed("reload"):
+		position = Global.last_location
+	
 	if not is_zero_approx(velocity.x):
 		if velocity.x > 0.0:
 			sprite.scale.x = 0.35
@@ -127,9 +130,18 @@ func take_damage(damage_amount: float) -> void:
 
 func die():
 	AudioManager.play_sfx("die")
+	Input.action_press("reload")
+	Input.action_release("reload")
 	position = Global.last_location
 	is_poisoned = false
 	PlatformGun.reload()
 	current_health = Global.max_health
 	player_ui.update_health_bar(current_health)
 	
+func reset_player():
+	Input.action_press("reload")
+	Input.action_release("reload")
+	is_poisoned = false
+	PlatformGun.reload()
+	current_health = Global.max_health
+	player_ui.update_health_bar(current_health)
