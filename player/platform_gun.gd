@@ -1,9 +1,6 @@
 class_name PlatormGun extends Node2D
 
-const default_platform = preload("res://level/platforms/default_platform.tscn")
-const gravity_platform = preload("res://level/platforms/gravity_platform.tscn")
-const breakable_platform = preload("res://level/platforms/breakable_platform.tscn")
-var selected_platform = default_platform
+var selected_platform = Global.p_1
 var platform_count = Global.max_platform_count
 var can_shoot_player = 1 # checks if mouse is on player
 var can_shoot = 1 # checks if mouse is on created platform
@@ -40,11 +37,11 @@ func _process(_delta: float) -> void:
 				player_ui.update_platform_count(platform_count)
 
 	if Input.is_action_just_pressed("platform_1"):
-		selected_platform = default_platform
+		selected_platform = Global.p_1
 	if Input.is_action_just_pressed("platform_2"):
-		selected_platform = breakable_platform
+		selected_platform = Global.p_2
 	if Input.is_action_just_pressed("platform_3"):
-		selected_platform = gravity_platform
+		selected_platform = Global.p_3
 		
 		#var _selected_tile = tiles.get_cell_tile_data(_node_coord)
 		#print(node_coord)

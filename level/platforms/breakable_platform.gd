@@ -2,7 +2,7 @@ extends StaticBody2D
 
 @onready var player = get_tree().current_scene.get_node("Player") as Player
 @onready var platform_gun = get_tree().current_scene.get_node("Player/Sprite2D/PlatformGun")
-var TimeInSeconds = 0.8
+var TimeInSeconds = 1.5
 
 func reload():
 	platform_gun.can_shoot = 1

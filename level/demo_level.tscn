@@ -16,7 +16,7 @@ auto_translate_mode = 2
 metadata/_edit_vertical_guides_ = [1593.0]
 
 [node name="Player" parent="." instance=ExtResource("3_ps1br")]
-position = Vector2(1201, 254)
+position = Vector2(185, 231)
 JUMP_VELOCITY = -625.0
 
 [node name="Layers" type="Node2D" parent="."]
@@ -46,10 +46,6 @@ scale = Vector2(4, 4)
 
 [node name="Spikes5" parent="Ground spikes" instance=ExtResource("4_pt6hw")]
 position = Vector2(261, 375)
-scale = Vector2(4, 4)
-
-[node name="Spikes6" parent="Ground spikes" instance=ExtResource("4_pt6hw")]
-position = Vector2(419, 376)
 scale = Vector2(4, 4)
 
 [node name="Spikes3" parent="Ground spikes" instance=ExtResource("4_pt6hw")]
@@ -184,4 +180,10 @@ shape = SubResource("RectangleShape2D_pt6hw")
 debug_color = Color(0, 0.6, 0.701961, 0.0509804)
 
 [node name="Checkpoint" parent="." instance=ExtResource("10_o2xhk")]
-position = Vector2(1141, 225)
+position = Vector2(521, 350)
+new_platform_count = 4
+platform_1 = "gravity"
+platform_2 = "gravity"
+
+[node name="Checkpoint2" parent="." instance=ExtResource("10_o2xhk")]
+position = Vector2(1146, 222)
