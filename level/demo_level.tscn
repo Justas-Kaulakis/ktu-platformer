@@ -180,7 +180,7 @@ shape = SubResource("RectangleShape2D_pt6hw")
 debug_color = Color(0, 0.6, 0.701961, 0.0509804)
 
 [node name="Checkpoint" parent="." instance=ExtResource("10_o2xhk")]
-position = Vector2(515, 352)
+position = Vector2(521, 350)
 new_platform_count = 4
 platform_1 = "gravity"
 platform_2 = "gravity"

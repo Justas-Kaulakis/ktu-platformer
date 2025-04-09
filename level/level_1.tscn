@@ -19,9 +19,7 @@
 size = Vector2(177, 131)
 
 [node name="Level 1" type="Node2D"]
-position = Vector2(49, -28)
 script = ExtResource("1_jfgjb")
-metadata/_edit_group_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_nokfs")]
 position = Vector2(117, 123)
@@ -157,9 +155,6 @@ position = Vector2(895, 158)
 [node name="Wall Jump Powerup" parent="." instance=ExtResource("12_4h366")]
 position = Vector2(1436, 324)
 
-[node name="Checkpoint" parent="." instance=ExtResource("11_hdc4k")]
-position = Vector2(597, 191)
-
 [node name="Key" parent="." instance=ExtResource("14_b2ana")]
 position = Vector2(782, 145)
 scale = Vector2(2, 2)
@@ -167,3 +162,6 @@ scale = Vector2(2, 2)
 [node name="Gate" parent="." instance=ExtResource("14_6jaql")]
 position = Vector2(1093, 176)
 scale = Vector2(2, 2)
+
+[node name="Checkpoint" parent="." instance=ExtResource("11_hdc4k")]
+position = Vector2(591, 192)
