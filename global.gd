@@ -7,20 +7,23 @@ var music_volume: int
 var sfx_volume: int
 const initial_volume_value = 0.5
 
-var platform_1 = preload("res://level/platforms/default_platform.tscn")
-var platform_2 = preload("res://level/platforms/breakable_platform.tscn")
-var platform_3 = preload("res://level/platforms/gravity_platform.tscn")
-var p_1 = platform_1
-var p_2 = platform_2
-var p_3 = platform_3
+var platform : Dictionary[String, PackedScene] = {
+	"default": preload("res://level/platforms/default_platform.tscn"),
+	"breakable": preload("res://level/platforms/breakable_platform.tscn"),
+	"gravity": preload("res://level/platforms/gravity_platform.tscn"),
+}
+var platformText : Dictionary[String, CompressedTexture2D] = {
+	"default": preload("res://assets/textures/default_platform.png"),
+	"breakable": preload("res://assets/textures/broken_platform.png"),
+	"gravity": preload("res://assets/textures/gravity_platform.png"),
+}
+var p_1 = platform["default"]
+var p_2 = platform["breakable"]
+var p_3 = platform["gravity"]
 
-var ptexture_1 = preload("res://assets/textures/default_platform.png")
-var ptexture_2 = preload("res://assets/textures/broken_platform.png")
-var ptexture_3 = preload("res://assets/textures/gravity_platform.png")
-
-var pt_1 = ptexture_1
-var pt_2 = ptexture_2
-var pt_3 = ptexture_3
+var pt_1 = platformText["default"]
+var pt_2 = platformText["breakable"]
+var pt_3 = platformText["gravity"]
 
 # PLAYER DATA
 var max_health: float = 4.

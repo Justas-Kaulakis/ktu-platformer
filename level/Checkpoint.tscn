@@ -25,15 +25,16 @@ collision_layer = 32
 script = ExtResource("1_laa2w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(0, -40)
 shape = SubResource("RectangleShape2D_lcpyi")
 
 [node name="off" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_lcpyi")
 
 [node name="on" type="Sprite2D" parent="."]
-visible = false
+position = Vector2(0, -32)
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_m3b78")
 
