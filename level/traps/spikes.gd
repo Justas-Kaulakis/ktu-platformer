@@ -3,6 +3,8 @@ extends Area2D
 #@onready var game_manager = get_tree().current_scene.get_node("Game Manager")
 @onready var timer: Timer = $"Damage Timer"
 
+
+
 @export var damage = 0.5
 @export var damage_interval = 0.8
 
