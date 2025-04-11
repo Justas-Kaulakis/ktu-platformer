@@ -1,47 +1,33 @@
-[gd_scene load_steps=7 format=3 uid="uid://cto2r1llqapws"]
+[gd_scene load_steps=10 format=3 uid="uid://cto2r1llqapws"]
 
 [ext_resource type="Script" uid="uid://dsoegp5evqwhp" path="res://gui/menu.gd" id="1_lti8b"]
 [ext_resource type="PackedScene" uid="uid://d2u0fqa00o42h" path="res://gui/OptionsPanel.tscn" id="3_lnc0w"]
-[ext_resource type="Texture2D" uid="uid://fnxru7p14r5i" path="res://assets/textures/spritesheet.png" id="3_mae5d"]
+[ext_resource type="Texture2D" uid="uid://d0mcg8vcoj425" path="res://assets/textures/menu_bg.png" id="4_o6i5c"]
+[ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="5_heart"]
+[ext_resource type="StyleBox" uid="uid://chugqj3dfu53s" path="res://gui/menu_btn.tres" id="5_vd72o"]
 
-[sub_resource type="Animation" id="Animation_ytr4m"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Spritesheet:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
+[sub_resource type="Theme" id="Theme_h3dpr"]
 
-[sub_resource type="Animation" id="Animation_4hy44"]
-resource_name = "menu"
-length = 3.00003
-loop_mode = 1
-step = 0.333333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Spritesheet:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.666667, 1.33333, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0, 1, 2, 3]
-}
+[sub_resource type="Gradient" id="Gradient_o6i5c"]
+offsets = PackedFloat32Array(0, 0.254545, 0.683636, 1)
+colors = PackedColorArray(1, 0.801667, 0.15, 0.227451, 0.84, 0.5187, 0.126, 1, 0.88, 0.37488, 0.1408, 1, 0.63, 0.15372, 0.1008, 0.435294)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_l48gv"]
-_data = {
-&"RESET": SubResource("Animation_ytr4m"),
-&"menu": SubResource("Animation_4hy44")
-}
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_heart"]
+gradient = SubResource("Gradient_o6i5c")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o6i5c"]
+particle_flag_disable_z = true
+gravity = Vector3(0, -98, 0)
+scale_min = 3.95
+scale_max = 4.95
+color_ramp = SubResource("GradientTexture1D_heart")
+hue_variation_min = -0.03
+hue_variation_max = 0.1
+turbulence_enabled = true
+turbulence_noise_strength = 9.66
+turbulence_noise_scale = 2.0
+turbulence_noise_speed = Vector3(5, 0, 0)
+turbulence_noise_speed_random = 0.66
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -52,59 +38,114 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lti8b")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Options")
-libraries = {
-&"": SubResource("AnimationLibrary_l48gv")
-}
-autoplay = "menu"
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 800.0
-offset_bottom = 448.0
-
-[node name="Quit" type="Button" parent="."]
-layout_mode = 2
-offset_left = 131.0
-offset_top = 361.0
-offset_right = 930.0
-offset_bottom = 834.0
-scale = Vector2(0.212787, 0.151342)
-mouse_default_cursor_shape = 2
-
-[node name="Play" type="Button" parent="."]
-layout_direction = 4
-layout_mode = 2
-offset_left = 137.0
-offset_top = 162.0
-offset_right = 145.0
-offset_bottom = 589.0
-scale = Vector2(22.4754, 0.163969)
-size_flags_horizontal = 4
-mouse_default_cursor_shape = 2
-metadata/_edit_group_ = true
-
-[node name="Options" type="Button" parent="."]
-layout_mode = 2
-offset_left = 6.0
-offset_top = 259.0
-offset_right = 516.0
-offset_bottom = 673.0
-scale = Vector2(0.333333, 0.166667)
-mouse_default_cursor_shape = 2
-
-[node name="Spritesheet" type="Sprite2D" parent="."]
-position = Vector2(400.5, 224.5)
-scale = Vector2(0.416146, 0.413889)
-texture = ExtResource("3_mae5d")
-hframes = 4
-
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Options Menu" parent="UI" instance=ExtResource("3_lnc0w")]
 visible = false
 
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[node name="MenuBg" type="Sprite2D" parent="."]
+position = Vector2(400, 224)
+scale = Vector2(0.520833, 0.4375)
+texture = ExtResource("4_o6i5c")
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 144.0
+offset_right = 306.0
+offset_bottom = 236.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(0.91, 0.723147, 0.2093, 1)
+theme_override_colors/font_color = Color(0.91, 0.637, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.91, 0.303333, 0, 1)
+theme_override_fonts/font = ExtResource("5_heart")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = ExtResource("5_vd72o")
+theme_override_styles/hover = ExtResource("5_vd72o")
+theme_override_styles/normal = ExtResource("5_vd72o")
+text = "PLAY"
+
+[node name="Options" type="Button" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 239.0
+offset_right = 236.0
+offset_bottom = 331.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.721569, 0.207843, 1)
+theme_override_colors/font_hover_color = Color(0.91, 0.723147, 0.2093, 1)
+theme_override_colors/font_color = Color(0.91, 0.637, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.91, 0.303333, 0, 1)
+theme_override_fonts/font = ExtResource("5_heart")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = ExtResource("5_vd72o")
+theme_override_styles/hover = ExtResource("5_vd72o")
+theme_override_styles/normal = ExtResource("5_vd72o")
+text = "OPTIONS"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 337.0
+offset_right = 306.0
+offset_bottom = 429.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(0.91, 0.723147, 0.2093, 1)
+theme_override_colors/font_color = Color(0.91, 0.637, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.91, 0.303333, 0, 1)
+theme_override_fonts/font = ExtResource("5_heart")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = ExtResource("5_vd72o")
+theme_override_styles/hover = ExtResource("5_vd72o")
+theme_override_styles/normal = ExtResource("5_vd72o")
+text = "QUIT"
+
+[node name="Dungeon" type="Label" parent="."]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 3.0
+offset_right = 317.0
+offset_bottom = 78.0
+theme = SubResource("Theme_h3dpr")
+theme_override_colors/font_color = Color(0.909804, 0.635294, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.831373)
+theme_override_colors/font_outline_color = Color(0.803449, 0.276464, 0.12511, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_heart")
+theme_override_font_sizes/font_size = 60
+text = "DUNGEON"
+autowrap_mode = 2
+uppercase = true
+
+[node name="Escape" type="Label" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 59.0
+offset_right = 392.0
+offset_bottom = 134.0
+theme = SubResource("Theme_h3dpr")
+theme_override_colors/font_color = Color(0.909804, 0.635294, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.831373)
+theme_override_colors/font_outline_color = Color(0.803449, 0.276464, 0.12511, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_heart")
+theme_override_font_sizes/font_size = 60
+text = "escape"
+autowrap_mode = 2
+uppercase = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(472, 166)
+amount = 25
+amount_ratio = 0.7
+lifetime = 2.07
+visibility_rect = Rect2(-50, -120, 100, 150)
+process_material = SubResource("ParticleProcessMaterial_o6i5c")
+
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

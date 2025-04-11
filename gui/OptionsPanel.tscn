@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2u0fqa00o42h"]
+[gd_scene load_steps=9 format=3 uid="uid://d2u0fqa00o42h"]
 
 [ext_resource type="Script" uid="uid://dbcjep2m2mpbx" path="res://gui/input_settings.gd" id="1_do8lh"]
 [ext_resource type="PackedScene" uid="uid://bhswok6qbi5r5" path="res://gui/input_button.tscn" id="2_vr50r"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b6sul4uq7drx3" path="res://gui/volume_sliders.gd" id="4_3y1ff"]
 [ext_resource type="PackedScene" uid="uid://dq4upsqp61b6v" path="res://gui/VolumeSlider.tscn" id="5_3l2em"]
 [ext_resource type="Script" uid="uid://coy1dpx127vuy" path="res://gui/toggles.gd" id="6_rwo2v"]
+[ext_resource type="Script" uid="uid://p0yutk2bj3hd" path="res://gui/to_main_menu.gd" id="7_adcec"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_vr50r"]
 color = Color(0.493546, 0.493545, 0.493545, 1)
@@ -50,6 +51,15 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Back to Main Menu" type="Button" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_vr50r")
+theme_override_font_sizes/font_size = 20
+text = "Quit to main menu"
+script = ExtResource("7_adcec")
 
 [node name="RemapControls" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -166,6 +176,16 @@ theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("3_vr50r")
 text = "fullscreen"
 
+[node name="BreakLine3" type="MarginContainer" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Panel" type="Panel" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/BreakLine3"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_vr50r")
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Back to Main Menu" to="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Back to Main Menu" method="_on_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/RemapControls/Heading/Reset to Default" to="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/RemapControls" method="_on_reset_to_default_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/VolumeSliders/Heading/Reset to Default" to="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/VolumeSliders" method="_on_reset_to_default_pressed"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Toggles/ToggleRow/MarginContainer/FullscreenToggle" to="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Toggles" method="_on_fullscreen_toggle_toggled"]
