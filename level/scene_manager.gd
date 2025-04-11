@@ -4,7 +4,7 @@ extends Node
 var preloaded_scene = null
 var next_scene_path = ""
 
-func load_next_level(path):
+func load_next_level(path: String):
 	next_scene_path = path
 	ResourceLoader.load_threaded_request(path)
 

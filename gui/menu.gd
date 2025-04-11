@@ -1,6 +1,6 @@
 extends Control
 
-@onready var options_panel: Control = get_tree().current_scene.get_node("UI/Options Menu")
+@onready var options_panel: Control = $"UI/Options Menu"
 
 
 func _input(event):
@@ -10,11 +10,13 @@ func _input(event):
 
 func _on_ready() -> void:
 	Global.current_area = Global.Area.MENU
+	SceneManager.load_next_level("res://level/level_1.tscn") # load in memory 
 	find_signal_emitter(get_tree().current_scene, "set_volume")
 
 func _on_play_pressed() -> void:
 	#get_tree().change_scene_to_file("res://level/demo_level.tscn")
-	get_tree().change_scene_to_file("res://level/level_1.tscn")
+	Global.current_area = Global.Area.GAMEPLAY
+	SceneManager.switch_scene("res://level/level_1.tscn")
 
 
 func _on_options_pressed() -> void:

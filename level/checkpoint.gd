@@ -1,6 +1,5 @@
 extends Area2D
 
-#@onready var player = get_tree().current_scene.get_node("Player") as Player
 @export var new_platform_count = Global.max_platform_count
 @export_enum("default", "breakable", "gravity") var platform_1 = "default"
 @export_enum("default", "breakable", "gravity") var platform_2 = "breakable"
