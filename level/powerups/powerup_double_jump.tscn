@@ -1,18 +1,66 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi55575cmdtvs"]
+[gd_scene load_steps=7 format=3 uid="uid://bi55575cmdtvs"]
 
 [ext_resource type="Script" uid="uid://dc78m3gvv1pdi" path="res://level/powerups/powerup_double_jump.gd" id="1_d8ktu"]
-[ext_resource type="Texture2D" uid="uid://bwi1s1hfdwfrf" path="res://assets/textures/powerups/powerup_double_jump.png" id="1_jjhku"]
+[ext_resource type="Texture2D" uid="uid://d4hpv7ljsd5mw" path="res://assets/textures/powerups/powerup_double_jump.png" id="2_d8ktu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8ktu"]
 size = Vector2(24, 24)
+
+[sub_resource type="Animation" id="Animation_c1yb1"]
+resource_name = "new_animation"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Powerup Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9]
+}
+
+[sub_resource type="Animation" id="Animation_lt6ao"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Powerup Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6oq5y"]
+_data = {
+&"RESET": SubResource("Animation_lt6ao"),
+&"new_animation": SubResource("Animation_c1yb1")
+}
 
 [node name="Double Jump Powerup" type="Area2D"]
 script = ExtResource("1_d8ktu")
 
 [node name="Powerup Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_jjhku")
+position = Vector2(2.98023e-07, 1.13687e-13)
+scale = Vector2(0.02, 0.0202083)
+texture = ExtResource("2_d8ktu")
+hframes = 5
+vframes = 2
 
 [node name="Powerup Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_d8ktu")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6oq5y")
+}
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="ready" from="." to="." method="_on_ready"]
