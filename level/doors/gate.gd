@@ -26,7 +26,8 @@ func _on_detection_area_body_entered(player) -> void:
 func open_gate():
 	AudioManager.play_sfx("door_opened")
 	is_open = true
-	($Sprite2D.texture as AtlasTexture).region.position.x = 0
+	$Closed.visible = false
+	$Opened.visible = true
 	$CollisionShape2D.set_deferred("disabled", true)
 
 func close_gate():

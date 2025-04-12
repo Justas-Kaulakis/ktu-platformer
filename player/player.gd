@@ -145,3 +145,20 @@ func reset_player():
 	PlatformGun.reload()
 	current_health = Global.max_health
 	player_ui.update_health_bar(current_health)
+
+func apply_powerup(powerup_name, duration):
+	match powerup_name:
+		"double_jump":
+			Global.double_jump = true
+			AudioManager.play_sfx("pickup_power_up")
+			await get_tree().create_timer(duration).timeout
+			Global.double_jump = false
+			AudioManager.play_sfx("pickup_power_down")
+		"wall_jump":
+			Global.wall_jump = true
+			AudioManager.play_sfx("pickup_power_up")
+			await get_tree().create_timer(duration).timeout
+			Global.wall_jump = false
+			AudioManager.play_sfx("pickup_power_down")
+		_:
+			print("Kas skaitys, tas gaidys")
