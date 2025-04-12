@@ -45,6 +45,7 @@ _data = {
 }
 
 [node name="Double Jump Powerup" type="Area2D"]
+collision_layer = 4
 script = ExtResource("1_d8ktu")
 
 [node name="Powerup Sprite" type="Sprite2D" parent="."]
