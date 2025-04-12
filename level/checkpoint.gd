@@ -1,5 +1,4 @@
 extends Area2D
-
 #@onready var player = get_tree().current_scene.get_node("Player") as Player
 @export var new_platform_count = Global.max_platform_count
 @export_enum("default", "breakable", "gravity") var platform_1 = "default"
@@ -7,13 +6,16 @@ extends Area2D
 @export_enum("default", "breakable", "gravity") var platform_3 = "gravity"
 var visited = false
 
+func _ready() -> void:
+	$on.visible = false
+	
 func _on_body_entered(player: Player) -> void:
 	if not visited:
 		AudioManager.play_sfx("checkpoint_reached")
-		Input.action_press("platform_1")
-		Input.action_release("platform_1")
+		visited = true
 		
-		
+	Input.action_press("platform_1")
+	Input.action_release("platform_1")
 	Global.p_1 = Global.platform[platform_1] 
 	Global.pt_1 = Global.platformText[platform_1]	
 	Global.p_2 = Global.platform[platform_2] 
@@ -26,3 +28,4 @@ func _on_body_entered(player: Player) -> void:
 	player.reset_player()
 	$off.visible = false
 	$on.visible = true
+	

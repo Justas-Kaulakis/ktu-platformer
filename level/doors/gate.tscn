@@ -45,10 +45,12 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_isf24")
 
 [node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 scale = Vector2(2, 2)
 collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+visible = false
 position = Vector2(-6.5, 0)
 shape = SubResource("RectangleShape2D_nm7qu")
 debug_color = Color(0.67451, 0.447059, 0.639216, 0.203922)
