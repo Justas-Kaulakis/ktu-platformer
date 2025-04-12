@@ -248,7 +248,6 @@ shape = SubResource("RectangleShape2D_g6k8r")
 script = ExtResource("5_boad6")
 
 [node name="platform_counter" type="Label" parent="Player UI"]
-visible = false
 z_index = -5
 anchors_preset = 4
 anchor_top = 0.5
@@ -262,7 +261,6 @@ theme_override_font_sizes/font_size = 32
 text = "ammo"
 
 [node name="Health" type="TextureProgressBar" parent="Player UI"]
-visible = false
 offset_left = 12.0
 offset_top = 8.99999
 offset_right = 286.0
@@ -276,7 +274,6 @@ texture_over = ExtResource("7_hg6s5")
 texture_progress = ExtResource("8_8t03j")
 
 [node name="TextureRect" type="TextureRect" parent="Player UI"]
-visible = false
 offset_left = 14.0
 offset_top = 69.0
 offset_right = 125.0

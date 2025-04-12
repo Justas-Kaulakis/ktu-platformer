@@ -9,11 +9,12 @@ var pickable = true
 		color_name = new_color
 		$Sprite2D.modulate = Color(new_color,1)
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("reload"):
-		player.consume_key(color_name)
-		pickable = true
-		$Sprite2D.visible = true
+func _process(_delta: float) -> void:
+	if not Engine.is_editor_hint():
+		if Input.is_action_just_pressed("reload"):
+			player.consume_key(color_name)
+			pickable = true
+			$Sprite2D.visible = true
 
 func _on_body_entered(body):
 	if not Engine.is_editor_hint() and body is Player and pickable:
