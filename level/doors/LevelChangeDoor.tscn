@@ -1,21 +1,142 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvbjpguukek2x"]
+[gd_scene load_steps=12 format=3 uid="uid://cvbjpguukek2x"]
 
 [ext_resource type="Script" uid="uid://bfyjuhpftixiv" path="res://level/doors/level_change_door.gd" id="1_wusfa"]
-[ext_resource type="Texture2D" uid="uid://ljm3i3au5m6y" path="res://assets/textures/door.png" id="2_6sm08"]
+[ext_resource type="Texture2D" uid="uid://b1b4saox280re" path="res://assets/textures/portal.png" id="2_unv2t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wusfa"]
 size = Vector2(29.5, 50)
+
+[sub_resource type="Animation" id="Animation_ai7lw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_unv2t"]
+resource_name = "fade"
+step = 0.0833333
+
+[sub_resource type="Animation" id="Animation_02h8s"]
+resource_name = "new_animation"
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.169146, 0.343196, 0.48292, 0.654518, 0.838375),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8vb00"]
+_data = {
+&"RESET": SubResource("Animation_ai7lw"),
+&"fade": SubResource("Animation_unv2t"),
+&"new_animation": SubResource("Animation_02h8s")
+}
+
+[sub_resource type="Animation" id="Animation_jkqwq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ibpxg"]
+resource_name = "fade_to_black"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8vb00"]
+resource_name = "fade_to_normal"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hhqmd"]
+_data = {
+&"RESET": SubResource("Animation_jkqwq"),
+&"fade_to_black": SubResource("Animation_ibpxg"),
+&"fade_to_normal": SubResource("Animation_8vb00")
+}
 
 [node name="LevelChangeDoor" type="Area2D"]
 collision_layer = 32
 script = ExtResource("1_wusfa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.8, 1.8)
-texture = ExtResource("2_6sm08")
+position = Vector2(-2, 0)
+scale = Vector2(2.43125, 2.9625)
+texture = ExtResource("2_unv2t")
+hframes = 3
+vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.8, 1.8)
 shape = SubResource("RectangleShape2D_wusfa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8vb00")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CanvasLayer")
+libraries = {
+&"": SubResource("AnimationLibrary_hhqmd")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
