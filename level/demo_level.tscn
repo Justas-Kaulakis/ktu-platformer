@@ -184,8 +184,9 @@ debug_color = Color(0, 0.6, 0.701961, 0.0509804)
 [node name="Checkpoint" parent="." instance=ExtResource("10_o2xhk")]
 position = Vector2(520, 384)
 new_platform_count = 4
-platform_1 = "breakable"
-platform_3 = "breakable"
+platform_1 = "gravity"
+platform_2 = "gravity"
 
 [node name="Checkpoint2" parent="." instance=ExtResource("10_o2xhk")]
 position = Vector2(1153, 256)
+new_platform_count = 3

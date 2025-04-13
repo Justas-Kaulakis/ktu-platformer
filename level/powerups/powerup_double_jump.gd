@@ -5,10 +5,19 @@ extends Area2D
 
 @export var path: String = "res://level/powerups/powerup_double_jump.tscn"
 
-func _on_body_entered(player: Player) -> void:
-	player.apply_powerup("double_jump", 5.0)
-	queue_free()
+var pickable = true
 
-func _on_ready() -> void:
+func _ready() -> void:
 	add_to_group("respawnable")
 	animation_player.play("new_animation")
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("reload"):
+		$"Powerup Sprite".visible = true
+		pickable = true
+
+func _on_body_entered(player: Player) -> void:
+	if pickable:
+		player.apply_powerup("double_jump", 5.0)
+		$"Powerup Sprite".visible = false
+		pickable = false
