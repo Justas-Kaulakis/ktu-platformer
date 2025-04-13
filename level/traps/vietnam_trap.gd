@@ -4,7 +4,7 @@ extends Area2D
 @onready var spikes_group: Node = get_parent().get_node("Basic Spikes")
 var vt_position
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(body: Player) -> void:
 	if spikes:
 		var new_trap = spikes.instantiate()
 		var nt_sprite = new_trap.get_node("Spikes' Sprite")
