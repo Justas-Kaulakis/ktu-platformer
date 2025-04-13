@@ -73,6 +73,6 @@ func restore_pu_nodes():
 		if !is_instance_valid(cs_pu_instances[i]):
 			var data = cs_pu_data[i]
 			var new_pu = data["scene"].instantiate()
-			add_child(new_pu)
+			add_child.call_deferred(new_pu)
 			new_pu.global_position = data["position"]
 			cs_pu_instances[i] = new_pu

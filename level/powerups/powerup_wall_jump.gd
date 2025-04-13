@@ -8,7 +8,7 @@ extends Area2D
 var pickable = true
 
 func _ready() -> void:
-    add_to_group("respawnable")
+	add_to_group("respawnable")
 	animation_player.play("new_animation")
 
 func _process(_delta: float) -> void:

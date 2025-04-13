@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvbjpguukek2x"]
+[gd_scene load_steps=9 format=3 uid="uid://cvbjpguukek2x"]
 
 [ext_resource type="Script" uid="uid://bfyjuhpftixiv" path="res://level/doors/level_change_door.gd" id="1_wusfa"]
 [ext_resource type="Texture2D" uid="uid://b1b4saox280re" path="res://assets/textures/portal.png" id="2_unv2t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wusfa"]
-size = Vector2(29.5, 50)
+size = Vector2(29.1944, 38.8889)
 
 [sub_resource type="Animation" id="Animation_ai7lw"]
 length = 0.001
@@ -49,6 +49,9 @@ _data = {
 &"new_animation": SubResource("Animation_02h8s")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unv2t"]
+size = Vector2(6, 70)
+
 [node name="LevelChangeDoor" type="Area2D"]
 collision_layer = 32
 script = ExtResource("1_wusfa")
@@ -68,5 +71,11 @@ shape = SubResource("RectangleShape2D_wusfa")
 libraries = {
 &"": SubResource("AnimationLibrary_8vb00")
 }
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_unv2t")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

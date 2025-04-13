@@ -236,7 +236,6 @@ volume_db = -9.468
 bus = &"SFX"
 
 [node name="PlatformCollisionCheck" type="Area2D" parent="."]
-monitoring = false
 monitorable = false
 script = ExtResource("6_g6k8r")
 

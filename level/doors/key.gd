@@ -12,14 +12,6 @@ var pickable = true
 		color_name = new_color
 		$Sprite2D.modulate = Color(new_color, 1)
 
-
-func _on_body_entered(body):
-	if not Engine.is_editor_hint() and body is Player:
-		body.pick_up_key(color_name)
-		Alert.add_key_alert(color_name)
-		queue_free()
-
-
 func _on_ready() -> void:
 	animation_player.play("new_animation")
 
@@ -34,6 +26,6 @@ func _process(_delta: float) -> void:
 func _on_body_entered(body):
 	if not Engine.is_editor_hint() and body is Player and pickable:
 		body.pick_up_key(color_name)
-        Alert.add_key_alert(color_name)
+		Alert.add_key_alert(color_name)
 		$Sprite2D.visible = false
 		pickable = false
