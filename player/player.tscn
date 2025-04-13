@@ -210,7 +210,6 @@ libraries = {
 position = Vector2(0, -28)
 offset = Vector2(0, 50)
 limit_left = -750
-limit_top = -250
 limit_bottom = 440
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -237,7 +236,6 @@ volume_db = -9.468
 bus = &"SFX"
 
 [node name="PlatformCollisionCheck" type="Area2D" parent="."]
-monitoring = false
 monitorable = false
 script = ExtResource("6_g6k8r")
 

@@ -137,6 +137,10 @@ func die():
 	PlatformGun.reload()
 	current_health = Global.max_health
 	player_ui.update_health_bar(current_health)
+	SceneManager.restore_pu_nodes()
+	Alert.clear_pu_alerts()
+	Global.double_jump = false
+	Global.wall_jump = false
 	
 func reset_player():
 	Input.action_press("reload")
@@ -145,18 +149,24 @@ func reset_player():
 	PlatformGun.reload()
 	current_health = Global.max_health
 	player_ui.update_health_bar(current_health)
+	SceneManager.restore_pu_nodes()
+	Alert.clear_pu_alerts()
+	Global.double_jump = false
+	Global.wall_jump = false
 
 func apply_powerup(powerup_name, duration):
 	match powerup_name:
 		"double_jump":
 			Global.double_jump = true
 			AudioManager.play_sfx("pickup_power_up")
+			Alert.create_powerup_alert("Double Jump", duration)
 			await get_tree().create_timer(duration).timeout
 			Global.double_jump = false
 			AudioManager.play_sfx("pickup_power_down")
 		"wall_jump":
 			Global.wall_jump = true
 			AudioManager.play_sfx("pickup_power_up")
+			Alert.create_powerup_alert("Wall Jump", duration)
 			await get_tree().create_timer(duration).timeout
 			Global.wall_jump = false
 			AudioManager.play_sfx("pickup_power_down")

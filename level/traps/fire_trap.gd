@@ -5,8 +5,8 @@ extends Area2D
 @onready var area_2d = $"."
 @onready var animation_player = $"AnimationPlayer"
 
-@export var initial_damage = 0.1
-@export var damage_increment = 0.05
+@export var initial_damage = 0.5
+@export var damage_increment = 0.2
 var current_damage
 @export var damage_delay = 0.3
 
