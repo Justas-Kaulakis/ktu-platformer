@@ -19,11 +19,13 @@ var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var player_ui: CanvasLayer = $"Player UI"
 
 
+
 var _double_jump_charged := false
 var was_on_floor := false
 var current_health: float
 var is_poisoned = false
 var keys: Array[StringName] = []
+
 
 
 func _ready() -> void:
@@ -53,40 +55,62 @@ func _physics_process(delta: float) -> void:
 			sprite.scale.x = 0.35
 		else:
 			sprite.scale.x = -0.35
+			
 
 	floor_stop_on_slope = not platform_detector.is_colliding()
 	move_and_slide()
 	
 	var new_animation := get_new_animation()
-	if animation_player.current_animation != "run" and \
-		new_animation == "run":
-		AudioManager.play_sfx("run")
-	elif animation_player.current_animation == "run" and \
-		new_animation != "run":
-		AudioManager.stop_sfx("run")
-		
-	if new_animation != animation_player.current_animation: #and shoot_timer.is_stopped():
-	#	if is_shooting:
-	#		shoot_timer.start()
-		animation_player.play(new_animation)
+	if Global.gender == "male":
+		if animation_player.current_animation != "run_male" and \
+			new_animation == "run_male":
+			AudioManager.play_sfx("run")
+		elif animation_player.current_animation == "run_male" and \
+			new_animation != "run_male":
+			AudioManager.stop_sfx("run")
+	if Global.gender != "male":
+		if animation_player.current_animation != "run_female" and \
+			new_animation == "run_female":
+			AudioManager.play_sfx("run")
+		elif animation_player.current_animation == "run_female" and \
+			new_animation != "run_female":
+			AudioManager.stop_sfx("run")
+	animation_player.play(new_animation)
 
 
 func get_new_animation() -> String:
 	var animation_new: String
-	if is_on_floor():
-		if absf(velocity.x) > 0.1:
-			animation_new = "run"
+	if Global.gender == "male":
+		if is_on_floor():
+			if absf(velocity.x) > 0.1:
+				animation_new = "run_male"
+			else:
+				animation_new = "idle_male"
 		else:
-			animation_new = "idle"
-	else:
-		if velocity.y > 0.0:
-			animation_new = "falling" # "falling"
+			if velocity.y > 0.0:
+				animation_new = "falling_male" # "falling"
+			else:
+				animation_new = "jumping_male" # "jumping"
+	
+	if Global.gender == "female":
+		if is_on_floor():
+			if absf(velocity.x) > 0.1:
+				animation_new = "run_female"
+			else:
+				animation_new = "idle_female"
 		else:
-			animation_new = "jumping" # "jumping"
-	#if is_shooting:
-	#	animation_new += "_weapon"
+			if velocity.y > 0.0:
+				animation_new = "falling_female" # "falling"
+			else:
+				animation_new = "jumping_female" # "jumping"
+		
 	return animation_new
 
+func reload_animation():
+	var new_anim = get_new_animation()
+	# Force stop
+	animation_player.stop()
+	animation_player.play(new_anim)
 
 func try_jump() -> void:
 	if Global.wall_jump and is_on_wall_only():

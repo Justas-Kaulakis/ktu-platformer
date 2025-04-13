@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2u0fqa00o42h"]
+[gd_scene load_steps=9 format=3 uid="uid://d2u0fqa00o42h"]
 
 [ext_resource type="Script" uid="uid://dbcjep2m2mpbx" path="res://gui/input_settings.gd" id="1_do8lh"]
 [ext_resource type="PackedScene" uid="uid://bhswok6qbi5r5" path="res://gui/input_button.tscn" id="2_vr50r"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b6sul4uq7drx3" path="res://gui/volume_sliders.gd" id="4_3y1ff"]
 [ext_resource type="PackedScene" uid="uid://dq4upsqp61b6v" path="res://gui/VolumeSlider.tscn" id="5_3l2em"]
 [ext_resource type="Script" uid="uid://coy1dpx127vuy" path="res://gui/toggles.gd" id="6_rwo2v"]
+[ext_resource type="Theme" uid="uid://da4noqsij73it" path="res://gui/theme.tres" id="7_adcec"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_vr50r"]
 color = Color(0.493546, 0.493545, 0.493545, 1)
@@ -166,6 +167,23 @@ theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("3_vr50r")
 text = "fullscreen"
 
+[node name="other2" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Toggles"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("3_vr50r")
+text = "Character gender"
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Toggles"]
+layout_mode = 2
+theme = ExtResource("7_adcec")
+item_count = 2
+popup/item_0/text = "Female"
+popup/item_0/id = 0
+popup/item_1/text = "Male"
+popup/item_1/id = 1
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/RemapControls/Heading/Reset to Default" to="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/RemapControls" method="_on_reset_to_default_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/VolumeSliders/Heading/Reset to Default" to="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/VolumeSliders" method="_on_reset_to_default_pressed"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Toggles/ToggleRow/MarginContainer/FullscreenToggle" to="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Toggles" method="_on_fullscreen_toggle_toggled"]
+[connection signal="item_selected" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Toggles/OptionButton" to="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/RemapControls" method="_on_option_button_item_selected"]

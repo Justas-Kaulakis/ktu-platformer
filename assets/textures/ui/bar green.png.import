@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1xqxs5emtfka"
-path="res://.godot/imported/gun pink.png-d267856f6d45ebb5f4d22e2747b68143.ctex"
+uid="uid://su37hwp6eyyd"
+path="res://.godot/imported/bar green.png-4f9a256637f07de63bf0cbf6e78d9594.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/gun pink.png"
-dest_files=["res://.godot/imported/gun pink.png-d267856f6d45ebb5f4d22e2747b68143.ctex"]
+source_file="res://assets/textures/ui/bar green.png"
+dest_files=["res://.godot/imported/bar green.png-4f9a256637f07de63bf0cbf6e78d9594.ctex"]
 
 [params]
 

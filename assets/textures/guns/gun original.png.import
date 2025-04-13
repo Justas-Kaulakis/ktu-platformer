@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lquuwaaxeral"
-path="res://.godot/imported/bar overlay.png-a2ca377eb43af1d65b8892e3c56ba75e.ctex"
+uid="uid://6ljg8g6rlksv"
+path="res://.godot/imported/gun original.png-05f487008d5253b22593ace667757c81.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/bar overlay.png"
-dest_files=["res://.godot/imported/bar overlay.png-a2ca377eb43af1d65b8892e3c56ba75e.ctex"]
+source_file="res://assets/textures/guns/gun original.png"
+dest_files=["res://.godot/imported/gun original.png-05f487008d5253b22593ace667757c81.ctex"]
 
 [params]
 

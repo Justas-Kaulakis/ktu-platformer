@@ -39,6 +39,16 @@ func _deferred_switch_scene(path):
 	get_tree().root.add_child(current_scene)
 	get_tree().current_scene = current_scene
 
+func _set_global_player():
+	if current_scene:
+		# Adjust this path to match where Player is in your level
+		if current_scene.has_node("Player"):
+			Global.player = current_scene.get_node("Player")
+		elif current_scene.has_node("Characters/Player"):
+			Global.player = current_scene.get_node("Characters/Player")
+		else:
+			Global.player = null
+
 """
 @onready var current_scene = get_tree().current_scene
 
