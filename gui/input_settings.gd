@@ -2,6 +2,7 @@ extends Control
 
 @onready var input_button = preload("res://gui/input_button.tscn")
 @onready var action_list: VBoxContainer = $"List of Actions"
+@onready var player: Node = get_node(".")
 
 var input_actions = {
 	"pause_game": "Pause and open settings",
@@ -86,3 +87,13 @@ func _on_reset_to_default_pressed() -> void:
 		if events.size() > 0:
 			ConfigHandler.save_controls(action, events[0])
 	create_action_list()
+
+
+func _on_option_button_item_selected(index: int) -> void:
+	match index:
+		1:
+			Global.gender = "male"
+		0:
+			Global.gender = "female"
+	if player.has_method("reload_animation"):
+		player.reload_animation()

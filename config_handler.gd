@@ -11,24 +11,24 @@ func _ready():
 		
 func set_defaults():
 	# Game controls
-		config.set_value("controls", "move_left", "A")
-		config.set_value("controls", "move_right", "D")
-		config.set_value("controls", "jump", "Space")
-		config.set_value("controls", "shoot", "mouse_1")
-		config.set_value("controls", "reload", "R")
-		config.set_value("controls", "pause_game", "Escape")
-		
-		# Audio settings
-		config.set_value("audio_settings", "master_volume", Global.initial_volume_value)
-		config.set_value("audio_settings", "sfx_volume", Global.initial_volume_value)
-		config.set_value("audio_settings", "music_volume", Global.initial_volume_value)
-		
-		# Video settings
-		config.set_value("video_settings", "fullscreen", true)
-		
-		# Save changes
-		config.save(CONFIG_FILE_PATH)
-		
+	config.set_value("controls", "move_left", "A")
+	config.set_value("controls", "move_right", "D")
+	config.set_value("controls", "jump", "Space")
+	config.set_value("controls", "shoot", "mouse_1")
+	config.set_value("controls", "reload", "R")
+	config.set_value("controls", "pause_game", "Escape")
+	
+	# Audio settings
+	config.set_value("audio_settings", "master_volume", Global.initial_volume_value)
+	config.set_value("audio_settings", "sfx_volume", Global.initial_volume_value)
+	config.set_value("audio_settings", "music_volume", Global.initial_volume_value)
+	
+	# Video settings
+	config.set_value("video_settings", "fullscreen", true)
+	
+	# Save changes
+	config.save(CONFIG_FILE_PATH)
+	
 func save_controls(action: StringName, event: InputEvent):
 	var event_str
 	if event is InputEventKey:

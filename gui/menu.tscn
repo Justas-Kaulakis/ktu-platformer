@@ -139,7 +139,7 @@ autowrap_mode = 2
 uppercase = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(472, 166)
+position = Vector2(477, 161)
 amount = 25
 amount_ratio = 0.7
 lifetime = 2.07

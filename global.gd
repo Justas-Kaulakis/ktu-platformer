@@ -28,6 +28,8 @@ var pt_3 = platformText["gravity"]
 # PLAYER DATA
 var max_health: float = 4.
 var max_platform_count = 3
+var player = null
+var gender = "male"
 
 # Powerup info
 var double_jump = false

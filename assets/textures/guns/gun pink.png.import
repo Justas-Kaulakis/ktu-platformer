@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cplgxrccwlfph"
-path="res://.godot/imported/gun orange.png-19494e86b8e7c22ce7d905a94b29e901.ctex"
+uid="uid://1xqxs5emtfka"
+path="res://.godot/imported/gun pink.png-bb5a863e7f2ff96de8a7b4c1db3ce0ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/gun orange.png"
-dest_files=["res://.godot/imported/gun orange.png-19494e86b8e7c22ce7d905a94b29e901.ctex"]
+source_file="res://assets/textures/guns/gun pink.png"
+dest_files=["res://.godot/imported/gun pink.png-bb5a863e7f2ff96de8a7b4c1db3ce0ec.ctex"]
 
 [params]
 
