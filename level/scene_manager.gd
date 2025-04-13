@@ -1,8 +1,10 @@
 extends Node
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var current_scene = get_tree().current_scene
 var preloaded_scene = null
 var next_scene_path = ""
+var is_switching_scene = false
 
 func load_next_level(path: String):
 	next_scene_path = path
@@ -18,7 +20,20 @@ func _process(_delta):
 			print("Failed to preload scene: ", next_scene_path)
 			next_scene_path = ""
 
-func switch_scene(path):
+# Public call to switch with fade
+func switch_scene_with_fade(path: String):
+	if is_switching_scene:
+		return  # Prevent overlapping transitions
+	is_switching_scene = true
+	load_next_level(path)
+	animation_player.play("fade_to_black")
+	await animation_player.animation_finished
+	switch_scene(path)
+	animation_player.play("fade_to_normal")
+	await animation_player.animation_finished
+	is_switching_scene = false
+
+func switch_scene(path: String):
 	if preloaded_scene and path == next_scene_path:
 		# Use preloaded scene if available
 		if current_scene:
@@ -38,26 +53,3 @@ func _deferred_switch_scene(path):
 	current_scene = s.instantiate()
 	get_tree().root.add_child(current_scene)
 	get_tree().current_scene = current_scene
-
-"""
-@onready var current_scene = get_tree().current_scene
-
-func switch_scene(path):
-	
-	current_scene = get_tree().current_scene
-	_deferred_switch_scene.call_deferred(path)
-
-func _deferred_switch_scene(path):
-	# It is now safe to remove the current scene.
-	if(current_scene):
-		current_scene.free()
-	# Load the new scene.
-	var s = ResourceLoader.load(path)
-	# Instance the new scene.
-	current_scene = s.instantiate()
-	# Add it to the active scene, as child of root.
-	get_tree().root.add_child(current_scene)
-	# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
-	get_tree().current_scene = current_scene
-
-"""
