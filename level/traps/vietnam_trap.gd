@@ -13,7 +13,7 @@ func _on_body_entered(body: Player) -> void:
 		new_trap.global_position = vt_position
 		new_trap.global_position -= nt_centre
 		new_trap.scale = spikes_group.scale
-		get_parent().add_child(new_trap)
+		add_sibling.call_deferred(new_trap)
 		queue_free()
 
 func _on_ready() -> void:
