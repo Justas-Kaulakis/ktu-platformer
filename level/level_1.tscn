@@ -22,7 +22,7 @@ size = Vector2(177, 131)
 script = ExtResource("1_jfgjb")
 
 [node name="Player" parent="." instance=ExtResource("1_nokfs")]
-position = Vector2(106, 124)
+position = Vector2(5327, -450)
 JUMP_VELOCITY = -625.0
 
 [node name="Layers" type="Node2D" parent="."]
@@ -461,5 +461,10 @@ color_name = "red"
 
 [node name="Gate3" parent="." instance=ExtResource("14_6jaql")]
 position = Vector2(5215, -449)
+scale = Vector2(2, 2)
+color_name = "blue"
+
+[node name="Key3" parent="." instance=ExtResource("14_b2ana")]
+position = Vector2(4055, -1002)
 scale = Vector2(2, 2)
 color_name = "blue"

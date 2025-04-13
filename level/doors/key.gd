@@ -26,5 +26,6 @@ func _process(_delta: float) -> void:
 func _on_body_entered(body):
 	if not Engine.is_editor_hint() and body is Player and pickable:
 		body.pick_up_key(color_name)
+		Alert.add_key_alert(color_name)
 		$Sprite2D.visible = false
 		pickable = false

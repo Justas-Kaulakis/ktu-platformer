@@ -22,4 +22,5 @@ func _on_body_entered(_body: Node2D) -> void:
 		push_warning("LevelChange door has not set the 'next_scene' property in the Editor")
 	else:
 		AudioManager.play_sfx("door_opened")
+		Alert.clear_pu_alerts()
 		SceneManager.switch_scene_with_fade(next_scene)

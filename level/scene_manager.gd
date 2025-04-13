@@ -2,6 +2,9 @@ extends Node
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var current_scene = get_tree().current_scene
+
+var cs_pu_data: Array = []
+var cs_pu_instances: Array = []
 var preloaded_scene = null
 var next_scene_path = ""
 var is_switching_scene = false
@@ -15,7 +18,7 @@ func _process(_delta):
 		var status = ResourceLoader.load_threaded_get_status(next_scene_path)
 		if status == ResourceLoader.THREAD_LOAD_LOADED:
 			preloaded_scene = ResourceLoader.load_threaded_get(next_scene_path).instantiate()
-			next_scene_path = ""  # Reset after loading
+			next_scene_path = "" # Reset after loading
 		elif status == ResourceLoader.THREAD_LOAD_FAILED:
 			print("Failed to preload scene: ", next_scene_path)
 			next_scene_path = ""
@@ -23,7 +26,7 @@ func _process(_delta):
 # Public call to switch with fade
 func switch_scene_with_fade(path: String):
 	if is_switching_scene:
-		return  # Prevent overlapping transitions
+		return # Prevent overlapping transitions
 	is_switching_scene = true
 	load_next_level(path)
 	animation_player.play("fade_to_black")
@@ -53,3 +56,23 @@ func _deferred_switch_scene(path):
 	current_scene = s.instantiate()
 	get_tree().root.add_child(current_scene)
 	get_tree().current_scene = current_scene
+	
+func register_pu_nodes():
+	if current_scene != null:
+		for powerup in current_scene.get_tree().get_nodes_in_group("respawnable"):
+			var pu_scene = load(powerup.path)
+			var data = {
+				"scene": pu_scene,
+				"position": powerup.global_position
+			}
+			cs_pu_data.append(data)
+			cs_pu_instances.append(powerup)
+
+func restore_pu_nodes():
+	for i in cs_pu_data.size():
+		if !is_instance_valid(cs_pu_instances[i]):
+			var data = cs_pu_data[i]
+			var new_pu = data["scene"].instantiate()
+			add_child.call_deferred(new_pu)
+			new_pu.global_position = data["position"]
+			cs_pu_instances[i] = new_pu

@@ -3,9 +3,12 @@ extends Area2D
 @onready var area_2d = $"."
 @onready var animation_player = $"AnimationPlayer"
 
+@export var path: String = "res://level/powerups/powerup_wall_jump.tscn"
+
 var pickable = true
 
 func _ready() -> void:
+	add_to_group("respawnable")
 	animation_player.play("new_animation")
 
 func _process(_delta: float) -> void:
