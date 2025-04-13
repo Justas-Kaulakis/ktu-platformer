@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://b6sul4uq7drx3" path="res://gui/volume_sliders.gd" id="4_3y1ff"]
 [ext_resource type="PackedScene" uid="uid://dq4upsqp61b6v" path="res://gui/VolumeSlider.tscn" id="5_3l2em"]
 [ext_resource type="Script" uid="uid://coy1dpx127vuy" path="res://gui/toggles.gd" id="6_rwo2v"]
-[ext_resource type="Theme" uid="uid://da4noqsij73it" path="res://gui/theme.tres" id="7_theme"]
 [ext_resource type="Script" uid="uid://p0yutk2bj3hd" path="res://gui/to_main_menu.gd" id="7_adcec"]
+[ext_resource type="Theme" uid="uid://da4noqsij73it" path="res://gui/theme.tres" id="7_theme"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_vr50r"]
 color = Color(0.493546, 0.493545, 0.493545, 1)

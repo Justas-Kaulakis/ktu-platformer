@@ -23,7 +23,7 @@ size = Vector2(177, 131)
 script = ExtResource("1_jfgjb")
 
 [node name="Player" parent="." instance=ExtResource("1_nokfs")]
-position = Vector2(1085.32, -16.8962)
+position = Vector2(105, 129)
 JUMP_VELOCITY = -625.0
 
 [node name="Vietnam Trap" parent="." instance=ExtResource("15_b2ana")]
@@ -389,9 +389,9 @@ position = Vector2(1279, 335)
 scale = Vector2(4.5, 4.5)
 
 [node name="UI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Options Menu" parent="UI" instance=ExtResource("3_l1g64")]
+visible = false
 
 [node name="Game Manager" parent="." instance=ExtResource("4_vb5hv")]
 
