@@ -1,6 +1,9 @@
 extends Node
 
 @onready var current_scene = get_tree().current_scene
+
+var cs_pu_data: Array = []
+var cs_pu_instances: Array = []
 var preloaded_scene = null
 var next_scene_path = ""
 
@@ -38,6 +41,26 @@ func _deferred_switch_scene(path):
 	current_scene = s.instantiate()
 	get_tree().root.add_child(current_scene)
 	get_tree().current_scene = current_scene
+	
+func register_pu_nodes():
+	if current_scene != null:
+		for powerup in current_scene.get_tree().get_nodes_in_group("respawnable"):
+			var pu_scene = load(powerup.path)
+			var data = {
+				"scene": pu_scene,
+				"position": powerup.global_position
+			}
+			cs_pu_data.append(data)
+			cs_pu_instances.append(powerup)
+
+func restore_pu_nodes():
+	for i in cs_pu_data.size():
+		if !is_instance_valid(cs_pu_instances[i]):
+			var data = cs_pu_data[i]
+			var new_pu = data["scene"].instantiate()
+			add_child(new_pu)
+			new_pu.global_position = data["position"]
+			cs_pu_instances[i] = new_pu
 
 """
 @onready var current_scene = get_tree().current_scene

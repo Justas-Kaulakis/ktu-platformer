@@ -137,7 +137,10 @@ func die():
 	PlatformGun.reload()
 	current_health = Global.max_health
 	player_ui.update_health_bar(current_health)
-	Alert.clear_alerts()
+	SceneManager.restore_pu_nodes()
+	Alert.clear_pu_alerts()
+	Global.double_jump = false
+	Global.wall_jump = false
 	
 func reset_player():
 	Input.action_press("reload")
@@ -146,6 +149,10 @@ func reset_player():
 	PlatformGun.reload()
 	current_health = Global.max_health
 	player_ui.update_health_bar(current_health)
+	SceneManager.restore_pu_nodes()
+	Alert.clear_pu_alerts()
+	Global.double_jump = false
+	Global.wall_jump = false
 
 func apply_powerup(powerup_name, duration):
 	match powerup_name:

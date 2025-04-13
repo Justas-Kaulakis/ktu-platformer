@@ -11,7 +11,8 @@ func _on_body_entered(player: Player) -> void:
 		AudioManager.play_sfx("checkpoint_reached")
 		Input.action_press("platform_1")
 		Input.action_release("platform_1")
-		
+		visited = true
+		Alert.create_popup_alert("Checkpoint reached!")
 		
 	Global.p_1 = Global.platform[platform_1] 
 	Global.pt_1 = Global.platformText[platform_1]	

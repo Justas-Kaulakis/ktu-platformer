@@ -14,6 +14,7 @@ class_name Key extends Area2D
 func _on_body_entered(body):
 	if not Engine.is_editor_hint() and body is Player:
 		body.pick_up_key(color_name)
+		Alert.add_key_alert(color_name)
 		queue_free()
 
 

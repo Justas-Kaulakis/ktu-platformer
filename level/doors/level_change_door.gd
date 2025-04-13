@@ -28,7 +28,7 @@ func _on_body_entered(_body: Node2D) -> void:
 	else:
 		AudioManager.play_sfx("door_opened")
 		do_fade_out()
-		Alert.clear_alerts()
+		Alert.clear_pu_alerts()
 		
 func do_fade_out() -> void:
 	# start the fade animation

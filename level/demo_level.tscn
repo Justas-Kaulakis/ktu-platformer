@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=4 uid="uid://2pd6cj5ouwwe"]
+[gd_scene load_steps=10 format=4 uid="uid://2pd6cj5ouwwe"]
 
+[ext_resource type="Script" uid="uid://ckssc4csvyg4" path="res://level/demo_level.gd" id="1_iox5r"]
 [ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://player/player.tscn" id="3_ps1br"]
 [ext_resource type="TileSet" uid="uid://q1prew1alqhu" path="res://level/tileset.tres" id="3_pt6hw"]
 [ext_resource type="PackedScene" uid="uid://c3ary26xq7cf7" path="res://level/traps/spikes.tscn" id="4_pt6hw"]
@@ -13,6 +14,7 @@ size = Vector2(173, 131)
 
 [node name="Demo level" type="Node2D"]
 auto_translate_mode = 2
+script = ExtResource("1_iox5r")
 metadata/_edit_vertical_guides_ = [1593.0]
 
 [node name="Player" parent="." instance=ExtResource("3_ps1br")]
