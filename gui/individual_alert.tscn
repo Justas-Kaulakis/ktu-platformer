@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwgwq2kxptds5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0jx67"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 0.392157)
+
+[node name="Label" type="Label"]
+theme_override_styles/normal = SubResource("StyleBoxFlat_0jx67")
+text = "Alert"
+horizontal_alignment = 1
+vertical_alignment = 1
