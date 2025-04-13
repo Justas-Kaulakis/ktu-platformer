@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4rf33ebkv8an"]
+[gd_scene load_steps=9 format=3 uid="uid://c4rf33ebkv8an"]
 
 [ext_resource type="Texture2D" uid="uid://cn6vctjmkabmj" path="res://assets/textures/gate.png" id="1_3ge5h"]
 [ext_resource type="Script" uid="uid://dte016r3ckxkh" path="res://level/doors/gate.gd" id="1_nm7qu"]
@@ -7,9 +7,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ge5h"]
 size = Vector2(12, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nm7qu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fx45v"]
 atlas = ExtResource("1_3ge5h")
 region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nm7qu"]
+atlas = ExtResource("1_3ge5h")
+region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_isf24"]
 atlas = ExtResource("1_3ge5h")
@@ -28,7 +32,13 @@ position = Vector2(12, 0)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_3ge5h")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Closed" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_fx45v")
+
+[node name="Opened" type="Sprite2D" parent="."]
+visible = false
 z_index = -1
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_nm7qu")

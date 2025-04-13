@@ -34,6 +34,7 @@ scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_lcpyi")
 
 [node name="on" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -32)
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_m3b78")

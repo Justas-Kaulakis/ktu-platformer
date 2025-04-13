@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpsd62ykc6lu1"
-path="res://.godot/imported/fire_trap.png-4916ec43bab7793ba8b6c9741e6e430c.ctex"
+uid="uid://pqlfckitf4cd"
+path="res://.godot/imported/vietnam_trap.png-7781e01e3c8b6d4caf1e538220a90a50.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/traps/fire_trap.png"
-dest_files=["res://.godot/imported/fire_trap.png-4916ec43bab7793ba8b6c9741e6e430c.ctex"]
+source_file="res://assets/textures/traps/vietnam_trap.png"
+dest_files=["res://.godot/imported/vietnam_trap.png-7781e01e3c8b6d4caf1e538220a90a50.ctex"]
 
 [params]
 

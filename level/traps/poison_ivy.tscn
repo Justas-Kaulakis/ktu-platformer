@@ -4,17 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://bavs8s3h1iags" path="res://assets/textures/traps/poison_ivy.png" id="1_usexj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dclbo"]
-size = Vector2(6, 7)
+size = Vector2(14, 12)
 
 [node name="Poison Ivy" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_dclbo")
 
 [node name="Poison Ivy Sprite" type="Sprite2D" parent="."]
+position = Vector2(-1.49012e-07, -2)
+scale = Vector2(0.325581, 0.375)
 texture = ExtResource("1_usexj")
 
 [node name="Poison Ivy Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_dclbo")
 
 [node name="Damage Timer" type="Timer" parent="."]

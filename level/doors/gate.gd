@@ -10,6 +10,11 @@ class_name Gate extends StaticBody2D
 
 var is_open = false
 
+func _process(_delta: float) -> void:
+	if not Engine.is_editor_hint():
+		if Input.is_action_just_pressed("reload"):
+			close_gate()
+
 func _on_detection_area_body_entered(player) -> void:
 	if not Engine.is_editor_hint() and player is Player:
 		# Check if the gate is closed and the body is the player
@@ -17,9 +22,17 @@ func _on_detection_area_body_entered(player) -> void:
 			open_gate()
 			# Consume the key after use
 			player.consume_key(color_name)
+			Alert.remove_key_alert(color_name)
 
 func open_gate():
 	AudioManager.play_sfx("door_opened")
 	is_open = true
-	($Sprite2D.texture as AtlasTexture).region.position.x = 0
+	$Closed.visible = false
+	$Opened.visible = true
 	$CollisionShape2D.set_deferred("disabled", true)
+
+func close_gate():
+	is_open = false
+	$Closed.visible = true
+	$Opened.visible = false
+	$CollisionShape2D.set_deferred("disabled", false)

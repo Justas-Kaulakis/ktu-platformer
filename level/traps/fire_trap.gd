@@ -2,15 +2,18 @@ extends Area2D
 
 #@onready var game_manager = get_tree().current_scene.get_node("Game Manager")
 @onready var timer: Timer = $"Damage Timer"
+@onready var area_2d = $"."
+@onready var animation_player = $"AnimationPlayer"
 
-@export var initial_damage = 0.1
-@export var damage_increment = 0.05
+@export var initial_damage = 0.5
+@export var damage_increment = 0.2
 var current_damage
 @export var damage_delay = 0.3
 
 
 
 func _on_ready() -> void:
+	animation_player.play("new_animation")
 	await get_tree().process_frame
 	current_damage = initial_damage
 	timer.wait_time = damage_delay

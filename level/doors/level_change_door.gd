@@ -3,8 +3,10 @@ extends Area2D
 
 @export_file("*.tscn") var next_scene: String
 @export var sensor: Area2D
+@onready var animation_player = $"AnimationPlayer"
 
 func _ready() -> void:
+	animation_player.play("new_animation")
 	if next_scene == null or next_scene == "":
 		push_warning("LevelChange door has not set the 'next_scene' property in the Editor")
 	if sensor == null:
@@ -20,4 +22,5 @@ func _on_body_entered(_body: Node2D) -> void:
 		push_warning("LevelChange door has not set the 'next_scene' property in the Editor")
 	else:
 		AudioManager.play_sfx("door_opened")
-		SceneManager.switch_scene(next_scene)
+		Alert.clear_pu_alerts()
+		SceneManager.switch_scene_with_fade(next_scene)
