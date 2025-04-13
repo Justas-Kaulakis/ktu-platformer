@@ -32,5 +32,6 @@ func open_gate():
 
 func close_gate():
 	is_open = false
-	($Sprite2D.texture as AtlasTexture).region.position.x = 24
+	$Closed.visible = true
+	$Opened.visible = false
 	$CollisionShape2D.set_deferred("disabled", false)

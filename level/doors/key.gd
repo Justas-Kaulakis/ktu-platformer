@@ -15,7 +15,7 @@ var pickable = true
 func _on_ready() -> void:
 	animation_player.play("new_animation")
 
-    
+	
 func _process(_delta: float) -> void:
 	if not Engine.is_editor_hint():
 		if Input.is_action_just_pressed("reload"):

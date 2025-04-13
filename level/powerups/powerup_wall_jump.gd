@@ -5,7 +5,7 @@ extends Area2D
 
 var pickable = true
 
-func _on_ready() -> void:
+func _ready() -> void:
 	animation_player.play("new_animation")
 
 func _process(_delta: float) -> void:
@@ -14,7 +14,7 @@ func _process(_delta: float) -> void:
 		pickable = true
 
 func _on_body_entered(player: Player) -> void:
-    if pickable:
-        player.apply_powerup("wall_jump", 5.0)
-        $"Powerup Sprite".visible = true
-        pickable = false
+	if pickable:
+		player.apply_powerup("wall_jump", 5.0)
+		$"Powerup Sprite".visible = false
+		pickable = false

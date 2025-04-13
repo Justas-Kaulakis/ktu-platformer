@@ -14,6 +14,6 @@ func _process(_delta: float) -> void:
 
 func _on_body_entered(player: Player) -> void:
 	if pickable:
-        player.apply_powerup("double_jump", 5.0)
-        $"Powerup Sprite".visible = false
+		player.apply_powerup("double_jump", 5.0)
+		$"Powerup Sprite".visible = false
 		pickable = false
