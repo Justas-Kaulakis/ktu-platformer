@@ -51,6 +51,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Dungeon" type="Label" parent="Title"]
+layout_mode = 0
 offset_right = 264.0
 offset_bottom = 75.0
 theme = SubResource("Theme_k47d1")
@@ -67,6 +68,7 @@ autowrap_mode = 2
 uppercase = true
 
 [node name="Escape" type="Label" parent="Title"]
+layout_mode = 0
 offset_left = 79.0
 offset_top = 44.0
 offset_right = 343.0
@@ -85,6 +87,7 @@ autowrap_mode = 2
 uppercase = true
 
 [node name="Thanks for playing" type="Label" parent="."]
+layout_mode = 0
 offset_left = 41.0
 offset_top = 119.0
 offset_right = 525.0
@@ -104,6 +107,7 @@ autowrap_mode = 2
 uppercase = true
 
 [node name="Thanks for playing2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 35.0
 offset_top = 276.0
 offset_right = 283.0
@@ -128,6 +132,7 @@ uppercase = true
 
 [node name="Dungeon" type="Label" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 482.0
 offset_top = 177.0
 offset_right = 746.0

@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://b2ak46qlr7r2y" path="res://assets/audio/bg_music (2).mp3" id="6_edc4s"]
 [ext_resource type="AudioStream" uid="uid://bspyog7mho1xw" path="res://assets/audio/bg_music (6).mp3" id="6_r5csa"]
 [ext_resource type="AudioStream" uid="uid://ntesj5qyusfy" path="res://assets/audio/jump.wav" id="7_ovte3"]
-[ext_resource type="AudioStream" uid="uid://5u77xt5jmhhh" path="res://assets/audio/end_music.wav" id="8_82512"]
+[ext_resource type="AudioStream" uid="uid://dbf5el7uha4hy" path="res://assets/audio/end_music.mp3" id="8_82512"]
 [ext_resource type="AudioStream" uid="uid://blniwssrmli2u" path="res://assets/audio/male_jump_voice.wav" id="8_f5dq6"]
 [ext_resource type="AudioStream" uid="uid://bmbwuppg1027g" path="res://assets/audio/running.wav" id="9_o8fwl"]
 [ext_resource type="AudioStream" uid="uid://bo4kt7s4fo8x8" path="res://assets/audio/put_platform.wav" id="10_toigg"]
