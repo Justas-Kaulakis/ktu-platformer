@@ -8,7 +8,7 @@ func _input(event):
 		options_panel.visible = !options_panel.visible
 
 
-func _on_ready() -> void:
+func _ready() -> void:
 	Global.current_area = Global.Area.MENU
 	SceneManager.load_next_level("res://level/level_1.tscn") # load in memory 
 	find_signal_emitter(get_tree().current_scene, "set_volume")

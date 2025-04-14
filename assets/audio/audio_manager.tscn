@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d1qfv1g70w27v"]
+[gd_scene load_steps=28 format=3 uid="uid://d1qfv1g70w27v"]
 
 [ext_resource type="Script" uid="uid://n2qukh88jwwk" path="res://audio_manager.gd" id="1_a1ow3"]
 [ext_resource type="AudioStream" uid="uid://cfr32kjvbe8rf" path="res://assets/audio/bg_music (1).mp3" id="2_mof0l"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://b2ak46qlr7r2y" path="res://assets/audio/bg_music (2).mp3" id="6_edc4s"]
 [ext_resource type="AudioStream" uid="uid://bspyog7mho1xw" path="res://assets/audio/bg_music (6).mp3" id="6_r5csa"]
 [ext_resource type="AudioStream" uid="uid://ntesj5qyusfy" path="res://assets/audio/jump.wav" id="7_ovte3"]
+[ext_resource type="AudioStream" uid="uid://dbf5el7uha4hy" path="res://assets/audio/end_music.mp3" id="8_82512"]
 [ext_resource type="AudioStream" uid="uid://blniwssrmli2u" path="res://assets/audio/male_jump_voice.wav" id="8_f5dq6"]
 [ext_resource type="AudioStream" uid="uid://bmbwuppg1027g" path="res://assets/audio/running.wav" id="9_o8fwl"]
 [ext_resource type="AudioStream" uid="uid://bo4kt7s4fo8x8" path="res://assets/audio/put_platform.wav" id="10_toigg"]
@@ -32,15 +33,24 @@ stream_3 = ExtResource("5_82512")
 stream_4 = ExtResource("6_r5csa")
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_8wfci"]
-clip_count = 2
+clip_count = 3
 clip_0/name = &"GamePlayMusic"
 clip_0/stream = SubResource("AudioStreamPlaylist_u2xqa")
 clip_0/auto_advance = 0
 clip_1/name = &"MenuMusic"
 clip_1/stream = ExtResource("6_edc4s")
 clip_1/auto_advance = 0
+clip_2/name = &"EndMusic"
+clip_2/stream = ExtResource("8_82512")
+clip_2/auto_advance = 0
 initial_clip = 1
 _transitions = {
+Vector2i(0, 2): {
+"fade_beats": 1.0,
+"fade_mode": 1,
+"from_time": 0,
+"to_time": 1
+},
 Vector2i(1, -1): {
 "fade_beats": 1.0,
 "fade_mode": 3,

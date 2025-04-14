@@ -1,0 +1,179 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfofvq4fwd3ia"]
+
+[ext_resource type="Texture2D" uid="uid://b4w5e3m7dygvq" path="res://assets/textures/EndScreen.png" id="1_cymnt"]
+[ext_resource type="Script" uid="uid://b76mxcnyfas2h" path="res://gui/end_screen.gd" id="1_twmyr"]
+[ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="2_iiwk2"]
+[ext_resource type="Theme" uid="uid://da4noqsij73it" path="res://gui/theme.tres" id="3_k47d1"]
+
+[sub_resource type="Theme" id="Theme_k47d1"]
+
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_twmyr")
+
+[node name="EndScreen" type="Sprite2D" parent="."]
+scale = Vector2(0.520833, 0.4375)
+texture = ExtResource("1_cymnt")
+centered = false
+
+[node name="LinkButton" type="LinkButton" parent="."]
+layout_mode = 0
+offset_left = 515.0
+offset_top = 48.0
+offset_right = 700.0
+offset_bottom = 78.0
+rotation = -0.10472
+theme = ExtResource("3_k47d1")
+theme_override_colors/font_color = Color(0.0784314, 0.0509804, 0.0156863, 1)
+theme_override_colors/font_focus_color = Color(0.293667, 0.4, 0.18, 1)
+theme_override_colors/font_pressed_color = Color(0.35, 0.158667, 0.07, 1)
+theme_override_colors/font_hover_color = Color(0.35, 0.158667, 0.07, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.682353)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 20
+text = "github repository"
+underline = 1
+uri = "https://github.com/Justas-Kaulakis/ktu-platformer"
+
+[node name="Title" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 117.0
+offset_top = 10.0
+offset_right = 435.0
+offset_bottom = 142.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dungeon" type="Label" parent="Title"]
+layout_mode = 0
+offset_right = 264.0
+offset_bottom = 75.0
+theme = SubResource("Theme_k47d1")
+theme_override_colors/font_color = Color(0.909804, 0.635294, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.831373)
+theme_override_colors/font_outline_color = Color(0.803449, 0.276464, 0.12511, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_iiwk2")
+theme_override_font_sizes/font_size = 50
+text = "DUNGEON"
+autowrap_mode = 2
+uppercase = true
+
+[node name="Escape" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 44.0
+offset_right = 343.0
+offset_bottom = 119.0
+theme = SubResource("Theme_k47d1")
+theme_override_colors/font_color = Color(0.909804, 0.635294, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.831373)
+theme_override_colors/font_outline_color = Color(0.803449, 0.276464, 0.12511, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_iiwk2")
+theme_override_font_sizes/font_size = 50
+text = "escape"
+autowrap_mode = 2
+uppercase = true
+
+[node name="Thanks for playing" type="Label" parent="."]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 119.0
+offset_right = 525.0
+offset_bottom = 272.0
+theme = SubResource("Theme_k47d1")
+theme_override_colors/font_color = Color(0.89, 0.79388, 0.5696, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.831373)
+theme_override_colors/font_outline_color = Color(0.803449, 0.276464, 0.12511, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_iiwk2")
+theme_override_font_sizes/font_size = 60
+text = "Thanks for playing!"
+horizontal_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="Thanks for playing2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 276.0
+offset_right = 283.0
+offset_bottom = 429.0
+theme = SubResource("Theme_k47d1")
+theme_override_colors/font_color = Color(0.909804, 0.635294, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.831373)
+theme_override_colors/font_outline_color = Color(0.803449, 0.276464, 0.12511, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_iiwk2")
+theme_override_font_sizes/font_size = 18
+text = "Developers:
+• Karolina grybauskaite
+• Justas Kaulakis
+• Justas Vilcinskas
+• Zilvinas Serunaitis
+"
+autowrap_mode = 2
+uppercase = true
+
+[node name="Dungeon" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 482.0
+offset_top = 177.0
+offset_right = 746.0
+offset_bottom = 319.0
+theme = SubResource("Theme_k47d1")
+theme_override_colors/font_color = Color(0.909804, 0.635294, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.831373)
+theme_override_colors/font_outline_color = Color(0.803449, 0.276464, 0.12511, 1)
+theme_override_constants/paragraph_spacing = -7
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_iiwk2")
+theme_override_font_sizes/font_size = 40
+text = "Back
+to 
+menu"
+horizontal_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 127.0
+offset_right = 698.0
+offset_bottom = 371.0
+mouse_default_cursor_shape = 2
+theme = ExtResource("3_k47d1")
+theme_override_colors/font_disabled_color = Color(0.0313726, 0.164706, 0.0196078, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.0313726, 0.164706, 0.0196078, 1)
+theme_override_colors/font_hover_color = Color(0.409987, 0.761973, 0.17969, 1)
+theme_override_colors/font_outline_color = Color(0.20856, 0.66, 0.1584, 0.137255)
+theme_override_colors/font_color = Color(0.0320707, 0.165402, 0.0208954, 1)
+theme_override_colors/font_focus_color = Color(0.0313726, 0.164706, 0.0196078, 1)
+theme_override_colors/font_pressed_color = Color(0.0313726, 0.164706, 0.0196078, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "Back 
+to 
+menu"
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
