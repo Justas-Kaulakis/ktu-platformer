@@ -2,7 +2,7 @@ extends Node
 # https://www.youtube.com/watch?v=07Kyqqg31FI&t=25s&ab_channel=DevWorm
 @onready var bg_music_player: AudioStreamPlayer = $BackgroundMusicPlayer
 var sound: Dictionary[StringName, AudioStreamPlayer]
-@onready var current_area: Global.Area = Global.current_area
+
 
 func _ready() -> void:
 	for child in $SFX.get_children():
@@ -11,17 +11,13 @@ func _ready() -> void:
 			sound[sound_name] = child
 	stop_all_sfx()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta) -> void:
-	if current_area != Global.current_area:
-		current_area = Global.current_area
-		update_music_for_scene()
-
 # Cia galima keisti muzika is BackGroundMusicPlayer 
-func update_music_for_scene():
-	match current_area:
+func update_music_for_scene(area):
+	match area:
 		Global.Area.MENU:
 			bg_music_player["parameters/switch_to_clip"] = "MenuMusic"
+		Global.Area.END_SCREEN:
+			bg_music_player["parameters/switch_to_clip"] = "EndMusic"
 		_:
 			bg_music_player["parameters/switch_to_clip"] = "GamePlayMusic"
 

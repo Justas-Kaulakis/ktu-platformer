@@ -1,8 +1,11 @@
 extends Node
 
 # MENU arba GAMEPLAY
-enum Area {MENU, GAMEPLAY}
-var current_area: Area
+enum Area {MENU, GAMEPLAY, END_SCREEN}
+var current_area: Area = Area.MENU:
+	set(new_area):
+		current_area = new_area
+		AudioManager.update_music_for_scene(new_area)
 var music_volume: int
 var sfx_volume: int
 const initial_volume_value = 0.5
