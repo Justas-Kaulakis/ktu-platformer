@@ -1,17 +1,22 @@
 class_name PlatormGun extends Node2D
 
-var selected_platform = Global.p_1
-var platform_count = Global.max_platform_count
-var can_shoot_player = 1 # checks if mouse is on player
-var can_shoot = 1 # checks if mouse is on created platform
+@onready var platform_preview: PlatformPreview = $"../../PlatformPreview"
 @onready var tiles = SceneManager.current_scene.get_node("Layers/Collision Tiles") as TileMapLayer
 @onready var game_manager = SceneManager.current_scene.get_node("Game Manager")
 @onready var player_ui: CanvasLayer = $"../../Player UI"
 
+
+var selected_platform = Global.p_1:
+	set(new_platform):
+		selected_platform = new_platform
+		platform_preview.attach_preview(new_platform)
+var platform_count = Global.max_platform_count
+var can_shoot_player = 1 # checks if mouse is on player
+var can_shoot = 1 # checks if mouse is on created platform
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(tiles)
-	#pass # Replace with function body.
+	selected_platform = Global.p_1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -42,15 +47,10 @@ func _process(_delta: float) -> void:
 		selected_platform = Global.p_2
 	if Input.is_action_just_pressed("platform_3"):
 		selected_platform = Global.p_3
-		
-		#var _selected_tile = tiles.get_cell_tile_data(_node_coord)
-		#print(node_coord)
-		#if tiles.get_cell_source_id(node_coord) != -1:
-			#print(tiles.get_cell_source_id(node_coord))
-			#print(tiles.get_cell_atlas_coords(node_coord))
-			
-			#tiles.set_cell(node_coord, tiles.get_cell_source_id(Vector2i(15,5)), Vector2i(15,5))
-		
+	
+	if game_manager:
+		platform_preview.handle_drawing(tiles, platform_count, can_shoot, can_shoot_player, game_manager.is_game_paused)
+	
 	if Input.is_action_just_pressed("reload"):
 		reload()
 
