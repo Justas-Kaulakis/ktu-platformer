@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://vh7pmputa7r3"]
+[gd_scene load_steps=25 format=4 uid="uid://vh7pmputa7r3"]
 
 [ext_resource type="Texture2D" uid="uid://c3kcneopkk8jg" path="res://player/Character_Sprites.png" id="2_8t03j"]
 [ext_resource type="Script" uid="uid://bo8vshlkb74dq" path="res://player/player.gd" id="3"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://su37hwp6eyyd" path="res://assets/textures/ui/bar green.png" id="8_8t03j"]
 [ext_resource type="Texture2D" uid="uid://bobm8pter5f5s" path="res://assets/textures/default_platform.png" id="10_8t03j"]
 [ext_resource type="Script" uid="uid://b5d266mrgldqb" path="res://player/texture_rect.gd" id="11_2ieo8"]
+[ext_resource type="Script" uid="uid://cqilkr5ey6hf5" path="res://player/platform_preview.gd" id="11_ebec5"]
 
 [sub_resource type="Animation" id="Animation_boad6"]
 length = 0.001
@@ -282,3 +283,7 @@ offset_bottom = 89.0
 texture = ExtResource("10_8t03j")
 expand_mode = 1
 script = ExtResource("11_2ieo8")
+
+[node name="PlatformPreview" type="Node2D" parent="."]
+z_index = 5
+script = ExtResource("11_ebec5")
