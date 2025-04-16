@@ -175,6 +175,8 @@ func reset_player():
 	player_ui.update_health_bar(current_health)
 	SceneManager.restore_pu_nodes()
 	Alert.clear_pu_alerts()
+	disable_powerup("double_jump")
+	disable_powerup("wall_jump")
 	Global.double_jump = false
 	Global.wall_jump = false
 
@@ -184,15 +186,26 @@ func apply_powerup(powerup_name, duration):
 			Global.double_jump = true
 			AudioManager.play_sfx("pickup_power_up")
 			Alert.create_powerup_alert("Double Jump", duration)
-			await get_tree().create_timer(duration).timeout
-			Global.double_jump = false
-			AudioManager.play_sfx("pickup_power_down")
 		"wall_jump":
 			Global.wall_jump = true
 			AudioManager.play_sfx("pickup_power_up")
 			Alert.create_powerup_alert("Wall Jump", duration)
-			await get_tree().create_timer(duration).timeout
-			Global.wall_jump = false
-			AudioManager.play_sfx("pickup_power_down")
 		_:
 			print("Kas skaitys, tas gaidys")
+			
+	await get_tree().create_timer(duration).timeout
+	disable_powerup(powerup_name)
+
+func disable_powerup(powerup_name: String) -> void:
+	var past_state: bool = true
+	match powerup_name:
+		"double_jump":
+			past_state = Global.double_jump
+			Global.double_jump = false
+		"wall_jump":
+			past_state = Global.wall_jump
+			Global.wall_jump = false
+		_:
+			push_warning("This powerup name is not handled: " + powerup_name)
+	if past_state == true:
+		AudioManager.play_sfx("pickup_power_down")

@@ -69,6 +69,8 @@ func _set_global_player():
 
 	
 func register_pu_nodes():
+	cs_pu_data = []
+	cs_pu_instances = []
 	if current_scene != null:
 		for powerup in current_scene.get_tree().get_nodes_in_group("respawnable"):
 			var pu_scene = load(powerup.path)

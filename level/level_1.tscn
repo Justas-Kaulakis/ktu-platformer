@@ -23,7 +23,7 @@ size = Vector2(177, 131)
 script = ExtResource("1_jfgjb")
 
 [node name="Player" parent="." instance=ExtResource("1_nokfs")]
-position = Vector2(105, 129)
+position = Vector2(626, 190)
 JUMP_VELOCITY = -625.0
 
 [node name="Vietnam Trap" parent="." instance=ExtResource("15_b2ana")]
