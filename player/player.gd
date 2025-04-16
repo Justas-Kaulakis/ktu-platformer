@@ -124,7 +124,7 @@ func try_jump() -> void:
 	AudioManager.play_sfx("jump")
 	
 func boost():
-	velocity.x *= 2
+	velocity.x *= 4
 	velocity.y *= 1.5
 
 func mouse_entered():
