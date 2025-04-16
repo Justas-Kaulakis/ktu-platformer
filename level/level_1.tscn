@@ -430,6 +430,7 @@ scale = Vector2(2, 2)
 position = Vector2(591, 224)
 new_platform_count = 4
 platform_1 = "breakable"
+platform_3 = "velocity"
 
 [node name="Checkpoint2" parent="." instance=ExtResource("11_hdc4k")]
 position = Vector2(114, 127)

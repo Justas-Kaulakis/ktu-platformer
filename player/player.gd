@@ -8,6 +8,8 @@ const ACCELERATION_SPEED = WALK_SPEED * 6.0
 ## Maximum speed at which the player can fall.
 const TERMINAL_VELOCITY = 700
 const WALL_JUMP_FACTOR = 150
+const MAX_BOOST_Y = 1000
+const MAX_BOOST_X = 1000
 
 var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var platform_detector := $PlatformDetector as RayCast2D
@@ -124,8 +126,8 @@ func try_jump() -> void:
 	AudioManager.play_sfx("jump")
 	
 func boost():
-	velocity.x *= 4
-	velocity.y *= 1.5
+	velocity.x = min(velocity.x* 4, MAX_BOOST_X)
+	velocity.y = min(velocity.y* 1.5, MAX_BOOST_Y)
 
 func mouse_entered():
 	PlatformGun.can_shoot = 0
@@ -158,17 +160,8 @@ func take_damage(damage_amount: float) -> void:
 
 func die():
 	AudioManager.play_sfx("die")
-	Input.action_press("reload")
-	Input.action_release("reload")
+	reset_player()
 	position = Global.last_location
-	is_poisoned = false
-	PlatformGun.reload()
-	current_health = Global.max_health
-	player_ui.update_health_bar(current_health)
-	SceneManager.restore_pu_nodes()
-	Alert.clear_pu_alerts()
-	Global.double_jump = false
-	Global.wall_jump = false
 	
 func reset_player():
 	Input.action_press("reload")
@@ -181,8 +174,6 @@ func reset_player():
 	Alert.clear_pu_alerts()
 	disable_powerup("double_jump")
 	disable_powerup("wall_jump")
-	Global.double_jump = false
-	Global.wall_jump = false
 
 func apply_powerup(powerup_name, duration):
 	match powerup_name:
