@@ -123,6 +123,10 @@ func try_jump() -> void:
 	velocity.y = JUMP_VELOCITY
 	AudioManager.play_sfx("jump")
 	
+func boost():
+	velocity.x *= 2
+	velocity.y *= 1.5
+
 func mouse_entered():
 	PlatformGun.can_shoot = 0
 	print("enter")
