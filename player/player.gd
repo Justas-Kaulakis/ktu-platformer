@@ -9,7 +9,7 @@ const ACCELERATION_SPEED = WALK_SPEED * 6.0
 const TERMINAL_VELOCITY = 700
 const WALL_JUMP_FACTOR = 150
 const MAX_BOOST_Y = 1000
-const MAX_BOOST_X = 1000
+const MAX_BOOST_X = 500
 
 var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var platform_detector := $PlatformDetector as RayCast2D

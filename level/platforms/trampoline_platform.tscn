@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7n12rikoecf3"]
+
+[ext_resource type="Script" uid="uid://xlcwtx40y36g" path="res://level/platforms/trampoline_platform.gd" id="1_h1yuu"]
+[ext_resource type="Texture2D" uid="uid://3s3kh1f7fek6" path="res://assets/textures/trampoline_platform.png" id="2_t067h"]
+[ext_resource type="Texture2D" uid="uid://cncohmujgrjc0" path="res://assets/textures/trampoline_platform2.png" id="3_t067h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfbca"]
+size = Vector2(70, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t067h"]
+size = Vector2(24, 168)
+
+[node name="TrampolinePlatform" type="StaticBody2D"]
+collision_layer = 24
+input_pickable = true
+script = ExtResource("1_h1yuu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(0.32, 0.24)
+texture = ExtResource("2_t067h")
+
+[node name="onSprite" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(0, -3.35)
+scale = Vector2(0.32, 0.24)
+texture = ExtResource("3_t067h")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_nfbca")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_t067h")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

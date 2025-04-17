@@ -15,22 +15,28 @@ var platform : Dictionary[String, PackedScene] = {
 	"breakable": preload("res://level/platforms/breakable_platform.tscn"),
 	"gravity": preload("res://level/platforms/gravity_platform.tscn"),
 	"velocity": preload("res://level/platforms/velocity_platform.tscn"),
+	"trampoline": preload("res://level/platforms/trampoline_platform.tscn"),
 }
 var platformText : Dictionary[String, CompressedTexture2D] = {
 	"default": preload("res://assets/textures/default_platform.png"),
 	"breakable": preload("res://assets/textures/broken_platform.png"),
 	"gravity": preload("res://assets/textures/gravity_platform.png"),
-	"velocity": preload("res://assets/textures/velocity_platform.png")
+	"velocity": preload("res://assets/textures/velocity_platform.png"),
+	"trampoline": preload("res://assets/textures/trampoline_platform.png"),
+	"trampoline2": preload("res://assets/textures/trampoline_platform2.png"),
 }
 var p_1 = platform["default"]
 var p_2 = platform["breakable"]
 var p_3 = platform["gravity"]
 var p_4 = platform["velocity"]
-
+var p_5 = platform["trampoline"]
+ 
 var pt_1 = platformText["default"]
 var pt_2 = platformText["breakable"]
 var pt_3 = platformText["gravity"]
 var pt_4 = platformText["velocity"]
+var pt_5 = platformText["trampoline"]
+var pt_5_2 = platformText["trampoline2"]
 
 # PLAYER DATA
 var max_health: float = 4.
