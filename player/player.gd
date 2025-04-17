@@ -154,6 +154,9 @@ func take_damage(damage_amount: float) -> void:
 	player_ui.update_health_bar(current_health)
 	if current_health > 0:
 		AudioManager.play_sfx("take_hit")
+		modulate = Color(1,0.6,0.6,1)
+		await get_tree().create_timer(0.2).timeout
+		modulate = Color(Color.WHITE)
 	else:
 		die()
 

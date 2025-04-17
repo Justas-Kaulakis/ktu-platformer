@@ -187,6 +187,7 @@ vertical_alignment = 1
 [node name="OptionButton" type="OptionButton" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Toggles"]
 layout_mode = 2
 theme = ExtResource("7_theme")
+selected = 1
 item_count = 2
 popup/item_0/text = "Female"
 popup/item_0/id = 0

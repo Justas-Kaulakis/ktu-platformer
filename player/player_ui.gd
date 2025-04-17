@@ -14,9 +14,9 @@ func update_health_bar(current_health):
 
 
 func update_platform_count(current):
-	if current <= Global.max_platform_count / 3:
+	if current <= float(Global.max_platform_count) / 3:
 		platform_counter.add_theme_color_override("font_color", Color(1, 0, 0))
-	elif current <= Global.max_platform_count / 3 * 2:
+	elif current <= float(Global.max_platform_count) / 3 * 2:
 		platform_counter.add_theme_color_override("font_color", Color(1, 1, 0))
 	else:
 		platform_counter.add_theme_color_override("font_color", Color(0, 1, 0))

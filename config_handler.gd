@@ -26,6 +26,9 @@ func set_defaults():
 	# Video settings
 	config.set_value("video_settings", "fullscreen", true)
 	
+	# Character settings
+	config.set_value("character", "gender", "male")
+	
 	# Save changes
 	config.save(CONFIG_FILE_PATH)
 	
@@ -46,6 +49,16 @@ func save_audio(key: String, value):
 func save_video(key: String, value):
 	config.set_value("video_settings", key, value)
 	config.save(CONFIG_FILE_PATH)
+
+func save_character_settings(key: String, value):
+	config.set_value("character", key, value)
+	config.save(CONFIG_FILE_PATH)
+
+func loadCharacterSettings():
+	var settings = {}
+	for key in config.get_section_keys("character"):
+		settings[key] = config.get_value("character", key)
+	return settings
 	
 func load_controls():
 	var controls = {}

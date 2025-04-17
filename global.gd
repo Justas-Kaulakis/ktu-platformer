@@ -36,7 +36,10 @@ var pt_4 = platformText["velocity"]
 var max_health: float = 4.
 var max_platform_count = 3
 var player = null
-var gender = "male"
+var gender: String = "male":
+	set(new_gender):
+		gender = new_gender
+		AudioManager.change_sfx_for(new_gender)
 
 # Powerup info
 var double_jump = false
