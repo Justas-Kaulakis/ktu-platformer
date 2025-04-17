@@ -12,12 +12,17 @@ var current_damage
 
 
 
-func _on_ready() -> void:
+func _ready() -> void:
+	var frame_count = 7  # total frames (you can make this dynamic too, see below)
+	var length = animation_player.get_animation("new_animation").length
+	var frame_duration = length / frame_count
+	var seek_time = frame_duration * (randi() % frame_count)
 	animation_player.play("new_animation")
+	animation_player.seek(seek_time, true)
+	
 	await get_tree().process_frame
 	current_damage = initial_damage
 	timer.wait_time = damage_delay
-	#timer.timeout.connect(_on_damage_timer_timeout)
 
 func _on_damage_timer_timeout() -> void:
 	for body in get_overlapping_bodies():

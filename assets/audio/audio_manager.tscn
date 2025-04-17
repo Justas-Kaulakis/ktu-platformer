@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d1qfv1g70w27v"]
+[gd_scene load_steps=31 format=3 uid="uid://d1qfv1g70w27v"]
 
 [ext_resource type="Script" uid="uid://n2qukh88jwwk" path="res://audio_manager.gd" id="1_a1ow3"]
 [ext_resource type="AudioStream" uid="uid://cfr32kjvbe8rf" path="res://assets/audio/bg_music (1).mp3" id="2_mof0l"]
@@ -19,8 +19,11 @@
 [ext_resource type="AudioStream" uid="uid://ct0r0v0m3o8b0" path="res://assets/audio/power-down.wav" id="15_3a8gm"]
 [ext_resource type="AudioStream" uid="uid://stekm88ec73r" path="res://assets/audio/light-up.wav" id="16_cjr6h"]
 [ext_resource type="AudioStream" uid="uid://c62sr23fs3l6f" path="res://assets/audio/flame.wav" id="17_6n5a1"]
-[ext_resource type="AudioStream" uid="uid://mo85d7foqcs0" path="res://assets/audio/door_open.wav" id="18_mof0l"]
 [ext_resource type="AudioStream" uid="uid://chbpkl4841sec" path="res://assets/audio/collect_key.wav" id="20_801yv"]
+[ext_resource type="AudioStream" uid="uid://butvyqx54qa0" path="res://assets/audio/portal_entered.wav" id="20_82512"]
+[ext_resource type="AudioStream" uid="uid://d066vjum6fr8s" path="res://assets/audio/button_hover.wav" id="22_edc4s"]
+[ext_resource type="AudioStream" uid="uid://c5lpve7wnfhtc" path="res://assets/audio/button_pressed.wav" id="23_ovte3"]
+[ext_resource type="AudioStream" uid="uid://brp2knccstbif" path="res://assets/audio/velocity_platform_boost.wav" id="24_f5dq6"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_u2xqa"]
 shuffle = true
@@ -133,11 +136,25 @@ bus = &"SFX"
 stream = SubResource("AudioStreamSynchronized_rk2ev")
 bus = &"SFX"
 
-[node name="door_opened" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("18_mof0l")
+[node name="portal_entered" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("20_82512")
 volume_db = -5.0
 bus = &"Music"
 
 [node name="collect_key" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("20_801yv")
 volume_db = -10.0
+
+[node name="button_hover" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("22_edc4s")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="button_pressed" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("23_ovte3")
+bus = &"SFX"
+
+[node name="velocity_boost" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("24_f5dq6")
+volume_db = -5.0
+bus = &"SFX"

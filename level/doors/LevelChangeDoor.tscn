@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvbjpguukek2x"]
+[gd_scene load_steps=10 format=3 uid="uid://cvbjpguukek2x"]
 
 [ext_resource type="Script" uid="uid://bfyjuhpftixiv" path="res://level/doors/level_change_door.gd" id="1_wusfa"]
 [ext_resource type="Texture2D" uid="uid://b1b4saox280re" path="res://assets/textures/portal.png" id="2_unv2t"]
+[ext_resource type="AudioStream" uid="uid://0ekxhsj8mqwr" path="res://assets/audio/portal_bg.wav" id="3_02h8s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wusfa"]
 size = Vector2(29.1944, 38.8889)
@@ -77,5 +78,12 @@ collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_unv2t")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_02h8s")
+autoplay = true
+max_distance = 1000.0
+attenuation = 0.517632
+bus = &"2D player SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfofvq4fwd3ia"]
+[gd_scene load_steps=7 format=3 uid="uid://bfofvq4fwd3ia"]
 
 [ext_resource type="Texture2D" uid="uid://b4w5e3m7dygvq" path="res://assets/textures/EndScreen.png" id="1_cymnt"]
 [ext_resource type="Script" uid="uid://b76mxcnyfas2h" path="res://gui/end_screen.gd" id="1_twmyr"]
 [ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="2_iiwk2"]
 [ext_resource type="Theme" uid="uid://da4noqsij73it" path="res://gui/theme.tres" id="3_k47d1"]
+[ext_resource type="Script" uid="uid://bnp884quc02dl" path="res://gui/ButtonWithSounds.gd" id="4_qafal"]
 
 [sub_resource type="Theme" id="Theme_k47d1"]
 
@@ -35,6 +36,7 @@ theme_override_font_sizes/font_size = 20
 text = "github repository"
 underline = 1
 uri = "https://github.com/Justas-Kaulakis/ktu-platformer"
+script = ExtResource("4_qafal")
 
 [node name="Title" type="Control" parent="."]
 layout_mode = 1
@@ -175,5 +177,6 @@ text = "Back
 to 
 menu"
 flat = true
+script = ExtResource("4_qafal")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

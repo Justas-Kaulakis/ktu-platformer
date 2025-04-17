@@ -14,7 +14,9 @@ func _input(event):
 		if is_game_paused:
 			Engine.time_scale = 0
 			options_panel.visible = true
+			AudioManager.mute_2d_sfx(true)
 		else:
 			Engine.time_scale = 1
 			options_panel.visible = false
+			AudioManager.mute_2d_sfx(false)
 		get_tree().root.get_viewport().set_input_as_handled()
