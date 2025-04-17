@@ -21,5 +21,5 @@ func _mouse_enter():
 func _mouse_exit():
 	platform_gun.can_shoot = 1
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(_body) -> void:
 	player.boost()

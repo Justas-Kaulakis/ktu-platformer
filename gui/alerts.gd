@@ -49,19 +49,19 @@ func add_key_alert(colour):
 	active_key_alerts.append(new_key_alert)
 	
 func remove_key_alert(colour):
-	for alert in active_key_alerts.duplicate():
-		if colour in alert.text:
-			var tween: Tween = alert.create_tween()
+	for al in active_key_alerts.duplicate():
+		if colour in al.text:
+			var tween: Tween = al.create_tween()
 			tween.tween_interval(0.0)
-			tween.tween_property(alert, "modulate:a", 0.0, 0.25)
-			active_key_alerts.erase(alert)
-			tween.tween_callback(alert.queue_free)
+			tween.tween_property(al, "modulate:a", 0.0, 0.25)
+			active_key_alerts.erase(al)
+			tween.tween_callback(al.queue_free)
 	
 func clear_pu_alerts():
-	for alert in active_pu_alerts:
-		if is_instance_valid(alert):
-			var tween: Tween = alert.create_tween()
+	for al in active_pu_alerts:
+		if is_instance_valid(al):
+			var tween: Tween = al.create_tween()
 			tween.tween_interval(0.0)
-			tween.tween_property(alert, "modulate:a", 0.0, 0.25)
-			tween.tween_callback(alert.queue_free)
+			tween.tween_property(al, "modulate:a", 0.0, 0.25)
+			tween.tween_callback(al.queue_free)
 	active_pu_alerts.clear()

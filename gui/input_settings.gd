@@ -51,6 +51,10 @@ func load_controls():
 func _ready() -> void:
 	load_controls()
 	create_action_list()
+	var ob : OptionButton = $"../Toggles/OptionButton"
+	var settings = ConfigHandler.loadCharacterSettings()
+	Global.gender = settings["gender"]
+	ob.selected = 1 if Global.gender == "male" else 0
 	
 func _on_input_button_pressed(button, action):
 	if !is_remapping:
@@ -95,5 +99,7 @@ func _on_option_button_item_selected(index: int) -> void:
 			Global.gender = "male"
 		0:
 			Global.gender = "female"
+	ConfigHandler.save_character_settings("gender", Global.gender)
+	
 	if player.has_method("reload_animation"):
 		player.reload_animation()

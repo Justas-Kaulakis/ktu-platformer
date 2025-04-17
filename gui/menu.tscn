@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cto2r1llqapws"]
+[gd_scene load_steps=12 format=3 uid="uid://cto2r1llqapws"]
 
 [ext_resource type="Script" uid="uid://dsoegp5evqwhp" path="res://gui/menu.gd" id="1_lti8b"]
 [ext_resource type="PackedScene" uid="uid://d2u0fqa00o42h" path="res://gui/OptionsPanel.tscn" id="3_lnc0w"]
@@ -10,16 +10,27 @@
 
 [sub_resource type="Gradient" id="Gradient_o6i5c"]
 offsets = PackedFloat32Array(0, 0.254545, 0.683636, 1)
-colors = PackedColorArray(1, 0.801667, 0.15, 0.227451, 0.84, 0.5187, 0.126, 1, 0.88, 0.37488, 0.1408, 1, 0.63, 0.15372, 0.1008, 0.435294)
+colors = PackedColorArray(1, 0.15, 0.15, 0.227451, 0.84, 0.364, 0.126, 1, 0.88, 0.37488, 0.1408, 1, 0.63, 0.15372, 0.1008, 0.435294)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_heart"]
 gradient = SubResource("Gradient_o6i5c")
 
+[sub_resource type="Curve" id="Curve_vd72o"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.348901, 0.937164), 0.0, 0.0, 0, 0, Vector2(0.983517, 0.406552), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_o6i5c"]
+curve = SubResource("Curve_vd72o")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o6i5c"]
 particle_flag_disable_z = true
+emission_shape_scale = Vector3(10, 8.08, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
 gravity = Vector3(0, -98, 0)
 scale_min = 3.95
 scale_max = 4.95
+scale_curve = SubResource("CurveTexture_o6i5c")
 color_ramp = SubResource("GradientTexture1D_heart")
 hue_variation_min = -0.03
 hue_variation_max = 0.1
@@ -140,7 +151,7 @@ uppercase = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(477, 161)
-amount = 25
+amount = 50
 amount_ratio = 0.7
 lifetime = 2.07
 visibility_rect = Rect2(-50, -120, 100, 150)
