@@ -1,12 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://cto2r1llqapws"]
+[gd_scene load_steps=13 format=3 uid="uid://cto2r1llqapws"]
 
 [ext_resource type="Script" uid="uid://dsoegp5evqwhp" path="res://gui/menu.gd" id="1_lti8b"]
 [ext_resource type="PackedScene" uid="uid://d2u0fqa00o42h" path="res://gui/OptionsPanel.tscn" id="3_lnc0w"]
 [ext_resource type="Texture2D" uid="uid://d0mcg8vcoj425" path="res://assets/textures/menu_bg.png" id="4_o6i5c"]
 [ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="5_heart"]
 [ext_resource type="StyleBox" uid="uid://chugqj3dfu53s" path="res://gui/menu_btn.tres" id="5_vd72o"]
+[ext_resource type="Script" uid="uid://bnp884quc02dl" path="res://gui/ButtonWithSounds.gd" id="6_o6i5c"]
 
-[sub_resource type="Theme" id="Theme_h3dpr"]
+[sub_resource type="Theme" id="Theme_vd72o"]
+default_font = ExtResource("5_heart")
 
 [sub_resource type="Gradient" id="Gradient_o6i5c"]
 offsets = PackedFloat32Array(0, 0.254545, 0.683636, 1)
@@ -47,6 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_vd72o")
 script = ExtResource("1_lti8b")
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -69,12 +72,12 @@ mouse_default_cursor_shape = 2
 theme_override_colors/font_hover_color = Color(0.91, 0.723147, 0.2093, 1)
 theme_override_colors/font_color = Color(0.91, 0.637, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.91, 0.303333, 0, 1)
-theme_override_fonts/font = ExtResource("5_heart")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = ExtResource("5_vd72o")
 theme_override_styles/hover = ExtResource("5_vd72o")
 theme_override_styles/normal = ExtResource("5_vd72o")
 text = "PLAY"
+script = ExtResource("6_o6i5c")
 
 [node name="Options" type="Button" parent="."]
 layout_mode = 0
@@ -87,12 +90,12 @@ theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.721569, 0.207
 theme_override_colors/font_hover_color = Color(0.91, 0.723147, 0.2093, 1)
 theme_override_colors/font_color = Color(0.91, 0.637, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.91, 0.303333, 0, 1)
-theme_override_fonts/font = ExtResource("5_heart")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = ExtResource("5_vd72o")
 theme_override_styles/hover = ExtResource("5_vd72o")
 theme_override_styles/normal = ExtResource("5_vd72o")
 text = "OPTIONS"
+script = ExtResource("6_o6i5c")
 
 [node name="Quit" type="Button" parent="."]
 layout_mode = 0
@@ -104,12 +107,13 @@ mouse_default_cursor_shape = 2
 theme_override_colors/font_hover_color = Color(0.91, 0.723147, 0.2093, 1)
 theme_override_colors/font_color = Color(0.91, 0.637, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.91, 0.303333, 0, 1)
-theme_override_fonts/font = ExtResource("5_heart")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = ExtResource("5_vd72o")
 theme_override_styles/hover = ExtResource("5_vd72o")
 theme_override_styles/normal = ExtResource("5_vd72o")
 text = "QUIT"
+script = ExtResource("6_o6i5c")
+pressed_sound_name = ""
 
 [node name="Dungeon" type="Label" parent="."]
 layout_mode = 0
@@ -117,14 +121,12 @@ offset_left = 53.0
 offset_top = 3.0
 offset_right = 317.0
 offset_bottom = 78.0
-theme = SubResource("Theme_h3dpr")
 theme_override_colors/font_color = Color(0.909804, 0.635294, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.831373)
 theme_override_colors/font_outline_color = Color(0.803449, 0.276464, 0.12511, 1)
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("5_heart")
 theme_override_font_sizes/font_size = 60
 text = "DUNGEON"
 autowrap_mode = 2
@@ -136,14 +138,12 @@ offset_left = 128.0
 offset_top = 59.0
 offset_right = 392.0
 offset_bottom = 134.0
-theme = SubResource("Theme_h3dpr")
 theme_override_colors/font_color = Color(0.909804, 0.635294, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.831373)
 theme_override_colors/font_outline_color = Color(0.803449, 0.276464, 0.12511, 1)
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("5_heart")
 theme_override_font_sizes/font_size = 60
 text = "escape"
 autowrap_mode = 2

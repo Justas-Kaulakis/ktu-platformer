@@ -45,6 +45,11 @@ func stop_sfx(sfx_name: StringName) -> void:
 func stop_all_sfx() -> void:
 	for sound_name in sound:
 		sound[sound_name].stop()
+		
+func mute_2d_sfx(should_mute: bool):
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("2D player SFX"), should_mute)
+
+
 
 ## for 'male' or 'female'
 func change_sfx_for(type: StringName):

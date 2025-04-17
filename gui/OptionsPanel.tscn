@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2u0fqa00o42h"]
+[gd_scene load_steps=11 format=3 uid="uid://d2u0fqa00o42h"]
 
 [ext_resource type="Script" uid="uid://dbcjep2m2mpbx" path="res://gui/input_settings.gd" id="1_do8lh"]
 [ext_resource type="PackedScene" uid="uid://bhswok6qbi5r5" path="res://gui/input_button.tscn" id="2_vr50r"]
 [ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="3_vr50r"]
 [ext_resource type="Script" uid="uid://b6sul4uq7drx3" path="res://gui/volume_sliders.gd" id="4_3y1ff"]
+[ext_resource type="Script" uid="uid://bnp884quc02dl" path="res://gui/ButtonWithSounds.gd" id="4_nmfku"]
 [ext_resource type="PackedScene" uid="uid://dq4upsqp61b6v" path="res://gui/VolumeSlider.tscn" id="5_3l2em"]
 [ext_resource type="Script" uid="uid://coy1dpx127vuy" path="res://gui/toggles.gd" id="6_rwo2v"]
 [ext_resource type="Script" uid="uid://p0yutk2bj3hd" path="res://gui/to_main_menu.gd" id="7_adcec"]
@@ -86,6 +87,7 @@ focus_mode = 0
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3_vr50r")
 text = "Set defaults"
+script = ExtResource("4_nmfku")
 
 [node name="List of Actions" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/RemapControls"]
 layout_mode = 2
@@ -127,6 +129,7 @@ focus_mode = 0
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3_vr50r")
 text = "Set defaults"
+script = ExtResource("4_nmfku")
 
 [node name="Master" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/VolumeSliders" instance=ExtResource("5_3l2em")]
 layout_mode = 2
@@ -176,6 +179,7 @@ mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("3_vr50r")
 text = "fullscreen"
+script = ExtResource("4_nmfku")
 
 [node name="other2" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Toggles"]
 layout_mode = 2
@@ -193,6 +197,7 @@ popup/item_0/text = "Female"
 popup/item_0/id = 0
 popup/item_1/text = "Male"
 popup/item_1/id = 1
+script = ExtResource("4_nmfku")
 
 [node name="BreakLine3" type="MarginContainer" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2

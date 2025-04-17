@@ -11,7 +11,7 @@ func _input(event):
 func _ready() -> void:
 	Global.current_area = Global.Area.MENU
 	SceneManager.load_next_level("res://level/level_1.tscn") # load in memory 
-	find_signal_emitter(get_tree().current_scene, "set_volume")
+	find_signal_emitter(SceneManager.current_scene, "set_volume")
 
 func _on_play_pressed() -> void:
 	#get_tree().change_scene_to_file("res://level/demo_level.tscn")
@@ -29,4 +29,5 @@ func find_signal_emitter(root: Node, signal_name: String):
 		find_signal_emitter(child, signal_name)  # Recursively check children
 
 func _on_quit_pressed() -> void:
+	AudioManager.play_sfx("button_pressed")
 	get_tree().quit()

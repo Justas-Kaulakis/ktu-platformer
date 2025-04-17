@@ -12,6 +12,7 @@ var bus_name: String = "Master"
 var bus_index: int
 
 func _ready():
+	h_slider.mouse_entered.connect(_on_mouse_entered)
 	slider_label.text = label
 	bus_index = AudioServer.get_bus_index(bus_name)
 	var volume_value
@@ -34,6 +35,10 @@ func _on_h_slider_value_changed(value: float) -> void:
 		"Music":
 			ConfigHandler.save_audio("music_volume", value)
 	AudioServer.set_bus_volume_linear(bus_index,value)
+	AudioManager.play_sfx("button_hover")
 
 func set_volume(volume:float) -> void:
 	h_slider.value = volume
+	
+func _on_mouse_entered():
+		AudioManager.play_sfx("button_hover")
