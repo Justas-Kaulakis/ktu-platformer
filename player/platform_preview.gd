@@ -8,6 +8,7 @@ func attach_preview(platform: PackedScene) -> void:
 	# Instantiate a new preview sprite from the platform scene
 	var instance = platform.instantiate()
 	var sprite = instance.get_node("Sprite2D") as Sprite2D
+	sprite.rotation_degrees = instance.rotation_degrees
 	instance.remove_child(sprite) # Detach from the full platform instance
 
 	sprite.modulate = Color(0.8, 0.8, 0.8, 0.5) # Gray + transparent
