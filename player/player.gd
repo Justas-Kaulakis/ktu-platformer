@@ -9,7 +9,7 @@ const ACCELERATION_SPEED = WALK_SPEED * 6.0
 const TERMINAL_VELOCITY = 700
 const WALL_JUMP_FACTOR = 150
 const MAX_BOOST_Y = 1000
-const MAX_BOOST_X = 500
+const MAX_BOOST_X = 1000
 
 var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var platform_detector := $PlatformDetector as RayCast2D
@@ -45,13 +45,13 @@ func _physics_process(delta: float) -> void:
 		velocity.y *= 0.6
 	# Fall.
 	velocity.y = minf(TERMINAL_VELOCITY, velocity.y + gravity * delta)
-
+	
 	var direction := Input.get_axis("move_left", "move_right") * WALK_SPEED
 	velocity.x = move_toward(velocity.x, direction, ACCELERATION_SPEED * delta)
+
 	
 	if Input.is_action_just_pressed("reload"):
 		position = Global.last_location
-	
 	if not is_zero_approx(velocity.x):
 		if velocity.x > 0.0:
 			sprite.scale.x = 0.35
@@ -127,7 +127,10 @@ func try_jump() -> void:
 	
 func boost():
 	velocity.x = min(velocity.x* 4, MAX_BOOST_X)
+	if velocity.x < 0:
+		velocity.x = maxf(velocity.x* 4, -1*MAX_BOOST_X)
 	velocity.y = min(velocity.y* 1.5, MAX_BOOST_Y)
+	
 
 func mouse_entered():
 	PlatformGun.can_shoot = 0

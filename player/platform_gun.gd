@@ -43,10 +43,25 @@ func _process(_delta: float) -> void:
 
 	if Input.is_action_just_pressed("platform_1"):
 		selected_platform = Global.p_1
+		Global.rotate = 0
 	if Input.is_action_just_pressed("platform_2"):
 		selected_platform = Global.p_2
+		Global.rotate = 0
 	if Input.is_action_just_pressed("platform_3"):
 		selected_platform = Global.p_3
+		Global.rotate = 0
+	
+	if Input.is_action_just_pressed("rotate"):
+		Global.rotate += 90
+		if Global.rotate == 360:
+			Global.rotate = 0
+	
+	if selected_platform.resource_path == "res://level/platforms/trampoline_platform.tscn" or \
+	selected_platform.resource_path == "res://level/platforms/velocity_platform.tscn":
+		#print(selected_platform.resource_path)
+		Global.selected_platform = "rotatable"
+	else:
+		Global.selected_platform = "not_rotatable"
 	
 	if game_manager:
 		platform_preview.handle_drawing(tiles, platform_count, can_shoot, can_shoot_player, game_manager.is_game_paused)
