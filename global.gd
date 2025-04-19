@@ -52,7 +52,7 @@ var double_jump = false
 var wall_jump = false
 var last_location = 0
 var rotate = 0
-var selected_platform = "not_rotatable"
+var rotatable_platform = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

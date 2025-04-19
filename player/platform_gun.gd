@@ -59,9 +59,9 @@ func _process(_delta: float) -> void:
 	if selected_platform.resource_path == "res://level/platforms/trampoline_platform.tscn" or \
 	selected_platform.resource_path == "res://level/platforms/velocity_platform.tscn":
 		#print(selected_platform.resource_path)
-		Global.selected_platform = "rotatable"
+		Global.rotatable_platform = true
 	else:
-		Global.selected_platform = "not_rotatable"
+		Global.rotatable_platform = false
 	
 	if game_manager:
 		platform_preview.handle_drawing(tiles, platform_count, can_shoot, can_shoot_player, game_manager.is_game_paused)

@@ -27,7 +27,7 @@ func handle_drawing(tiles: TileMapLayer, platform_count:int, can_shoot: bool, ca
 		var preview:Sprite2D = get_child(0)
 		var global_scaled = tiles.get_global_mouse_position()
 		var node_coord = tiles.local_to_map(tiles.to_local(global_scaled))
-		if(Global.selected_platform == "rotatable"):
+		if Global.rotatable_platform == true:
 			preview.rotation_degrees = Global.rotate
 		if platform_count > 0 and can_shoot and can_shoot_player == 1 and \
 			tiles.get_cell_source_id(node_coord) == -1 and !is_game_paused:
