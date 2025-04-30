@@ -397,7 +397,7 @@ visible = false
 
 [node name="LevelChangeDoor" parent="." node_paths=PackedStringArray("sensor") instance=ExtResource("6_l1g64")]
 position = Vector2(5525, -446)
-next_scene = "uid://2pd6cj5ouwwe"
+next_scene = "uid://dsbnyfbw0tml7"
 sensor = NodePath("sensor")
 
 [node name="sensor" type="Area2D" parent="LevelChangeDoor"]
