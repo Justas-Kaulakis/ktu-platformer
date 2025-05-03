@@ -11,6 +11,7 @@ var pickable = true
 	set(new_color):
 		color_name = new_color
 		$Sprite2D.modulate = Color(new_color, 1)
+		$PointLight2D.color = Color(new_color).lightened(0.5);
 
 func _on_ready() -> void:
 	animation_player.play("new_animation")

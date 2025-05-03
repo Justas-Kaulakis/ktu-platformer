@@ -28,3 +28,4 @@ func _on_body_entered(player: Player) -> void:
 	player.reset_player()
 	$off.visible = false
 	$on.visible = true
+	$PointLight2D.enabled = true;

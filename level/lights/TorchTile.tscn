@@ -1,0 +1,104 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctowqmii385rh"]
+
+[ext_resource type="Texture2D" uid="uid://dy87vpnuf8jmk" path="res://assets/textures/TEXTURES.png" id="1_tqpmd"]
+[ext_resource type="Script" uid="uid://cvoj7w83yebj3" path="res://level/lights/light_flicker.gd" id="1_vmgf3"]
+[ext_resource type="Material" uid="uid://deeqgsgs063br" path="res://level/lights/light_emitor_material.tres" id="2_8dobj"]
+
+[sub_resource type="Gradient" id="Gradient_tqpmd"]
+offsets = PackedFloat32Array(0, 0.146814, 0.382271, 0.565097, 0.739612, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.739612, 0.739612, 0.739612, 1, 0.420234, 0.420234, 0.420234, 1, 0.276583, 0.276583, 0.276583, 1, 0.086322, 0.086322, 0.086322, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tqpmd"]
+gradient = SubResource("Gradient_tqpmd")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.564103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmgf3"]
+atlas = ExtResource("1_tqpmd")
+region = Rect2(288, 88, 8, 8)
+
+[sub_resource type="Animation" id="Animation_8dobj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vmgf3"]
+resource_name = "flame_flicker"
+length = 2.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(-1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_upiqc"]
+_data = {
+&"RESET": SubResource("Animation_8dobj"),
+&"flame_flicker": SubResource("Animation_vmgf3")
+}
+
+[node name="TorchTile" type="Node2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = 1
+material = ExtResource("2_8dobj")
+scale = Vector2(1.53125, 1.5625)
+color = Color(0.984314, 1, 0.52549, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_tqpmd")
+script = ExtResource("1_vmgf3")
+flicker_range = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_8dobj")
+texture = SubResource("AtlasTexture_vmgf3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_upiqc")
+}
+autoplay = "flame_flicker"

@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5xqe73w71jhd"]
+[gd_scene load_steps=10 format=3 uid="uid://b5xqe73w71jhd"]
 
 [ext_resource type="Script" uid="uid://bewwdnkshfyov" path="res://level/doors/key.gd" id="1_8qufj"]
+[ext_resource type="Material" uid="uid://deeqgsgs063br" path="res://level/lights/light_emitor_material.tres" id="1_mxg7d"]
 [ext_resource type="Texture2D" uid="uid://bg44nltf7pcfj" path="res://assets/textures/key.png" id="2_8qufj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8qufj"]
@@ -45,16 +46,20 @@ _data = {
 &"new_animation": SubResource("Animation_mxg7d")
 }
 
+[sub_resource type="Gradient" id="Gradient_8wp5k"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8qufj"]
+gradient = SubResource("Gradient_8wp5k")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.564103)
+
 [node name="Key" type="Area2D"]
+material = ExtResource("1_mxg7d")
 collision_layer = 32
 script = ExtResource("1_8qufj")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 0, 1)
-position = Vector2(2.38419e-07, 0)
-scale = Vector2(0.617708, 0.5)
-texture = ExtResource("2_8qufj")
-hframes = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
@@ -64,6 +69,21 @@ shape = SubResource("RectangleShape2D_8qufj")
 libraries = {
 &"": SubResource("AnimationLibrary_gbat4")
 }
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0, 1)
+material = ExtResource("1_mxg7d")
+position = Vector2(2.38419e-07, 0)
+scale = Vector2(0.617708, 0.5)
+texture = ExtResource("2_8qufj")
+hframes = 24
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(1.15625, 1.1875)
+color = Color(1, 1, 0.5, 1)
+energy = 0.6
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_8qufj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="ready" from="." to="." method="_on_ready"]

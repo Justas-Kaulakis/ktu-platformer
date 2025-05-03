@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dt1g4d40uoijb"]
+[gd_scene load_steps=10 format=3 uid="uid://dt1g4d40uoijb"]
 
 [ext_resource type="Script" uid="uid://dseufwt7xgi3h" path="res://level/checkpoint.gd" id="1_laa2w"]
+[ext_resource type="Script" uid="uid://cvoj7w83yebj3" path="res://level/lights/light_flicker.gd" id="2_lcpyi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcpyi"]
 size = Vector2(40, 80)
@@ -18,6 +19,16 @@ load_path = "res://.godot/imported/checkpoint2.png-a1d9926596903bf622c56c1fe7eb3
 [sub_resource type="AtlasTexture" id="AtlasTexture_m3b78"]
 atlas = SubResource("CompressedTexture2D_qvvbj")
 region = Rect2(8, 0, 8, 16)
+
+[sub_resource type="Gradient" id="Gradient_laa2w"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lcpyi"]
+gradient = SubResource("Gradient_laa2w")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.564103)
 
 [node name="Checkpoint" type="Area2D"]
 z_index = -1
@@ -38,5 +49,16 @@ visible = false
 position = Vector2(0, -32)
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_m3b78")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(6, -39)
+scale = Vector2(4, 4)
+enabled = false
+color = Color(0.984314, 1, 0.52549, 1)
+energy = 0.5
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_lcpyi")
+script = ExtResource("2_lcpyi")
+flicker_speed = 20.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

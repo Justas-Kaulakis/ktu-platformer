@@ -1,11 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dacrl11aege5r"]
+[gd_scene load_steps=12 format=3 uid="uid://dacrl11aege5r"]
 
 [ext_resource type="Script" uid="uid://cydtapf6bl5t" path="res://level/traps/fire_trap.gd" id="1_0iyyv"]
 [ext_resource type="Texture2D" uid="uid://b88o6nymtc3pb" path="res://assets/textures/traps/fire.png" id="2_0c545"]
 [ext_resource type="AudioStream" uid="uid://1wnwd1yrbpk6" path="res://assets/audio/fire.wav" id="3_8wp5k"]
+[ext_resource type="Script" uid="uid://cvoj7w83yebj3" path="res://level/lights/light_flicker.gd" id="4_grilc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0iyyv"]
 size = Vector2(13, 14)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8wp5k"]
+light_mode = 1
 
 [sub_resource type="Animation" id="Animation_grilc"]
 length = 0.001
@@ -45,18 +49,29 @@ _data = {
 &"new_animation": SubResource("Animation_8wp5k")
 }
 
+[sub_resource type="Gradient" id="Gradient_8wp5k"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8wp5k"]
+gradient = SubResource("Gradient_8wp5k")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
 [node name="Fire Trap" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_0iyyv")
 
-[node name="Fire Trap Sprite" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
-texture = ExtResource("2_0c545")
-hframes = 8
-
 [node name="Fire Trap Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_0iyyv")
+
+[node name="Fire Trap Sprite" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_8wp5k")
+position = Vector2(0, -8)
+texture = ExtResource("2_0c545")
+hframes = 8
 
 [node name="Damage Timer" type="Timer" parent="."]
 
@@ -73,6 +88,19 @@ autoplay = true
 max_distance = 400.0
 attenuation = 1.7411
 bus = &"2D player SFX"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -5)
+color = Color(1, 1, 0.443137, 1)
+energy = 0.5
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_8wp5k")
+script = ExtResource("4_grilc")
+flicker_range = 0.1
+flicker_speed = 5.0
+move_light = true
+movement_radius = 10.0
+movement_speed = 20.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
