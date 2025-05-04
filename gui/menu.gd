@@ -1,6 +1,7 @@
 extends Control
 
 @onready var options_panel: Control = $"UI/Options Menu"
+@onready var level_selection: CenterContainer = $"UI/Level Selection"
 
 
 func _input(event):
@@ -16,8 +17,9 @@ func _ready() -> void:
 func _on_play_pressed() -> void:
 	#get_tree().change_scene_to_file("res://level/demo_level.tscn")
 	#Global.current_area = Global.Area.GAMEPLAY
-	Global.current_area = Global.Area.LEVEL_SELECT
-	SceneManager.switch_scene("res://gui/level_select_screen.tscn")
+	#SceneManager.switch_scene("res://gui/level_select_screen.tscn")
+	level_selection.visible = !level_selection.visible
+	
 
 
 func _on_options_pressed() -> void:
