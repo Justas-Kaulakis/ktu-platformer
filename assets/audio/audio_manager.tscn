@@ -120,6 +120,7 @@ bus = &"SFX"
 
 [node name="die" type="AudioStreamPlayer" parent="SFX"]
 stream = SubResource("AudioStreamSynchronized_astvc")
+volume_db = -10.0
 bus = &"SFX"
 
 [node name="pickup_power_up" type="AudioStreamPlayer" parent="SFX"]

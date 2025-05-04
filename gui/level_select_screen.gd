@@ -4,24 +4,31 @@ extends CenterContainer
 @onready var level_selection: CenterContainer = $"."
 @onready var back_to_main_menu: Button = $"ScrollContainer/VBoxContainer/Back to Main Menu"
 
+var sound_script: GDScript = preload("res://gui/ButtonWithSounds.gd")
+
+@export_file("*.tscn") var level_scenes: Array[String] = [
+	"res://level/level_1.tscn",
+	"res://level/level_2.tscn",
+	"res://level/level_3.tscn",
+]
+
 func load_levels() -> void:
-	var level_paths = DirAccess.get_files_at("res://level/")
-	for level_path in level_paths:
-		if level_path.begins_with("level_") and level_path.ends_with(".tscn"):
-			var stripped_name = level_path.replace(".tscn", "")
-			var new_name = stripped_name.capitalize()
-			var button_font = FontFile.new()
-			button_font.load_dynamic_font("res://gui/kenney_mini_square.ttf")
-			var button = Button.new()
-			button.add_theme_font_override("font", button_font)
-			button.text = new_name
-			vb_container.add_child(button)
-			SceneManager.load_next_level("res://level/" + level_path)
-		
-			button.pressed.connect(func():
-				Global.current_area = Global.Area.GAMEPLAY
-				SceneManager.switch_scene("res://level/" + level_path)
-			)
+	for level_path in level_scenes:
+		var stripped_name = level_path.get_file().replace(".tscn", "")
+		var new_name = stripped_name.capitalize()
+		var button_font = FontFile.new()
+		button_font.load_dynamic_font("res://gui/kenney_mini_square.ttf")
+		var button = Button.new()
+		button.add_theme_font_override("font", button_font)
+		button.text = new_name
+		button.set_script(sound_script)
+		vb_container.add_child(button)
+		SceneManager.load_next_level(level_path)
+	
+		button.pressed.connect(func():
+			Global.current_area = Global.Area.GAMEPLAY
+			SceneManager.switch_scene(level_path)
+		)
 
 func _ready() -> void:
 	back_to_main_menu.pressed.connect(_on_back_to_main_menu)
