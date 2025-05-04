@@ -1,7 +1,7 @@
 extends Node
 
 # MENU arba GAMEPLAY
-enum Area {MENU, GAMEPLAY, END_SCREEN}
+enum Area {MENU, LEVEL_SELECT, GAMEPLAY, END_SCREEN}
 var current_area: Area = Area.MENU:
 	set(new_area):
 		current_area = new_area
