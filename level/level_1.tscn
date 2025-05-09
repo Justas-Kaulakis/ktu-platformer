@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bew38jrmxp7v4"]
+[gd_scene load_steps=19 format=4 uid="uid://bew38jrmxp7v4"]
 
 [ext_resource type="Script" uid="uid://1nfd212a2xtm" path="res://level/level_1.gd" id="1_jfgjb"]
 [ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://player/player.tscn" id="1_nokfs"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://c3ary26xq7cf7" path="res://level/traps/spikes.tscn" id="4_vndax"]
 [ext_resource type="PackedScene" uid="uid://cnsmoxui102qc" path="res://level/traps/poison_ivy.tscn" id="5_vb5hv"]
 [ext_resource type="PackedScene" uid="uid://cvbjpguukek2x" path="res://level/doors/LevelChangeDoor.tscn" id="6_l1g64"]
+[ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="9_7fchg"]
+[ext_resource type="Script" uid="uid://dv6orrhkd06db" path="res://level/input.gd" id="10_nlkbw"]
 [ext_resource type="PackedScene" uid="uid://dt1g4d40uoijb" path="res://level/Checkpoint.tscn" id="11_hdc4k"]
 [ext_resource type="PackedScene" uid="uid://bi55575cmdtvs" path="res://level/powerups/powerup_double_jump.tscn" id="11_hdc4p"]
 [ext_resource type="PackedScene" uid="uid://b7vhnpulw5yfq" path="res://level/powerups/powerup_wall_jump.tscn" id="12_4h366"]
@@ -392,6 +394,51 @@ scale = Vector2(4.5, 4.5)
 
 [node name="Options Menu" parent="UI" instance=ExtResource("3_l1g64")]
 visible = false
+
+[node name="jump" type="TextEdit" parent="UI"]
+offset_left = 522.0
+offset_top = 26.0
+offset_right = 772.0
+offset_bottom = 58.0
+theme_override_fonts/font = ExtResource("9_7fchg")
+text = "jump input"
+script = ExtResource("10_nlkbw")
+
+[node name="move_left" type="TextEdit" parent="UI"]
+offset_left = 522.0
+offset_top = 58.0
+offset_right = 772.0
+offset_bottom = 90.0
+theme_override_fonts/font = ExtResource("9_7fchg")
+text = "move left input"
+script = ExtResource("10_nlkbw")
+
+[node name="move_right" type="TextEdit" parent="UI"]
+offset_left = 522.0
+offset_top = 90.0
+offset_right = 772.0
+offset_bottom = 122.0
+theme_override_fonts/font = ExtResource("9_7fchg")
+text = "move right input"
+script = ExtResource("10_nlkbw")
+
+[node name="reload" type="TextEdit" parent="UI"]
+offset_left = 522.0
+offset_top = 122.0
+offset_right = 772.0
+offset_bottom = 154.0
+theme_override_fonts/font = ExtResource("9_7fchg")
+text = "reload input"
+script = ExtResource("10_nlkbw")
+
+[node name="shoot" type="TextEdit" parent="UI"]
+offset_left = 522.0
+offset_top = 154.0
+offset_right = 772.0
+offset_bottom = 186.0
+theme_override_fonts/font = ExtResource("9_7fchg")
+text = "shoot input"
+script = ExtResource("10_nlkbw")
 
 [node name="Game Manager" parent="." instance=ExtResource("4_vb5hv")]
 
