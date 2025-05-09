@@ -186,6 +186,7 @@ position = Vector2(520, 384)
 new_platform_count = 4
 platform_1 = "trampoline"
 platform_2 = "velocity"
+platform_3 = "breakable"
 
 [node name="Checkpoint2" parent="." instance=ExtResource("10_o2xhk")]
 position = Vector2(1153, 256)

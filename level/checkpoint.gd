@@ -1,9 +1,9 @@
 extends Area2D
 
 @export var new_platform_count = Global.max_platform_count
-@export_enum("default", "breakable", "gravity", "velocity", "trampoline") var platform_1 = "default"
-@export_enum("default", "breakable", "gravity", "velocity", "trampoline") var platform_2 = "breakable"
-@export_enum("default", "breakable", "gravity", "velocity", "trampoline") var platform_3 = "gravity"
+@export_enum("default", "breakable", "gravity", "velocity", "trampoline", "flicker", "rotate") var platform_1 = "default"
+@export_enum("default", "breakable", "gravity", "velocity", "trampoline", "flicker", "rotate") var platform_2 = "breakable"
+@export_enum("default", "breakable", "gravity", "velocity", "trampoline", "flicker", "rotate") var platform_3 = "gravity"
 var visited = false
 
 func _ready() -> void:
