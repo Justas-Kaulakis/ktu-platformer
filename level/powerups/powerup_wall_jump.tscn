@@ -1,7 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7vhnpulw5yfq"]
+[gd_scene load_steps=10 format=3 uid="uid://b7vhnpulw5yfq"]
 
 [ext_resource type="Script" uid="uid://bb2x6dqrcpuod" path="res://level/powerups/powerup_wall_jump.gd" id="1_4sl8c"]
 [ext_resource type="Texture2D" uid="uid://dv7dheokryqx5" path="res://assets/textures/powerups/powerup_wall_jump.png" id="2_4sl8c"]
+[ext_resource type="Material" uid="uid://deeqgsgs063br" path="res://level/lights/light_emitor_material.tres" id="2_vgjmw"]
+
+[sub_resource type="Gradient" id="Gradient_4sl8c"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4sl8c"]
+gradient = SubResource("Gradient_4sl8c")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.564103)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sl8c"]
 size = Vector2(24, 20)
@@ -49,13 +60,23 @@ _data = {
 script = ExtResource("1_4sl8c")
 
 [node name="Powerup Sprite" type="Sprite2D" parent="."]
+material = ExtResource("2_vgjmw")
 position = Vector2(1.72853e-06, -1.25)
 scale = Vector2(0.02, 0.0170833)
 texture = ExtResource("2_4sl8c")
 hframes = 5
 vframes = 2
 
+[node name="PointLight2D" type="PointLight2D" parent="Powerup Sprite"]
+position = Vector2(-8.64265e-05, 73.1709)
+scale = Vector2(100, 117.073)
+color = Color(0.999122, 0.841876, 1.15514e-06, 1)
+energy = 0.5
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_4sl8c")
+
 [node name="Powerup Collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_4sl8c")
 

@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvbjpguukek2x"]
+[gd_scene load_steps=14 format=3 uid="uid://cvbjpguukek2x"]
 
 [ext_resource type="Script" uid="uid://bfyjuhpftixiv" path="res://level/doors/level_change_door.gd" id="1_wusfa"]
 [ext_resource type="Texture2D" uid="uid://b1b4saox280re" path="res://assets/textures/portal.png" id="2_unv2t"]
 [ext_resource type="AudioStream" uid="uid://0ekxhsj8mqwr" path="res://assets/audio/portal_bg.wav" id="3_02h8s"]
+[ext_resource type="Material" uid="uid://deeqgsgs063br" path="res://level/lights/light_emitor_material.tres" id="3_8vb00"]
+[ext_resource type="Script" uid="uid://cvoj7w83yebj3" path="res://level/lights/light_flicker.gd" id="4_ai7lw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wusfa"]
 size = Vector2(29.1944, 38.8889)
@@ -53,16 +55,19 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unv2t"]
 size = Vector2(6, 70)
 
+[sub_resource type="Gradient" id="Gradient_02h8s"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ai7lw"]
+gradient = SubResource("Gradient_02h8s")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.564103)
+
 [node name="LevelChangeDoor" type="Area2D"]
 collision_layer = 32
 script = ExtResource("1_wusfa")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2, 0)
-scale = Vector2(2.43125, 2.9625)
-texture = ExtResource("2_unv2t")
-hframes = 3
-vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.8, 1.8)
@@ -85,5 +90,21 @@ autoplay = true
 max_distance = 1000.0
 attenuation = 0.517632
 bus = &"2D player SFX"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("3_8vb00")
+position = Vector2(-2, 0)
+scale = Vector2(2.43125, 2.9625)
+texture = ExtResource("2_unv2t")
+hframes = 3
+vframes = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(4, 4)
+color = Color(0.560784, 0.870588, 0.364706, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_ai7lw")
+script = ExtResource("4_ai7lw")
+flicker_speed = 20.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

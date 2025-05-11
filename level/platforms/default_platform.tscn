@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvm1pvcds6l1t"]
+[gd_scene load_steps=5 format=3 uid="uid://bvm1pvcds6l1t"]
 
 [ext_resource type="Script" uid="uid://cuibkqw5ibd31" path="res://level/platforms/default_platform.gd" id="1_xus38"]
 [ext_resource type="Texture2D" uid="uid://bobm8pter5f5s" path="res://assets/textures/default_platform.png" id="1_xxgxg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xus38"]
 size = Vector2(24, 168)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xus38"]
+polygon = PackedVector2Array(-498, -85, -498, -64, -519, -64, -519, 66, -498, 66, -498, 88, 499, 88, 499, 66, 521, 66, 521, -64, 499, -64, 499, -85)
 
 [node name="StaticBody2D" type="StaticBody2D"]
 z_index = -1
@@ -16,6 +19,10 @@ script = ExtResource("1_xus38")
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_xus38")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+scale = Vector2(0.08, 0.08)
+occluder = SubResource("OccluderPolygon2D_xus38")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.08, 0.08)

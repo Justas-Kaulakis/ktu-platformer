@@ -6,6 +6,7 @@ class_name Gate extends StaticBody2D
 	set(new_color):
 		color_name = new_color
 		$Indicator.modulate = Color(new_color, 1)
+		$PointLight2D.color = Color(new_color).lightened(0.5);
 
 
 var is_open = false

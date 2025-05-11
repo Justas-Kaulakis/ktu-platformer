@@ -1,10 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://bi55575cmdtvs"]
+[gd_scene load_steps=10 format=3 uid="uid://bi55575cmdtvs"]
 
 [ext_resource type="Script" uid="uid://dc78m3gvv1pdi" path="res://level/powerups/powerup_double_jump.gd" id="1_d8ktu"]
+[ext_resource type="Material" uid="uid://deeqgsgs063br" path="res://level/lights/light_emitor_material.tres" id="2_c1yb1"]
 [ext_resource type="Texture2D" uid="uid://d4hpv7ljsd5mw" path="res://assets/textures/powerups/powerup_double_jump.png" id="2_d8ktu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8ktu"]
 size = Vector2(24, 24)
+
+[sub_resource type="Gradient" id="Gradient_tqpmd"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d8ktu"]
+gradient = SubResource("Gradient_tqpmd")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.564103)
 
 [sub_resource type="Animation" id="Animation_lt6ao"]
 length = 0.001
@@ -48,15 +59,25 @@ _data = {
 collision_layer = 4
 script = ExtResource("1_d8ktu")
 
+[node name="Powerup Collision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_d8ktu")
+
 [node name="Powerup Sprite" type="Sprite2D" parent="."]
+material = ExtResource("2_c1yb1")
 position = Vector2(2.98023e-07, 1.13687e-13)
 scale = Vector2(0.02, 0.0202083)
 texture = ExtResource("2_d8ktu")
 hframes = 5
 vframes = 2
 
-[node name="Powerup Collision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_d8ktu")
+[node name="PointLight2D" type="PointLight2D" parent="Powerup Sprite"]
+position = Vector2(-1.49012e-05, -5.62576e-12)
+scale = Vector2(100, 98.9692)
+color = Color(0.41923, 1, 0.614421, 1)
+energy = 0.5
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_d8ktu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
