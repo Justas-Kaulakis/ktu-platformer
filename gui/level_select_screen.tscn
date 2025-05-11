@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://rs66tsg66vbd"]
+
+[ext_resource type="Script" uid="uid://coipc7qhwlb3o" path="res://gui/level_select_screen.gd" id="1_o4kef"]
+[ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="1_uuotp"]
+[ext_resource type="Script" uid="uid://bnp884quc02dl" path="res://gui/ButtonWithSounds.gd" id="3_6nhr3"]
+
+[node name="Level Selection" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o4kef")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(480, 360)
+layout_mode = 2
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Back to Main Menu" type="Button" parent="ScrollContainer/VBoxContainer"]
+z_index = 10
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uuotp")
+text = "Back to main menu"
+script = ExtResource("3_6nhr3")
+
+[node name="Select level" type="Label" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uuotp")
+theme_override_font_sizes/font_size = 16
+text = "Select level"
+horizontal_alignment = 1
+vertical_alignment = 1

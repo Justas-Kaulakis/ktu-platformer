@@ -9,6 +9,7 @@ var preloaded_scene = null
 var next_scene_path = ""
 var is_switching_scene = false
 
+## Loads the level intoo memory in the background
 func load_next_level(path: String):
 	next_scene_path = path
 	ResourceLoader.load_threaded_request(path)

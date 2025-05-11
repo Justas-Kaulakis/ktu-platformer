@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d1qfv1g70w27v"]
+[gd_scene load_steps=32 format=3 uid="uid://d1qfv1g70w27v"]
 
 [ext_resource type="Script" uid="uid://n2qukh88jwwk" path="res://audio_manager.gd" id="1_a1ow3"]
 [ext_resource type="AudioStream" uid="uid://cfr32kjvbe8rf" path="res://assets/audio/bg_music (1).mp3" id="2_mof0l"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://d066vjum6fr8s" path="res://assets/audio/button_hover.wav" id="22_edc4s"]
 [ext_resource type="AudioStream" uid="uid://c5lpve7wnfhtc" path="res://assets/audio/button_pressed.wav" id="23_ovte3"]
 [ext_resource type="AudioStream" uid="uid://brp2knccstbif" path="res://assets/audio/velocity_platform_boost.wav" id="24_f5dq6"]
+[ext_resource type="AudioStream" uid="uid://bmgenoay4iush" path="res://assets/audio/trampoline_boost.wav" id="25_o8fwl"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_u2xqa"]
 shuffle = true
@@ -120,6 +121,7 @@ bus = &"SFX"
 
 [node name="die" type="AudioStreamPlayer" parent="SFX"]
 stream = SubResource("AudioStreamSynchronized_astvc")
+volume_db = -10.0
 bus = &"SFX"
 
 [node name="pickup_power_up" type="AudioStreamPlayer" parent="SFX"]
@@ -156,5 +158,10 @@ bus = &"SFX"
 
 [node name="velocity_boost" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("24_f5dq6")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="trampoline_boost" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("25_o8fwl")
 volume_db = -5.0
 bus = &"SFX"

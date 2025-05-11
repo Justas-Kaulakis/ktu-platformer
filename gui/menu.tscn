@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cto2r1llqapws"]
+[gd_scene load_steps=14 format=3 uid="uid://cto2r1llqapws"]
 
 [ext_resource type="Script" uid="uid://dsoegp5evqwhp" path="res://gui/menu.gd" id="1_lti8b"]
 [ext_resource type="PackedScene" uid="uid://d2u0fqa00o42h" path="res://gui/OptionsPanel.tscn" id="3_lnc0w"]
+[ext_resource type="PackedScene" uid="uid://rs66tsg66vbd" path="res://gui/level_select_screen.tscn" id="4_heart"]
 [ext_resource type="Texture2D" uid="uid://d0mcg8vcoj425" path="res://assets/textures/menu_bg.png" id="4_o6i5c"]
 [ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="5_heart"]
 [ext_resource type="StyleBox" uid="uid://chugqj3dfu53s" path="res://gui/menu_btn.tres" id="5_vd72o"]
@@ -55,6 +56,9 @@ script = ExtResource("1_lti8b")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Options Menu" parent="UI" instance=ExtResource("3_lnc0w")]
+visible = false
+
+[node name="Level Selection" parent="UI" instance=ExtResource("4_heart")]
 visible = false
 
 [node name="MenuBg" type="Sprite2D" parent="."]
