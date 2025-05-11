@@ -430,6 +430,7 @@ scale = Vector2(2, 2)
 position = Vector2(591, 224)
 new_platform_count = 4
 platform_1 = "breakable"
+platform_2 = "breakable"
 platform_3 = "velocity"
 
 [node name="Checkpoint2" parent="." instance=ExtResource("11_hdc4k")]
@@ -437,22 +438,28 @@ position = Vector2(114, 127)
 new_platform_count = 2
 platform_1 = "gravity"
 platform_2 = "gravity"
+platform_3 = "gravity"
 
 [node name="Checkpoint3" parent="." instance=ExtResource("11_hdc4k")]
 position = Vector2(1553, 161)
 new_platform_count = 10
 platform_1 = "breakable"
+platform_2 = "breakable"
+platform_3 = "gravity"
 
 [node name="Checkpoint4" parent="." instance=ExtResource("11_hdc4k")]
 position = Vector2(2296, -402)
 new_platform_count = 8
 platform_1 = "gravity"
 platform_2 = "gravity"
+platform_3 = "gravity"
 
 [node name="Checkpoint5" parent="." instance=ExtResource("11_hdc4k")]
 position = Vector2(4430, -396)
 new_platform_count = 14
 platform_1 = "breakable"
+platform_2 = "breakable"
+platform_3 = "gravity"
 
 [node name="Gate2" parent="." instance=ExtResource("14_6jaql")]
 position = Vector2(4948, -449)

@@ -16,6 +16,8 @@ var platform : Dictionary[String, PackedScene] = {
 	"gravity": preload("res://level/platforms/gravity_platform.tscn"),
 	"velocity": preload("res://level/platforms/velocity_platform.tscn"),
 	"trampoline": preload("res://level/platforms/trampoline_platform.tscn"),
+	"flicker": preload("res://level/platforms/flicker_platform.tscn"),
+	"rotate": preload("res://level/platforms/rotate_platform.tscn"),
 }
 var platformText : Dictionary[String, CompressedTexture2D] = {
 	"default": preload("res://assets/textures/default_platform.png"),
@@ -24,12 +26,18 @@ var platformText : Dictionary[String, CompressedTexture2D] = {
 	"velocity": preload("res://assets/textures/velocity_platform.png"),
 	"trampoline": preload("res://assets/textures/trampoline_platform.png"),
 	"trampoline2": preload("res://assets/textures/trampoline_platform2.png"),
+	"flicker": preload("res://assets/textures/flicker_platform.png"),
+	"flicker2": preload("res://assets/textures/flicker_platform2.png"),
+	"rotate": preload("res://assets/textures/rotate_platform.png"),
 }
 var p_1 = platform["default"]
 var p_2 = platform["breakable"]
 var p_3 = platform["gravity"]
 var p_4 = platform["velocity"]
 var p_5 = platform["trampoline"]
+var p_6 = platform["flicker"]
+var p_7 = platform["rotate"]
+
  
 var pt_1 = platformText["default"]
 var pt_2 = platformText["breakable"]
@@ -37,6 +45,9 @@ var pt_3 = platformText["gravity"]
 var pt_4 = platformText["velocity"]
 var pt_5 = platformText["trampoline"]
 var pt_5_2 = platformText["trampoline2"]
+var pt_6 = platformText["flicker"]
+var pt_6_2 = platformText["flicker2"]
+var pt_7 = platformText["rotate"]
 
 # PLAYER DATA
 var max_health: float = 4.
