@@ -22,12 +22,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6jaql"]
 size = Vector2(177, 131)
 
-[sub_resource type="Gradient" id="Gradient_tqpmd"]
+[sub_resource type="Gradient" id="Gradient_nlkbw"]
 interpolation_mode = 2
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_b2ana"]
-gradient = SubResource("Gradient_tqpmd")
+gradient = SubResource("Gradient_nlkbw")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.564103)
