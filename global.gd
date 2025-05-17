@@ -1,6 +1,6 @@
 extends Node
 
-# MENU arba GAMEPLAY
+## MENU, GAMEPLAY, END_SCREEN
 enum Area {MENU, GAMEPLAY, END_SCREEN}
 var current_area: Area = Area.MENU:
 	set(new_area):
@@ -51,8 +51,8 @@ var pt_7 = platformText["rotate"]
 
 # PLAYER DATA
 var max_health: float = 4.
-var max_platform_count = 3
-var player = null
+var max_platform_count:int = 3
+var player: Player = null
 var gender: String = "male":
 	set(new_gender):
 		gender = new_gender
@@ -65,11 +65,5 @@ var last_location = 0
 var rotate = 0
 var rotatable_platform = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+# Checkpoint info
+var lastCheckpoint: Checkpoint = null;

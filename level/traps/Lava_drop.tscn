@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b375hmrm46cse"]
+
+[ext_resource type="Script" uid="uid://cmwyymwsr7e42" path="res://level/traps/lava_drop.gd" id="1_abya3"]
+[ext_resource type="Texture2D" uid="uid://dfotxdnwfaxow" path="res://assets/textures/traps/Lava-drop.png" id="2_5n27u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3uue"]
+size = Vector2(8, 8)
+
+[node name="LavaDrop" type="Area2D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_abya3")
+
+[node name="Lava-drop" type="Sprite2D" parent="."]
+texture = ExtResource("2_5n27u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_x3uue")

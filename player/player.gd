@@ -34,6 +34,7 @@ func _ready() -> void:
 	Global.last_location = position
 	current_health = Global.max_health
 	AudioManager.stop_sfx("run")
+	add_to_group("player")
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor() and Global.double_jump == true:
