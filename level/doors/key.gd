@@ -21,6 +21,11 @@ func _process(_delta: float) -> void:
 	if not Engine.is_editor_hint():
 		if Input.is_action_just_pressed("reload"):
 			player.consume_key(color_name)
+			Alert.remove_key_alert(color_name)
+			if Alert.active_key_alerts_cn.has(color_name):
+				print("Turejai ", color_name, " rakta krc")
+				Alert.update_keys_info(-1)
+			#Alert.update_keys_info(-1)
 			pickable = true
 			$Sprite2D.visible = true
 

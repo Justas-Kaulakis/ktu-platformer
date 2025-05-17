@@ -43,20 +43,28 @@ func switch_scene(path: String):
 		if current_scene:
 			current_scene.free()
 		current_scene = preloaded_scene
+		current_scene.set_meta("scene_path", path)
 		get_tree().root.add_child(current_scene)
 		get_tree().current_scene = current_scene
+		Alert.load_level_info()
 		preloaded_scene = null
 	else:
 		# Fallback to normal loading
 		_deferred_switch_scene.call_deferred(path)
+	if Alert.level_info.visible:
+		Alert.level_info.visible = !Alert.level_info.visible
+	if Alert.keys_info.visible:
+		Alert.keys_info.visible = !Alert.keys_info.visible
 
 func _deferred_switch_scene(path):
 	if current_scene:
 		current_scene.free()
 	var s = ResourceLoader.load(path)
 	current_scene = s.instantiate()
+	current_scene.set_meta("scene_path", path)
 	get_tree().root.add_child(current_scene)
 	get_tree().current_scene = current_scene
+	Alert.load_level_info()
 
 func _set_global_player():
 	if current_scene:

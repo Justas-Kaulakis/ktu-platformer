@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://da8ihk578ucgs"]
+[gd_scene load_steps=15 format=4 uid="uid://da8ihk578ucgs"]
 
 [ext_resource type="Script" uid="uid://d0iu63hpl7dx8" path="res://level/level_3.gd" id="1_5mhvx"]
 [ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://player/player.tscn" id="3_ps1br"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b5xqe73w71jhd" path="res://level/doors/key.tscn" id="9_07kww"]
 [ext_resource type="PackedScene" uid="uid://dt1g4d40uoijb" path="res://level/Checkpoint.tscn" id="10_o2xhk"]
 [ext_resource type="PackedScene" uid="uid://b7vhnpulw5yfq" path="res://level/powerups/powerup_wall_jump.tscn" id="12_f1jq1"]
+[ext_resource type="PackedScene" uid="uid://bi55575cmdtvs" path="res://level/powerups/powerup_double_jump.tscn" id="14_hrebq"]
 
 [node name="Level 3" type="Node2D"]
 auto_translate_mode = 2
@@ -20,7 +21,7 @@ script = ExtResource("1_5mhvx")
 metadata/_edit_vertical_guides_ = [1593.0]
 
 [node name="Player" parent="." instance=ExtResource("3_ps1br")]
-position = Vector2(179, 228)
+position = Vector2(1021, -15)
 JUMP_VELOCITY = -625.0
 
 [node name="Layers" type="Node2D" parent="."]
@@ -69,6 +70,21 @@ position = Vector2(84.75, 94)
 scale = Vector2(2, 2)
 
 [node name="Keys" type="Node2D" parent="."]
+
+[node name="Phase 1 Key" parent="Keys" instance=ExtResource("9_07kww")]
+position = Vector2(827, 162)
+scale = Vector2(2, 2)
+color_name = "blue"
+
+[node name="Phase 2 Key" parent="Keys" instance=ExtResource("9_07kww")]
+position = Vector2(2347, -747)
+scale = Vector2(2, 2)
+color_name = "green"
+
+[node name="Phase 3 Key" parent="Keys" instance=ExtResource("9_07kww")]
+position = Vector2(4188, -36)
+scale = Vector2(4, 4)
+color_name = "red"
 
 [node name="Spikes" parent="." instance=ExtResource("4_pt6hw")]
 position = Vector2(411, 376)
@@ -143,11 +159,6 @@ scale = Vector2(4, 4)
 position = Vector2(987, 248)
 rotation = 3.14159
 scale = Vector2(4, 4)
-
-[node name="Phase 1 Key" parent="." instance=ExtResource("9_07kww")]
-position = Vector2(827, 162)
-scale = Vector2(2, 2)
-color_name = "blue"
 
 [node name="Gate" parent="." instance=ExtResource("8_6xa2d")]
 position = Vector2(1412, -32)
@@ -230,11 +241,6 @@ scale = Vector2(4, 4)
 position = Vector2(2340, -16)
 scale = Vector2(4, 4)
 
-[node name="Key" parent="." instance=ExtResource("9_07kww")]
-position = Vector2(2347, -747)
-scale = Vector2(2, 2)
-color_name = "green"
-
 [node name="Poison Ivy2" parent="." instance=ExtResource("4_6xa2d")]
 position = Vector2(2288, -756)
 rotation = 1.5708
@@ -301,11 +307,6 @@ scale = Vector2(4, 4)
 position = Vector2(3934, -592)
 scale = Vector2(4, 4)
 
-[node name="Key2" parent="." instance=ExtResource("9_07kww")]
-position = Vector2(4188, -36)
-scale = Vector2(4, 4)
-color_name = "red"
-
 [node name="Gate3" parent="." instance=ExtResource("8_6xa2d")]
 position = Vector2(4740, 512)
 scale = Vector2(2, 2)
@@ -317,3 +318,6 @@ position = Vector2(4924, 510)
 [node name="Spikes25" parent="." instance=ExtResource("4_pt6hw")]
 position = Vector2(4470, 552)
 scale = Vector2(4, 4)
+
+[node name="Double Jump Powerup" parent="." instance=ExtResource("14_hrebq")]
+position = Vector2(1063, -50)
