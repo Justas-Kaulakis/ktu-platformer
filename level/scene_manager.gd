@@ -19,6 +19,7 @@ func _process(_delta):
 		var status = ResourceLoader.load_threaded_get_status(next_scene_path)
 		if status == ResourceLoader.THREAD_LOAD_LOADED:
 			preloaded_scene = ResourceLoader.load_threaded_get(next_scene_path).instantiate()
+			#preloaded_scene.set_meta("scene_path", next_scene_path)
 			next_scene_path = "" # Reset after loading
 		elif status == ResourceLoader.THREAD_LOAD_FAILED:
 			print("Failed to preload scene: ", next_scene_path)
@@ -43,7 +44,6 @@ func switch_scene(path: String):
 		if current_scene:
 			current_scene.free()
 		current_scene = preloaded_scene
-		current_scene.set_meta("scene_path", path)
 		get_tree().root.add_child(current_scene)
 		get_tree().current_scene = current_scene
 		Alert.load_level_info()
@@ -61,7 +61,6 @@ func _deferred_switch_scene(path):
 		current_scene.free()
 	var s = ResourceLoader.load(path)
 	current_scene = s.instantiate()
-	current_scene.set_meta("scene_path", path)
 	get_tree().root.add_child(current_scene)
 	get_tree().current_scene = current_scene
 	Alert.load_level_info()

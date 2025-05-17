@@ -14,6 +14,7 @@ var active_key_alerts: Array = []
 var active_key_alerts_cn: Array = []
 
 var font = FontFile.new()
+var default_text_colour = Color8(128, 128, 128).to_html()
 
 var keys_collected
 var keys_total
@@ -29,7 +30,7 @@ func create_popup_alert(message):
 	tween.tween_property(panel, "modulate:a", 0.0, 0.2)
 
 func create_powerup_alert(message, duration):
-	var default_colour: Color = Color(0, 255, 0)
+	var default_colour: Color = Color8(0, 255, 0)
 	var colour_converted = default_colour.to_html()
 	var middle_text = " is active for "
 	var end_text = " seconds!"
@@ -53,9 +54,9 @@ func create_powerup_alert(message, duration):
 		await get_tree().create_timer(update_interval).timeout
 		remaining_duration -= update_interval
 		if loops <= one_third:
-			colour = Color(255, 0, 0)
+			colour = Color8(255, 0, 0)
 		elif loops <= two_thirds:
-			colour = Color(255, 255, 0)
+			colour = Color8(255, 255, 0)
 		else:
 			colour = default_colour
 		colour_converted = colour.to_html()
@@ -80,15 +81,15 @@ func add_key_alert(colour):
 	new_key_alert.add_theme_font_override("normal_font", font)
 	match(colour):
 		"blue":
-			text_colour = Color(0, 255, 255)
+			text_colour = Color8(0, 255, 255)
 		"red":
-			text_colour = Color(255, 0, 0)
+			text_colour = Color8(255, 0, 0)
 		"green":
-			text_colour = Color(0, 255, 0)
+			text_colour = Color8(0, 255, 0)
 		"white":
-			text_colour = Color(255, 255, 255)
+			text_colour = Color8(255, 255, 255)
 		"yellow":
-			text_colour = Color(255, 255, 0)
+			text_colour = Color8(255, 255, 0)
 	var colour_converted = text_colour.to_html()
 	new_key_alert.text = "You have a [color=" + colour_converted + "]%s[/color] key." % colour
 	key_alerts.add_child(new_key_alert)
@@ -126,9 +127,11 @@ func clear_key_alerts():
 	
 func load_level_info():
 	if Global.current_area == Global.Area.GAMEPLAY:
-		var cs_path = SceneManager.current_scene.get_meta("scene_path")
+		var cs_path = SceneManager.current_scene.scene_file_path
+		print("Path:", str(cs_path))
 		var stripped_name = cs_path.get_file().replace(".tscn", "")
 		var new_name = stripped_name.capitalize()
+		level_info.add_theme_color_override("default_color", SceneManager.current_scene.level_aesthetic_colour)
 		level_info.text = new_name
 		level_info.visible = !level_info.visible
 		
@@ -144,4 +147,5 @@ func update_keys_info(increment):
 func update_keys(count):
 	if count == 0:
 		keys_collected = 0
-	keys_info.text = str("Keys: ", count, "/", keys_total)
+	
+	keys_info.text = "[color=" + default_text_colour + "]Keys: [/color]%d%s%d" % [count, "/", keys_total] 

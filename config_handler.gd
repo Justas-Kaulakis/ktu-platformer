@@ -4,33 +4,46 @@ var config = ConfigFile.new()
 const CONFIG_FILE_PATH = "res://settings.ini"
 
 func _ready():
-	if !FileAccess.file_exists(CONFIG_FILE_PATH):
-		set_defaults()
-	else:
-		config.load(CONFIG_FILE_PATH)
+	config.load(CONFIG_FILE_PATH)
+	set_defaults()
+	config.save(CONFIG_FILE_PATH)
+	#if !FileAccess.file_exists(CONFIG_FILE_PATH):
+	#	set_defaults()
+	#else:
+	#	config.load(CONFIG_FILE_PATH)
 		
 func set_defaults():
-	# Game controls
-	config.set_value("controls", "move_left", "A")
-	config.set_value("controls", "move_right", "D")
-	config.set_value("controls", "jump", "Space")
-	config.set_value("controls", "shoot", "mouse_1")
-	config.set_value("controls", "reload", "R")
-	config.set_value("controls", "pause_game", "Escape")
+	var default_settings = {
+		# Game controls
+		"controls": {
+			"move_left": "A",
+			"move_right": "D",
+			"jump": "Space",
+			"shoot": "mouse_1",
+			"reload": "R",
+			"pause_game": "Escape"
+		},
+		# Audio settings
+		"audio_settings": {
+			"master_volume": Global.initial_volume_value,
+			"sfx_volume": Global.initial_volume_value,
+			"music_volume": Global.initial_volume_value
+		},
+		# Video settings
+		"video_settings": {
+			"fullscreen": true
+		},
+		# Character options
+		"character": {
+			"gender": "male"
+		}
+	}
 	
-	# Audio settings
-	config.set_value("audio_settings", "master_volume", Global.initial_volume_value)
-	config.set_value("audio_settings", "sfx_volume", Global.initial_volume_value)
-	config.set_value("audio_settings", "music_volume", Global.initial_volume_value)
-	
-	# Video settings
-	config.set_value("video_settings", "fullscreen", true)
-	
-	# Character settings
-	config.set_value("character", "gender", "male")
-	
-	# Save changes
-	config.save(CONFIG_FILE_PATH)
+	# Checks if any rows are missing in the config file
+	for section in default_settings.keys():
+		for key in default_settings[section].keys():
+			if !config.has_section_key(section, key):
+				config.set_value(section, key, default_settings[section][key])
 	
 func save_controls(action: StringName, event: InputEvent):
 	var event_str

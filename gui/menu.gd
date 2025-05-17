@@ -6,7 +6,10 @@ extends Control
 
 func _input(event):
 	if event.is_action_pressed("pause_game"):
-		options_panel.visible = !options_panel.visible
+		if !level_selection.visible and options_panel.visible:
+			options_panel.visible = !options_panel.visible
+		elif !options_panel.visible and level_selection.visible:
+			level_selection.visible = !level_selection.visible
 
 
 func _ready() -> void:
