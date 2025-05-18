@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://2pd6cj5ouwwe"]
+[gd_scene load_steps=11 format=4 uid="uid://2pd6cj5ouwwe"]
 
 [ext_resource type="Script" uid="uid://ckssc4csvyg4" path="res://level/demo_level.gd" id="1_iox5r"]
 [ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://player/player.tscn" id="3_ps1br"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d2u0fqa00o42h" path="res://gui/OptionsPanel.tscn" id="5_jc0yy"]
 [ext_resource type="PackedScene" uid="uid://m2sqnkv38q0p" path="res://game_manager.tscn" id="7_iox5r"]
 [ext_resource type="PackedScene" uid="uid://cvbjpguukek2x" path="res://level/doors/LevelChangeDoor.tscn" id="7_pt6hw"]
+[ext_resource type="PackedScene" uid="uid://b5xqe73w71jhd" path="res://level/doors/key.tscn" id="9_iox5r"]
 [ext_resource type="PackedScene" uid="uid://dt1g4d40uoijb" path="res://level/Checkpoint.tscn" id="10_o2xhk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pt6hw"]
@@ -191,3 +192,9 @@ platform_3 = "breakable"
 [node name="Checkpoint2" parent="." instance=ExtResource("10_o2xhk")]
 position = Vector2(1153, 256)
 new_platform_count = 3
+
+[node name="Keys" type="Node2D" parent="."]
+
+[node name="Key" parent="Keys" instance=ExtResource("9_iox5r")]
+position = Vector2(648, 186)
+color_name = "green"

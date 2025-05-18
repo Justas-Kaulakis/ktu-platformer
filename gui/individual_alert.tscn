@@ -1,10 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwgwq2kxptds5"]
+[gd_scene format=3 uid="uid://e732545gjfo0"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0jx67"]
-bg_color = Color(0.133333, 0.133333, 0.133333, 0.392157)
-
-[node name="Label" type="Label"]
-theme_override_styles/normal = SubResource("StyleBoxFlat_0jx67")
-text = "Alert"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="RichTextLabel" type="RichTextLabel"]
+custom_minimum_size = Vector2(0, 24)
+offset_right = 40.0
+offset_bottom = 24.0
+size_flags_vertical = 4
+text = "Rich Alert"

@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=4 uid="uid://vh7pmputa7r3"]
+[gd_scene load_steps=28 format=4 uid="uid://vh7pmputa7r3"]
 
 [ext_resource type="Texture2D" uid="uid://c3kcneopkk8jg" path="res://player/Character_Sprites.png" id="2_8t03j"]
 [ext_resource type="Script" uid="uid://bo8vshlkb74dq" path="res://player/player.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://cs6id1t2vxalj" path="res://player/platform_gun.tscn" id="3_yw30f"]
 [ext_resource type="Script" uid="uid://bhbkej600a8et" path="res://player/player_ui.gd" id="5_boad6"]
+[ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="6_ebec5"]
 [ext_resource type="Script" uid="uid://cqatl8d70xc6n" path="res://player/area_2d.gd" id="6_g6k8r"]
 [ext_resource type="Texture2D" uid="uid://ey4aqpyssh4f" path="res://assets/textures/ui/bar red.png" id="6_rgyib"]
 [ext_resource type="Texture2D" uid="uid://lquuwaaxeral" path="res://assets/textures/ui/bar overlay.png" id="7_hg6s5"]
@@ -222,8 +223,8 @@ libraries = {
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(0, -28)
 offset = Vector2(0, 50)
-limit_left = -750
-limit_bottom = 440
+limit_left = -1024
+limit_bottom = 1024
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.155, -31)
@@ -261,18 +262,22 @@ shape = SubResource("RectangleShape2D_g6k8r")
 [node name="Player UI" type="CanvasLayer" parent="."]
 script = ExtResource("5_boad6")
 
-[node name="platform_counter" type="Label" parent="Player UI"]
+[node name="platform_counter" type="RichTextLabel" parent="Player UI"]
 z_index = -5
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 13.0
 offset_top = -184.0
-offset_right = 63.0
-offset_bottom = -161.0
+offset_right = 112.0
+offset_bottom = -139.0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/normal_font = ExtResource("6_ebec5")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
 text = "ammo"
+fit_content = true
+autowrap_mode = 0
 
 [node name="Health" type="TextureProgressBar" parent="Player UI"]
 offset_left = 12.0
@@ -307,3 +312,17 @@ color = Color(1, 1, 0.227451, 1)
 energy = 0.23
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_2ieo8")
+
+[node name="platform_counter" type="Label" parent="."]
+visible = false
+z_index = -5
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 13.0
+offset_top = -184.0
+offset_right = 63.0
+offset_bottom = -161.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "ammo"

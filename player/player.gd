@@ -21,7 +21,6 @@ var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var player_ui: CanvasLayer = $"Player UI"
 
 
-
 var _double_jump_charged := false
 var was_on_floor := false
 var current_health: float
@@ -29,12 +28,15 @@ var is_poisoned = false
 var keys: Array[StringName] = []
 
 
-
 func _ready() -> void:
 	Global.last_location = position
 	current_health = Global.max_health
 	AudioManager.stop_sfx("run")
 	add_to_group("player")
+	
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("reload"):
+		reset_player()
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor() and Global.double_jump == true:
@@ -127,10 +129,10 @@ func try_jump() -> void:
 	AudioManager.play_sfx("jump")
 	
 func boost():
-	velocity.x = min(velocity.x* 4, MAX_BOOST_X)
+	velocity.x = min(velocity.x * 4, MAX_BOOST_X)
 	if velocity.x < 0:
-		velocity.x = maxf(velocity.x* 4, -1*MAX_BOOST_X)
-	velocity.y = min(velocity.y* 1.5, MAX_BOOST_Y)
+		velocity.x = maxf(velocity.x * 4, -1 * MAX_BOOST_X)
+	velocity.y = min(velocity.y * 1.5, MAX_BOOST_Y)
 	
 
 func mouse_entered():
@@ -146,6 +148,7 @@ func _mouse_shape_enter(_shape_idx: int) -> void:
 func pick_up_key(key_color: StringName):
 	AudioManager.play_sfx("collect_key")
 	keys.append(key_color)
+	Alert.update_keys_info(1)
 
 func has_key(key_color: StringName):
 	return key_color in keys
@@ -158,7 +161,7 @@ func take_damage(damage_amount: float) -> void:
 	player_ui.update_health_bar(current_health)
 	if current_health > 0:
 		AudioManager.play_sfx("take_hit")
-		modulate = Color(1,0.6,0.6,1)
+		modulate = Color(1, 0.6, 0.6, 1)
 		await get_tree().create_timer(0.2).timeout
 		modulate = Color(Color.WHITE)
 	else:
@@ -167,6 +170,14 @@ func take_damage(damage_amount: float) -> void:
 
 func die():
 	AudioManager.play_sfx("die")
+	# Prevents suicide missions for keys
+	# (brute forcing through traps with the sole purpose
+	# of getting the key while knowing that it will be
+	# kept after death)
+	for key in keys:
+		if !Alert.keys_collected_array.has(key):
+			consume_key(key)
+	Alert.clear_checkpoint_alerts()
 	reset_player()
 	position = Global.last_location
 	
@@ -179,6 +190,7 @@ func reset_player():
 	player_ui.update_health_bar(current_health)
 	SceneManager.restore_pu_nodes()
 	Alert.clear_pu_alerts()
+	Alert.update_keys(Alert.keys_collected_checkpoint)
 	disable_powerup("double_jump")
 	disable_powerup("wall_jump")
 
@@ -192,8 +204,6 @@ func apply_powerup(powerup_name, duration):
 			Global.wall_jump = true
 			AudioManager.play_sfx("pickup_power_up")
 			Alert.create_powerup_alert("Wall Jump", duration)
-		_:
-			print("Kas skaitys, tas gaidys")
 			
 	await get_tree().create_timer(duration).timeout
 	disable_powerup(powerup_name)

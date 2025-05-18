@@ -19,8 +19,11 @@ func _on_ready() -> void:
 	
 func _process(_delta: float) -> void:
 	if not Engine.is_editor_hint():
-		if Input.is_action_just_pressed("reload"):
+		if Input.is_action_just_pressed("reload") and !Alert.keys_collected_array.has(color_name):
 			player.consume_key(color_name)
+			Alert.remove_checkpoint_alert(color_name)
+			if Alert.active_checkpoint_alerts_cn.has(color_name):
+				Alert.update_keys_info(-1)
 			pickable = true
 			$Sprite2D.visible = true
 
@@ -28,6 +31,6 @@ func _on_body_entered(body):
 	if not Engine.is_editor_hint() and body is Player and pickable:
 		print("Player picking up key!")
 		body.pick_up_key(color_name)
-		Alert.add_key_alert(color_name)
+		Alert.add_checkpoint_alert(color_name)
 		$Sprite2D.visible = false
 		pickable = false

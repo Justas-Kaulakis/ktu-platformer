@@ -1,23 +1,25 @@
 extends CanvasLayer
 
 
-@onready var platform_counter: Label = $platform_counter
+@onready var platform_counter: RichTextLabel = $platform_counter
 @onready var Health: TextureProgressBar = $Health
 
 
 func _ready() -> void:
 
-	platform_counter.set_text("Platforms: " + str(Global.max_platform_count)+"/"+str(Global.max_platform_count))
+	#platform_counter.set_text("Platforms: " + str(Global.max_platform_count)+"/"+str(Global.max_platform_count))
+	update_platform_count(Global.max_platform_count)
 
 func update_health_bar(current_health):
 	get_node("Health").value = current_health
 
-
 func update_platform_count(current):
+	var colour: Color
 	if current <= float(Global.max_platform_count) / 3:
-		platform_counter.add_theme_color_override("font_color", Color(1, 0, 0))
+		colour = Color8(255, 0, 0)
 	elif current <= float(Global.max_platform_count) / 3 * 2:
-		platform_counter.add_theme_color_override("font_color", Color(1, 1, 0))
+		colour = Color8(255, 255, 0)
 	else:
-		platform_counter.add_theme_color_override("font_color", Color(0, 1, 0))
-	platform_counter.set_text("Platforms: " + str(current)+"/"+str(Global.max_platform_count))
+		colour = Color8(0, 255, 0)
+	var colour_converted = colour.to_html()
+	platform_counter.text = "Platforms: [color=" + colour_converted + "]%d%s%d[/color]" % [current, "/", Global.max_platform_count]

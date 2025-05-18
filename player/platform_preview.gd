@@ -23,7 +23,7 @@ func attach_preview(platform: PackedScene) -> void:
 	add_child(sprite)
 
 func handle_drawing(tiles: TileMapLayer, platform_count:int, can_shoot: bool, can_shoot_player: int, is_game_paused) -> void:
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+	if Input.is_action_pressed("preview"):
 		var preview:Sprite2D = get_child(0)
 		var global_scaled = tiles.get_global_mouse_position()
 		var node_coord = tiles.local_to_map(tiles.to_local(global_scaled))
