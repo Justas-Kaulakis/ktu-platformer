@@ -11,9 +11,9 @@ class_name Gate extends StaticBody2D
 
 var is_open = false
 
-func _process(_delta: float) -> void:
+func _input(event: InputEvent) -> void:
 	if not Engine.is_editor_hint():
-		if Input.is_action_just_pressed("reload"):
+		if event.is_action_pressed("reload"):
 			close_gate()
 
 func _on_detection_area_body_entered(player) -> void:
@@ -25,7 +25,7 @@ func _on_detection_area_body_entered(player) -> void:
 			print("Player has the key: Open gate!")
 			open_gate()
 			# Consume the key after use
-			player.consume_key(color_name)
+			(player as Player).consume_key(color_name)
 			Alert.remove_checkpoint_alert(color_name)
 
 func open_gate():

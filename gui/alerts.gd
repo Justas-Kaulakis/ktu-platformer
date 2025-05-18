@@ -17,11 +17,11 @@ var active_checkpoint_alerts_cn: Array = []
 var keys_collected_array: Array = []
 
 var font = FontFile.new()
-var default_text_colour = Color8(192, 192, 192).to_html()
+var default_text_colour = Color.from_rgba8(192, 192, 192).to_html()
 
-var keys_collected
-var keys_collected_checkpoint
-var keys_total
+var keys_collected: int = 0
+var keys_collected_checkpoint: int = 0
+var keys_total: int = 0
 
 func _ready():
 	font.load_dynamic_font("res://gui/kenney_mini_square.ttf")
@@ -34,7 +34,7 @@ func create_popup_alert(message):
 	tween.tween_property(panel, "modulate:a", 0.0, 0.2)
 
 func create_powerup_alert(message, duration):
-	var default_colour: Color = Color8(0, 255, 0)
+	var default_colour: Color = Color.from_rgba8(0, 255, 0)
 	var colour_converted = default_colour.to_html()
 	var middle_text = " is active for "
 	var end_text = " seconds!"
@@ -58,9 +58,9 @@ func create_powerup_alert(message, duration):
 		await get_tree().create_timer(update_interval).timeout
 		remaining_duration -= update_interval
 		if loops <= one_third:
-			colour = Color8(255, 0, 0)
+			colour = Color.from_rgba8(255, 0, 0)
 		elif loops <= two_thirds:
-			colour = Color8(255, 255, 0)
+			colour = Color.from_rgba8(255, 255, 0)
 		else:
 			colour = default_colour
 		colour_converted = colour.to_html()
@@ -77,25 +77,12 @@ func create_powerup_alert(message, duration):
 	tween.tween_callback(new_pu_alert.queue_free)
 	
 func add_checkpoint_alert(colour):
-	var text_colour: Color
 	var new_checkpoint_alert: RichTextLabel = alert.instantiate()
 	new_checkpoint_alert.bbcode_enabled = true
 	new_checkpoint_alert.fit_content = true
 	new_checkpoint_alert.autowrap_mode = TextServer.AUTOWRAP_OFF
 	new_checkpoint_alert.add_theme_font_override("normal_font", font)
-	match(colour):
-		"blue":
-			text_colour = Color8(0, 255, 255)
-		"red":
-			text_colour = Color8(255, 0, 0)
-		"green":
-			text_colour = Color8(0, 255, 0)
-		"white":
-			text_colour = Color8(255, 255, 255)
-		"yellow":
-			text_colour = Color8(255, 255, 0)
-	var colour_converted = text_colour.to_html()
-	new_checkpoint_alert.text = "You have a [color=" + colour_converted + "]%s[/color] key." % colour
+	new_checkpoint_alert.text = "You have a [color=" + Color(colour).to_html() + "]%s[/color] key." % colour
 	checkpoint_alerts.add_child(new_checkpoint_alert)
 	active_checkpoint_alerts.append(new_checkpoint_alert)
 	active_checkpoint_alerts_cn.append(colour)

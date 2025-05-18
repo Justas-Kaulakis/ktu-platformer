@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://cto2r1llqapws"]
+[gd_scene load_steps=15 format=3 uid="uid://cto2r1llqapws"]
 
 [ext_resource type="Script" uid="uid://dsoegp5evqwhp" path="res://gui/menu.gd" id="1_lti8b"]
 [ext_resource type="PackedScene" uid="uid://d2u0fqa00o42h" path="res://gui/OptionsPanel.tscn" id="3_lnc0w"]
-[ext_resource type="PackedScene" uid="uid://rs66tsg66vbd" path="res://gui/level_select_screen.tscn" id="4_heart"]
+[ext_resource type="PackedScene" uid="uid://yspi54bxpwv4" path="res://gui/level_select_screen.tscn" id="4_heart"]
 [ext_resource type="Texture2D" uid="uid://d0mcg8vcoj425" path="res://assets/textures/menu_bg.png" id="4_o6i5c"]
 [ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="5_heart"]
 [ext_resource type="StyleBox" uid="uid://chugqj3dfu53s" path="res://gui/menu_btn.tres" id="5_vd72o"]
 [ext_resource type="Script" uid="uid://bnp884quc02dl" path="res://gui/ButtonWithSounds.gd" id="6_o6i5c"]
+[ext_resource type="Theme" uid="uid://da4noqsij73it" path="res://gui/theme.tres" id="8_ijvwb"]
 
 [sub_resource type="Theme" id="Theme_vd72o"]
 default_font = ExtResource("5_heart")
@@ -161,6 +162,30 @@ lifetime = 2.07
 visibility_rect = Rect2(-50, -120, 100, 150)
 process_material = SubResource("ParticleProcessMaterial_o6i5c")
 
+[node name="credits" type="Button" parent="."]
+layout_mode = 0
+offset_left = 514.0
+offset_top = 240.0
+offset_right = 728.0
+offset_bottom = 288.0
+rotation = 0.00698132
+mouse_default_cursor_shape = 2
+theme = ExtResource("8_ijvwb")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_disabled_color = Color(0.769531, 0.354578, 0.14957, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.765625, 0.574466, 0.130295, 1)
+theme_override_colors/font_outline_color = Color(0.66, 0.268824, 0.194622, 0.137255)
+theme_override_colors/font_color = Color(0.546875, 0.152257, 0.0990812, 1)
+theme_override_colors/font_focus_color = Color(0.545098, 0.152941, 0.0980392, 1)
+theme_override_colors/font_pressed_color = Color(0.768627, 0.352941, 0.14902, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "credits"
+flat = true
+script = ExtResource("6_o6i5c")
+
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="credits" to="." method="_on_credits_pressed"]

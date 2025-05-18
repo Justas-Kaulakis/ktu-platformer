@@ -1,8 +1,7 @@
 extends Node2D
 
 @onready var platform_gun = SceneManager.current_scene.get_node("Player/Sprite2D/PlatformGun")
-
-@export var level_aesthetic_colour: Color = Color.from_rgba8(26, 141, 76)
+@export var level_aesthetic_colour: Color = Color.from_rgba8(255, 204, 51)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

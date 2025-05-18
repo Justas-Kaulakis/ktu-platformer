@@ -5,6 +5,7 @@ extends Node2D
 @export var spawn_offset: float = 0.0    # Initial delay before first spawn
 @export var drop_damage: float = 10.0    # Damage passed to drops
 @export var drop_speed: float = 200.0    # Fall speed passed to drops
+@export var drop_scale: float = 1.0    # drop rendering scale
 
 # Reference to the LavaDrop scene
 @export var lava_drop_scene: PackedScene = preload("res://level/traps/Lava_drop.tscn")
@@ -35,6 +36,7 @@ func spawn_drop():
 	drop.fall_speed = drop_speed
 	# Spawn at the exact position of SpawnPoint
 	drop.position = spawn_point.global_position
+	drop.apply_scale(Vector2(drop_scale, drop_scale));
 	drop.add_to_group("lava_group")
 	# Add to scene tree
 	get_tree().current_scene.add_child(drop)
