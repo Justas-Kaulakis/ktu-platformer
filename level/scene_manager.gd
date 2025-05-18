@@ -1,7 +1,7 @@
 extends Node
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var current_scene = get_tree().current_scene
+@onready var current_scene:Node = get_tree().current_scene
 
 var cs_pu_data: Array = []
 var cs_pu_instances: Array = []

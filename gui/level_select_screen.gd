@@ -38,6 +38,3 @@ func _ready() -> void:
 	
 func _on_back_to_main_menu():
 	level_selection.visible = !level_selection.visible
-	
-func _process(delta: float) -> void:
-	pass

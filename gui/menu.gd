@@ -37,3 +37,7 @@ func find_signal_emitter(root: Node, signal_name: String):
 func _on_quit_pressed() -> void:
 	AudioManager.play_sfx("button_pressed")
 	get_tree().quit()
+
+
+func _on_credits_pressed() -> void:
+	SceneManager.switch_scene_with_fade("res://gui/end_screen.tscn")

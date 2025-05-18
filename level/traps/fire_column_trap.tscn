@@ -1,8 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://bbke83hfp8q2g"]
+[gd_scene load_steps=16 format=3 uid="uid://bbke83hfp8q2g"]
 
 [ext_resource type="Texture2D" uid="uid://cjmtdoo2jh7fe" path="res://assets/textures/traps/fire_column_spritesheet.png" id="1_nh7qy"]
 [ext_resource type="Script" uid="uid://cb4btjeb46q0l" path="res://level/traps/fire_column_trap.gd" id="1_pkbnr"]
 [ext_resource type="Texture2D" uid="uid://dy87vpnuf8jmk" path="res://assets/textures/TEXTURES.png" id="3_5jfku"]
+[ext_resource type="Material" uid="uid://deeqgsgs063br" path="res://level/lights/light_emitor_material.tres" id="3_ttuac"]
+[ext_resource type="Script" uid="uid://cvoj7w83yebj3" path="res://level/lights/light_flicker.gd" id="4_ialtt"]
+
+[sub_resource type="Gradient" id="Gradient_8dobj"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.146814, 0.382271, 0.565097, 0.739612, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.739612, 0.739612, 0.739612, 1, 0.420234, 0.420234, 0.420234, 1, 0.276583, 0.276583, 0.276583, 1, 0.086322, 0.086322, 0.086322, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_de41u"]
+gradient = SubResource("Gradient_8dobj")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.811966)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkbnr"]
 size = Vector2(20, 60)
@@ -33,6 +46,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_8hrjq"]
 resource_name = "burn"
@@ -62,6 +87,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.7, 0.7]
 }
 
 [sub_resource type="Animation" id="Animation_pkbnr"]
@@ -107,6 +144,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.7, 0.0]
+}
 
 [sub_resource type="Animation" id="Animation_nh7qy"]
 resource_name = "start"
@@ -136,6 +185,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.7]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8hrjq"]
 _data = {
@@ -152,6 +213,18 @@ region = Rect2(344, 184, 8, 8)
 
 [node name="FireColumnTrap" type="Node2D"]
 script = ExtResource("1_pkbnr")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = 1
+material = ExtResource("3_ttuac")
+position = Vector2(0, -35)
+scale = Vector2(1.0625, 1.53125)
+color = Color(1, 0.535766, 0.323057, 1)
+energy = 0.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_de41u")
+script = ExtResource("4_ialtt")
+flicker_range = 0.5
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2

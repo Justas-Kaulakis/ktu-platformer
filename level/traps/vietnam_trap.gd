@@ -1,7 +1,7 @@
 extends Area2D
 
 @onready var spikes: PackedScene = preload("res://level/traps/spikes.tscn")
-@onready var spikes_group: Node = get_parent().get_node("Basic Spikes")
+@onready var spikes_group: Node = SceneManager.current_scene.find_child("Basic Spikes")
 var vt_position
 
 func _on_body_entered(_body) -> void:

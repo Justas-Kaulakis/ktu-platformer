@@ -9,5 +9,5 @@ func _ready() -> void:
 	text = str(name_text)+": "+str(key_name)
 	
 func _input(event: InputEvent) -> void:
-	if(event.is_action_pressed(name)):
+	if event.is_action_pressed(name):
 		set_deferred("visible",false)
