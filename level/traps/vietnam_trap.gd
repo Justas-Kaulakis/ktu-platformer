@@ -12,7 +12,7 @@ func _on_body_entered(_body) -> void:
 		var nt_centre = Vector2(round(nt_dims.x / 2), round(nt_dims.y / 2)) * 4
 		new_trap.global_position = vt_position
 		new_trap.global_position -= nt_centre
-		new_trap.scale = spikes_group.scale
+		new_trap.scale = Vector2(4.0, 4.0)
 		add_sibling.call_deferred(new_trap)
 		queue_free()
 

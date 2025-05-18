@@ -411,47 +411,55 @@ scale = Vector2(4.5, 4.5)
 [node name="Options Menu" parent="UI" instance=ExtResource("3_l1g64")]
 visible = false
 
-[node name="jump" type="TextEdit" parent="UI"]
-offset_left = 522.0
-offset_top = 26.0
-offset_right = 772.0
-offset_bottom = 58.0
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -125.0
+offset_right = 125.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+alignment = 1
+
+[node name="jump" type="TextEdit" parent="UI/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("9_7fchg")
 text = "jump input"
 script = ExtResource("10_nlkbw")
 
-[node name="move_left" type="TextEdit" parent="UI"]
-offset_left = 522.0
-offset_top = 58.0
-offset_right = 772.0
-offset_bottom = 90.0
+[node name="move_left" type="TextEdit" parent="UI/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("9_7fchg")
 text = "move left input"
 script = ExtResource("10_nlkbw")
 
-[node name="move_right" type="TextEdit" parent="UI"]
-offset_left = 522.0
-offset_top = 90.0
-offset_right = 772.0
-offset_bottom = 122.0
+[node name="move_right" type="TextEdit" parent="UI/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("9_7fchg")
 text = "move right input"
 script = ExtResource("10_nlkbw")
 
-[node name="reload" type="TextEdit" parent="UI"]
-offset_left = 522.0
-offset_top = 122.0
-offset_right = 772.0
-offset_bottom = 154.0
+[node name="reload" type="TextEdit" parent="UI/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("9_7fchg")
 text = "reload input"
 script = ExtResource("10_nlkbw")
 
-[node name="shoot" type="TextEdit" parent="UI"]
-offset_left = 522.0
-offset_top = 154.0
-offset_right = 772.0
-offset_bottom = 186.0
+[node name="shoot" type="TextEdit" parent="UI/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("9_7fchg")
 text = "shoot input"
 script = ExtResource("10_nlkbw")

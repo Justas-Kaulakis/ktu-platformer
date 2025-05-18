@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=4 uid="uid://b6hql25s82eko"]
+[gd_scene load_steps=31 format=4 uid="uid://b6hql25s82eko"]
 
 [ext_resource type="PackedScene" uid="uid://d2u0fqa00o42h" path="res://gui/OptionsPanel.tscn" id="1_2loia"]
 [ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://player/player.tscn" id="1_7o5yd"]
+[ext_resource type="Script" uid="uid://8rd2emop6icw" path="res://level/level_4.gd" id="1_sdk3c"]
 [ext_resource type="TileSet" uid="uid://q1prew1alqhu" path="res://level/tileset.tres" id="1_t4xmy"]
 [ext_resource type="PackedScene" uid="uid://b5xqe73w71jhd" path="res://level/doors/key.tscn" id="2_7o5yd"]
 [ext_resource type="PackedScene" uid="uid://bi55575cmdtvs" path="res://level/powerups/powerup_double_jump.tscn" id="2_b26y2"]
@@ -72,7 +73,8 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.995726, 0.901709)
 
-[node name="Level_4" type="Node2D"]
+[node name="Level 4" type="Node2D"]
+script = ExtResource("1_sdk3c")
 
 [node name="Player" parent="." instance=ExtResource("1_7o5yd")]
 position = Vector2(493.356, 175.852)
@@ -146,35 +148,37 @@ new_platform_count = 4
 platform_2 = "trampoline"
 platform_3 = "trampoline"
 
-[node name="Gates and Keys" type="Node2D" parent="."]
+[node name="Gates" type="Node2D" parent="."]
 position = Vector2(970, -210)
 
-[node name="Key" parent="Gates and Keys" instance=ExtResource("2_7o5yd")]
-position = Vector2(-1268, -432)
-scale = Vector2(2, 2)
-
-[node name="Key2" parent="Gates and Keys" instance=ExtResource("2_7o5yd")]
-position = Vector2(1986, -1226)
-scale = Vector2(2, 2)
-color_name = "blue"
-
-[node name="Key3" parent="Gates and Keys" instance=ExtResource("2_7o5yd")]
-position = Vector2(-970, -1414)
-scale = Vector2(2, 2)
-color_name = "red"
-
-[node name="Gate" parent="Gates and Keys" instance=ExtResource("3_ewxm4")]
+[node name="Gate" parent="Gates" instance=ExtResource("3_ewxm4")]
 position = Vector2(459, -479)
 scale = Vector2(2, 2)
 
-[node name="Gate2" parent="Gates and Keys" instance=ExtResource("3_ewxm4")]
+[node name="Gate2" parent="Gates" instance=ExtResource("3_ewxm4")]
 position = Vector2(-480, -896)
 rotation = 3.14159
 scale = Vector2(2, -2)
 color_name = "blue"
 
-[node name="Gate3" parent="Gates and Keys" instance=ExtResource("3_ewxm4")]
+[node name="Gate3" parent="Gates" instance=ExtResource("3_ewxm4")]
 position = Vector2(-124, 353)
+scale = Vector2(2, 2)
+color_name = "red"
+
+[node name="Keys" type="Node2D" parent="."]
+
+[node name="Key" parent="Keys" instance=ExtResource("2_7o5yd")]
+position = Vector2(-298, -642)
+scale = Vector2(2, 2)
+
+[node name="Key2" parent="Keys" instance=ExtResource("2_7o5yd")]
+position = Vector2(2956, -1436)
+scale = Vector2(2, 2)
+color_name = "blue"
+
+[node name="Key3" parent="Keys" instance=ExtResource("2_7o5yd")]
+position = Vector2(0, -1624)
 scale = Vector2(2, 2)
 color_name = "red"
 
