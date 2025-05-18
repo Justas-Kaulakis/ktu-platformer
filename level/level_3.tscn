@@ -19,13 +19,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcq0y"]
 size = Vector2(177, 131)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mhvx"]
+size = Vector2(177, 131)
+
 [node name="Level 3" type="Node2D"]
 auto_translate_mode = 2
 script = ExtResource("1_5mhvx")
 metadata/_edit_vertical_guides_ = [1593.0]
 
 [node name="Player" parent="." instance=ExtResource("3_ps1br")]
-position = Vector2(204, 240)
+position = Vector2(179, 224)
 JUMP_VELOCITY = -625.0
 
 [node name="Layers" type="Node2D" parent="."]

@@ -44,6 +44,22 @@ script = ExtResource("1_jfgjb")
 position = Vector2(77.6333, 122.73)
 JUMP_VELOCITY = -625.0
 
+[node name="Keys" type="Node2D" parent="."]
+
+[node name="Key" parent="Keys" instance=ExtResource("14_b2ana")]
+position = Vector2(1167, -34)
+scale = Vector2(2, 2)
+
+[node name="Key2" parent="Keys" instance=ExtResource("14_b2ana")]
+position = Vector2(5646, -158)
+scale = Vector2(2, 2)
+color_name = "red"
+
+[node name="Key3" parent="Keys" instance=ExtResource("14_b2ana")]
+position = Vector2(4055, -1002)
+scale = Vector2(2, 2)
+color_name = "blue"
+
 [node name="Vietnam Trap" parent="." instance=ExtResource("15_b2ana")]
 position = Vector2(1090, 63)
 
@@ -484,15 +500,6 @@ position = Vector2(894, 132)
 [node name="Wall Jump Powerup" parent="." instance=ExtResource("12_4h366")]
 position = Vector2(1436, 324)
 
-[node name="Key" parent="." instance=ExtResource("14_b2ana")]
-position = Vector2(1167, -34)
-scale = Vector2(2, 2)
-
-[node name="Key2" parent="." instance=ExtResource("14_b2ana")]
-position = Vector2(5646, -158)
-scale = Vector2(2, 2)
-color_name = "red"
-
 [node name="Gate" parent="." instance=ExtResource("14_6jaql")]
 position = Vector2(1093, 176)
 scale = Vector2(2, 2)
@@ -532,11 +539,6 @@ color_name = "red"
 
 [node name="Gate3" parent="." instance=ExtResource("14_6jaql")]
 position = Vector2(5215, -449)
-scale = Vector2(2, 2)
-color_name = "blue"
-
-[node name="Key3" parent="." instance=ExtResource("14_b2ana")]
-position = Vector2(4055, -1002)
 scale = Vector2(2, 2)
 color_name = "blue"
 

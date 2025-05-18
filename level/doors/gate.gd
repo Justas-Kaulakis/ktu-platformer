@@ -26,7 +26,7 @@ func _on_detection_area_body_entered(player) -> void:
 			open_gate()
 			# Consume the key after use
 			player.consume_key(color_name)
-			Alert.remove_key_alert(color_name)
+			Alert.remove_checkpoint_alert(color_name)
 
 func open_gate():
 	AudioManager.play_sfx("door_opened")

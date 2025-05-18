@@ -1,8 +1,8 @@
-extends CenterContainer
+extends Control
 
-@onready var vb_container: VBoxContainer = $ScrollContainer/VBoxContainer
-@onready var level_selection: CenterContainer = $"."
-@onready var back_to_main_menu: Button = $"ScrollContainer/VBoxContainer/Back to Main Menu"
+@onready var level_selection: Control = $"."
+@onready var back_to_main_menu: Button = $"PanelContainer/MarginContainer/VBoxContainer/Back to Main Menu"
+@onready var vb_container: VBoxContainer = $PanelContainer/MarginContainer/VBoxContainer
 
 var sound_script: GDScript = preload("res://gui/ButtonWithSounds.gd")
 

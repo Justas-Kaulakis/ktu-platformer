@@ -58,7 +58,7 @@ script = ExtResource("1_lti8b")
 [node name="Options Menu" parent="UI" instance=ExtResource("3_lnc0w")]
 visible = false
 
-[node name="Level Selection" parent="UI" instance=ExtResource("4_heart")]
+[node name="Level Selection Menu" parent="UI" instance=ExtResource("4_heart")]
 visible = false
 
 [node name="MenuBg" type="Sprite2D" parent="."]
