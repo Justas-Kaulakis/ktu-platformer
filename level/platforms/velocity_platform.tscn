@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cof5ybfjoqrlc"]
 
-[ext_resource type="Script" uid="uid://cq8qdquswppef" path="res://level/platforms/velocity_platform.gd" id="1_bwrn3"]
+[ext_resource type="Script" uid="uid://cq8qdquswppef" path="res://assets/textures/velocity_platform.gd" id="1_bwrn3"]
 [ext_resource type="Texture2D" uid="uid://dra4crgw7kjnw" path="res://assets/textures/velocity_platform.png" id="2_5vle8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wet7f"]
