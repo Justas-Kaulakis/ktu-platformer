@@ -44,17 +44,23 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("platform_1"):
 		selected_platform = Global.p_1
 		Global.rotate = 0
+		Alert.update_platform_info(Global.pdn_1, 1)
+		
 	if Input.is_action_just_pressed("platform_2"):
 		selected_platform = Global.p_2
 		Global.rotate = 0
+		Alert.update_platform_info(Global.pdn_2, 2)
+		
 	if Input.is_action_just_pressed("platform_3"):
 		selected_platform = Global.p_3
 		Global.rotate = 0
+		Alert.update_platform_info(Global.pdn_3, 3)
 	
 	if Input.is_action_just_pressed("rotate"):
 		Global.rotate += 90
 		if Global.rotate == 360:
 			Global.rotate = 0
+		Alert.update_rotation_info(Global.rotate)
 	
 	if selected_platform.resource_path == "res://level/platforms/trampoline_platform.tscn" or \
 	selected_platform.resource_path == "res://level/platforms/velocity_platform.tscn":

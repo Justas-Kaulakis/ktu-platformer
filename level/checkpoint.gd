@@ -13,15 +13,21 @@ func _on_body_entered(player: Player) -> void:
 	if not visited:
 		AudioManager.play_sfx("checkpoint_reached")
 		visited = true
+		Alert.keys_collected_checkpoint = Alert.keys_collected
+		for key in Alert.active_checkpoint_alerts_cn:
+			Alert.keys_collected_array.append(key)
 		
 	Input.action_press("platform_1")
 	Input.action_release("platform_1")
 	Global.p_1 = Global.platform[platform_1]
 	Global.pt_1 = Global.platformText[platform_1]
+	Global.pdn_1 = Global.platform_display_names[platform_1]
 	Global.p_2 = Global.platform[platform_2]
 	Global.pt_2 = Global.platformText[platform_2]
+	Global.pdn_2 = Global.platform_display_names[platform_2]
 	Global.p_3 = Global.platform[platform_3]
 	Global.pt_3 = Global.platformText[platform_3]
+	Global.pdn_3 = Global.platform_display_names[platform_3]
 	
 	Global.max_platform_count = new_platform_count # sets ammo count
 	Global.last_location = player.global_position # sets respawn point

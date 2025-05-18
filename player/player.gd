@@ -176,8 +176,9 @@ func die():
 	# of getting the key while knowing that it will be
 	# kept after death)
 	for key in keys:
-		consume_key(key)
-	Alert.clear_key_alerts()
+		if !Alert.keys_collected_array.has(key):
+			consume_key(key)
+	Alert.clear_checkpoint_alerts()
 	reset_player()
 	position = Global.last_location
 	
@@ -190,7 +191,7 @@ func reset_player():
 	player_ui.update_health_bar(current_health)
 	SceneManager.restore_pu_nodes()
 	Alert.clear_pu_alerts()
-	Alert.update_keys(0)
+	Alert.update_keys(Alert.keys_collected_checkpoint)
 	disable_powerup("double_jump")
 	disable_powerup("wall_jump")
 
@@ -204,8 +205,6 @@ func apply_powerup(powerup_name, duration):
 			Global.wall_jump = true
 			AudioManager.play_sfx("pickup_power_up")
 			Alert.create_powerup_alert("Wall Jump", duration)
-		_:
-			print("Kas skaitys, tas gaidys")
 			
 	await get_tree().create_timer(duration).timeout
 	disable_powerup(powerup_name)

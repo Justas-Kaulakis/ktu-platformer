@@ -1,6 +1,6 @@
 extends Node
 
-# MENU arba GAMEPLAY
+# MENU, GAMEPLAY arba END_SCREEN
 enum Area {MENU, GAMEPLAY, END_SCREEN}
 var current_area: Area = Area.MENU:
 	set(new_area):
@@ -30,6 +30,17 @@ var platformText : Dictionary[String, CompressedTexture2D] = {
 	"flicker2": preload("res://assets/textures/flicker_platform2.png"),
 	"rotate": preload("res://assets/textures/rotate_platform.png"),
 }
+
+var platform_display_names: Dictionary = {
+	"default": "Default",
+	"breakable": "Crumbling",
+	"gravity": "Falling",
+	"velocity": "Acceleration",
+	"trampoline": "Trampoline",
+	"flicker": "Vanishing",
+	"rotate": "Rotating"
+}
+
 var p_1 = platform["default"]
 var p_2 = platform["breakable"]
 var p_3 = platform["gravity"]
@@ -48,6 +59,14 @@ var pt_5_2 = platformText["trampoline2"]
 var pt_6 = platformText["flicker"]
 var pt_6_2 = platformText["flicker2"]
 var pt_7 = platformText["rotate"]
+
+var pdn_1 = platform_display_names["default"]
+var pdn_2 = platform_display_names["breakable"]
+var pdn_3 = platform_display_names["gravity"]
+var pdn_4 = platform_display_names["velocity"]
+var pdn_5 = platform_display_names["trampoline"]
+var pdn_6 = platform_display_names["flicker"]
+var pdn_7 = platform_display_names["rotate"]
 
 # PLAYER DATA
 var max_health: float = 4.

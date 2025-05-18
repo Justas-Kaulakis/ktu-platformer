@@ -223,8 +223,8 @@ libraries = {
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(0, -28)
 offset = Vector2(0, 50)
-limit_left = -750
-limit_bottom = 440
+limit_left = -1024
+limit_bottom = 1024
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.155, -31)

@@ -13,7 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://b5xqe73w71jhd" path="res://level/doors/key.tscn" id="9_07kww"]
 [ext_resource type="PackedScene" uid="uid://dt1g4d40uoijb" path="res://level/Checkpoint.tscn" id="10_o2xhk"]
 [ext_resource type="PackedScene" uid="uid://b7vhnpulw5yfq" path="res://level/powerups/powerup_wall_jump.tscn" id="12_f1jq1"]
-[ext_resource type="PackedScene" uid="uid://bi55575cmdtvs" path="res://level/powerups/powerup_double_jump.tscn" id="14_hrebq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mhvx"]
+size = Vector2(177, 131)
 
 [node name="Level 3" type="Node2D"]
 auto_translate_mode = 2
@@ -21,7 +23,7 @@ script = ExtResource("1_5mhvx")
 metadata/_edit_vertical_guides_ = [1593.0]
 
 [node name="Player" parent="." instance=ExtResource("3_ps1br")]
-position = Vector2(1021, -15)
+position = Vector2(179, 224)
 JUMP_VELOCITY = -625.0
 
 [node name="Layers" type="Node2D" parent="."]
@@ -314,10 +316,15 @@ color_name = "red"
 
 [node name="LevelChangeDoor" parent="." instance=ExtResource("7_pt6hw")]
 position = Vector2(4924, 510)
+next_scene = "uid://2pd6cj5ouwwe"
+
+[node name="sensor" type="Area2D" parent="LevelChangeDoor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChangeDoor/sensor"]
+position = Vector2(-49.5, -20.5)
+shape = SubResource("RectangleShape2D_5mhvx")
+debug_color = Color(0, 0.6, 0.701961, 0.0509804)
 
 [node name="Spikes25" parent="." instance=ExtResource("4_pt6hw")]
 position = Vector2(4470, 552)
 scale = Vector2(4, 4)
-
-[node name="Double Jump Powerup" parent="." instance=ExtResource("14_hrebq")]
-position = Vector2(1063, -50)

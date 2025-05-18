@@ -41,7 +41,7 @@ glow_bloom = 0.1
 script = ExtResource("1_jfgjb")
 
 [node name="Player" parent="." instance=ExtResource("1_nokfs")]
-position = Vector2(5396, -405.544)
+position = Vector2(103, 104)
 JUMP_VELOCITY = -625.0
 
 [node name="Keys" type="Node2D" parent="."]

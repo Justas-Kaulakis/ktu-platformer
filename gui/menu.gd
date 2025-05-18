@@ -1,7 +1,7 @@
 extends Control
 
 @onready var options_panel: Control = $"UI/Options Menu"
-@onready var level_selection: CenterContainer = $"UI/Level Selection"
+@onready var level_selection: Control = $"UI/Level Selection Menu"
 
 
 func _input(event):

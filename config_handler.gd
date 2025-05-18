@@ -20,8 +20,12 @@ func set_defaults():
 			"move_right": "D",
 			"jump": "Space",
 			"shoot": "mouse_1",
+			"preview": "mouse_2",
 			"reload": "R",
-			"pause_game": "Escape"
+			"pause_game": "Escape",
+			"platform_1": "1",
+			"platform_2": "2",
+			"platform_3": "3"
 		},
 		# Audio settings
 		"audio_settings": {

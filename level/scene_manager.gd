@@ -53,8 +53,12 @@ func switch_scene(path: String):
 		_deferred_switch_scene.call_deferred(path)
 	if Alert.level_info.visible:
 		Alert.level_info.visible = !Alert.level_info.visible
-	if Alert.keys_info.visible:
-		Alert.keys_info.visible = !Alert.keys_info.visible
+	if Alert.progress_info.visible:
+		Alert.progress_info.visible = !Alert.progress_info.visible
+	if Alert.roto_info.visible:
+		Alert.roto_info.visible = !Alert.roto_info.visible
+	if Alert.platform_type.visible:
+		Alert.platform_type.visible = !Alert.platform_type.visible
 
 func _deferred_switch_scene(path):
 	if current_scene:

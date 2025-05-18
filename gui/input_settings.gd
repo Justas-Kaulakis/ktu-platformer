@@ -10,8 +10,12 @@ var input_actions = {
 	"move_right": "Move rightwards",
 	"jump": "Jump",
 	"shoot": "Platform gun – shoot",
+	"preview": "Platform gun – preview platform",
 	"reload": "Platform gun – reload",
-	"rotate": "Platform gun – rotate"
+	"rotate": "Platform gun – rotate",
+	"platform_1": "Platform gun – platform 1",
+	"platform_2": "Platform gun – platform 2",
+	"platform_3": "Platform gun – platform 3"
 }
 
 var is_remapping = false

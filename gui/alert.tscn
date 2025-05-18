@@ -78,7 +78,7 @@ fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="Keys Information" type="RichTextLabel" parent="."]
+[node name="Progress Information" type="RichTextLabel" parent="."]
 visible = false
 anchors_preset = 6
 anchor_left = 1.0
@@ -93,7 +93,36 @@ grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("2_x4g26")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "Keys"
+text = "Progress"
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
+
+[node name="Rotation Information" type="RichTextLabel" parent="."]
+visible = false
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 13.0
+offset_top = -104.0
+offset_right = 93.0
+offset_bottom = -72.0
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_x4g26")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Rotations"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Platform Type" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 13.0
+offset_top = 96.0
+offset_right = 93.0
+offset_bottom = 128.0
+theme_override_fonts/normal_font = ExtResource("2_x4g26")
+bbcode_enabled = true
+text = "Platform"
+fit_content = true
+autowrap_mode = 0
