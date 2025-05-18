@@ -10,6 +10,7 @@ var sound_script: GDScript = preload("res://gui/ButtonWithSounds.gd")
 	"res://level/level_1.tscn",
 	"res://level/level_2.tscn",
 	"res://level/level_3.tscn",
+	"res://level/level_4.tscn",
 ]
 
 func load_levels() -> void:

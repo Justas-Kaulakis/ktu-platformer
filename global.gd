@@ -1,6 +1,6 @@
 extends Node
 
-# MENU, GAMEPLAY arba END_SCREEN
+## MENU, GAMEPLAY, END_SCREEN
 enum Area {MENU, GAMEPLAY, END_SCREEN}
 var current_area: Area = Area.MENU:
 	set(new_area):
@@ -10,7 +10,7 @@ var music_volume: int
 var sfx_volume: int
 const initial_volume_value = 0.5
 
-var platform : Dictionary[String, PackedScene] = {
+var platform: Dictionary[String, PackedScene] = {
 	"default": preload("res://level/platforms/default_platform.tscn"),
 	"breakable": preload("res://level/platforms/breakable_platform.tscn"),
 	"gravity": preload("res://level/platforms/gravity_platform.tscn"),
@@ -19,7 +19,7 @@ var platform : Dictionary[String, PackedScene] = {
 	"flicker": preload("res://level/platforms/flicker_platform.tscn"),
 	"rotate": preload("res://level/platforms/rotate_platform.tscn"),
 }
-var platformText : Dictionary[String, CompressedTexture2D] = {
+var platformText: Dictionary[String, CompressedTexture2D] = {
 	"default": preload("res://assets/textures/default_platform.png"),
 	"breakable": preload("res://assets/textures/broken_platform.png"),
 	"gravity": preload("res://assets/textures/gravity_platform.png"),
@@ -70,8 +70,8 @@ var pdn_7 = platform_display_names["rotate"]
 
 # PLAYER DATA
 var max_health: float = 4.
-var max_platform_count = 3
-var player = null
+var max_platform_count: int = 3
+var player: Player = null
 var gender: String = "male":
 	set(new_gender):
 		gender = new_gender
@@ -84,11 +84,5 @@ var last_location = 0
 var rotate = 0
 var rotatable_platform = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+# Checkpoint info
+var lastCheckpoint: Checkpoint = null;

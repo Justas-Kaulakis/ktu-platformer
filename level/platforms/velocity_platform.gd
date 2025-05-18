@@ -21,6 +21,6 @@ func _mouse_enter():
 func _mouse_exit():
 	platform_gun.can_shoot = 1
 
-func _on_area_2d_body_entered(_body: Player) -> void:
+func _on_area_2d_body_entered(_body: Node2D) -> void:
 	AudioManager.play_sfx("velocity_boost")
 	player.boost()

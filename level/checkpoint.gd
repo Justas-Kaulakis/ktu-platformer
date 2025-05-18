@@ -1,6 +1,6 @@
-extends Area2D
+class_name Checkpoint extends Area2D
 
-@export var new_platform_count = Global.max_platform_count
+@export var new_platform_count: int = 3#Global.max_platform_count
 @export_enum("default", "breakable", "gravity", "velocity", "trampoline", "flicker", "rotate") var platform_1 = "default"
 @export_enum("default", "breakable", "gravity", "velocity", "trampoline", "flicker", "rotate") var platform_2 = "breakable"
 @export_enum("default", "breakable", "gravity", "velocity", "trampoline", "flicker", "rotate") var platform_3 = "gravity"
@@ -10,8 +10,11 @@ func _ready() -> void:
 	$on.visible = false
 	
 func _on_body_entered(player: Player) -> void:
+	if Global.lastCheckpoint == self:
+		return
 	if not visited:
 		AudioManager.play_sfx("checkpoint_reached")
+		Global.lastCheckpoint = self
 		visited = true
 		Alert.keys_collected_checkpoint = Alert.keys_collected
 		for key in Alert.active_checkpoint_alerts_cn:

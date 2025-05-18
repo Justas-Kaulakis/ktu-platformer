@@ -19,7 +19,10 @@ func _process(_delta: float) -> void:
 func _on_detection_area_body_entered(player) -> void:
 	if not Engine.is_editor_hint() and player is Player:
 		# Check if the gate is closed and the body is the player
+		print("Player entered sensor")
+		print((player as Player).keys)
 		if not is_open and player.has_key(color_name):
+			print("Player has the key: Open gate!")
 			open_gate()
 			# Consume the key after use
 			player.consume_key(color_name)
