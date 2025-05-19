@@ -60,6 +60,7 @@ func _ready() -> void:
 	var settings = ConfigHandler.loadCharacterSettings()
 	Global.gender = settings["gender"]
 	ob.selected = 1 if Global.gender == "male" else 0
+	Global.input_actions = input_actions
 	
 func _on_input_button_pressed(button, action):
 	if !is_remapping:
@@ -81,6 +82,7 @@ func _input(event):
 			InputMap.action_add_event(action_to_remap, event)
 			ConfigHandler.save_controls(action_to_remap, event)
 			update_action_list(remapping_button, event)
+			update_controls_displays(action_to_remap, event)
 			
 			is_remapping = false
 			action_to_remap = null
@@ -108,3 +110,10 @@ func _on_option_button_item_selected(index: int) -> void:
 	
 	if player.has_method("reload_animation"):
 		player.reload_animation()
+
+func update_controls_displays(action: String, event: InputEvent) -> void:
+	for node in get_tree().get_nodes_in_group("control_displays"):
+		if node.name == action:
+			var description = Global.input_actions.get(action, action.capitalize())
+			node.text = description + ": " + event.as_text().trim_suffix(" (Physical)")
+	pass

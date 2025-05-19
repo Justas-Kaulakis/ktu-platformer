@@ -41,6 +41,8 @@ var platform_display_names: Dictionary = {
 	"rotate": "Rotating"
 }
 
+var input_actions
+
 var p_1 = platform["default"]
 var p_2 = platform["breakable"]
 var p_3 = platform["gravity"]
