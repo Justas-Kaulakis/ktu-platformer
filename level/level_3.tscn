@@ -43,12 +43,15 @@ fill_to = Vector2(1, 0.564103)
 [node name="Level 3" type="Node2D"]
 auto_translate_mode = 2
 script = ExtResource("1_5mhvx")
-metadata/_edit_vertical_guides_ = [1593.0]
 
 [node name="Player" parent="." instance=ExtResource("3_ps1br")]
 z_index = 2
 position = Vector2(202.44, 232.226)
 JUMP_VELOCITY = -625.0
+limit_left = 0
+limit_top = -880
+limit_right = 8940
+limit_bottom = 780
 
 [node name="Layers" type="Node2D" parent="."]
 scale = Vector2(4, 4)

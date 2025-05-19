@@ -41,10 +41,16 @@ glow_bloom = 0.1
 
 [node name="Level 1" type="Node2D"]
 script = ExtResource("1_jfgjb")
+metadata/_edit_horizontal_guides_ = [-1287.0]
+metadata/_edit_vertical_guides_ = [5780.0]
 
 [node name="Player" parent="." instance=ExtResource("1_nokfs")]
 position = Vector2(104.36, 117.577)
 JUMP_VELOCITY = -625.0
+limit_left = 0
+limit_top = -1290
+limit_right = 5780
+limit_bottom = 560
 
 [node name="Keys" type="Node2D" parent="."]
 

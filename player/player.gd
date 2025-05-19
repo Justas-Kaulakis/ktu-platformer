@@ -5,6 +5,11 @@ class_name Player
 const WALK_SPEED = 300.0
 const ACCELERATION_SPEED = WALK_SPEED * 6.0
 @export var JUMP_VELOCITY = -725.0
+@export_group("Camera Bounds", "limit_")
+@export var limit_left := -1000000
+@export var limit_top := -1000000
+@export var limit_right := -1000000
+@export var limit_bottom := -1000000
 ## Maximum speed at which the player can fall.
 const TERMINAL_VELOCITY = 700
 const WALL_JUMP_FACTOR = 150
@@ -33,6 +38,10 @@ func _ready() -> void:
 	current_health = Global.max_health
 	AudioManager.stop_sfx("run")
 	add_to_group("player")
+	$Camera.limit_left = limit_left
+	$Camera.limit_top = limit_top
+	$Camera.limit_right = limit_right
+	$Camera.limit_bottom = limit_bottom
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("reload"):
