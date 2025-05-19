@@ -89,13 +89,47 @@ Eksperimento nr. | Aprašymas | Teorinis rezultatas | Praktinis rezultatas
 
 ### Penktasis testas ###
 
-Penktas testas tikrina, ar nustatymų pakeitimai veikia teisingai
+Testo metu buvo tikrinamas nustatymų meniu veikimas.
 
 Eksperimento nr. | Aprašymas | Teorinis rezultatas | Praktinis rezultatas
 --- | --- | --- | ---
-Žignsnis 1 | Žaidėjas paspaudžia *pause* mygtuką | Atidaroma nustatymų lentelė
-Žingsnis 2 | Žaidėjas pakeičia *jump* funkcijos mygtuką | Žaidėjas pašoka kada paspaudžiamas naujas *jump* mygtukas
-Žingsnis 3 | Žaidėjas pakeičia garso nustatymus | Pagal naujus nustatymus garsai yra garsesni arba tylesni
-Žingsnis 4 | Žaidėjas pakeičia *player* tekstūrą | *Player* tekstūra atitinka pasirinktą tekstūrą
-Žingsnis 5 | Žaidėjas paspaudžia *pause* mygtuką | Uždaroma nustatymų lentelė ir pakeitimai išsaugomi
-Žingsnis 6 | Žaidėjas uždaro ir vė įjungia žaidimą | Nauji nustatymai liko išsaugoti
+1 | Būdamas žaidime, žaidėjas paspaudžia *Pause game and open settings* klavišą | Atsidaro nustatymų meniu | Atidarytas nustatymų meniu
+2 | Tiek žaidime, tiek tituliniame ekrane esantį meniu žaidėjas gali uždaryti *Pause game and open settings klavišu* | Meniu uždaromas paspaudus nurodytą klavišą | Abiem atvejais meniu užvertas
+3 | Žaidimo metu atvertas nustatymų meniu stabdo žaidimo veiksmą | Žaidėjas negali judėti, gauti žalos, būti paveikiamas traukos jėgų, kurti naujų platformų ir pan. | Pastebėtas žaidimo veiksmo sustabdymas
+4 | Atidarius meniu tituliname ekrane, žaidėjui draudžiama spausti bet kurį kitą ekrane matomą mygtuką | Būdamas nustatymų meniu žaidėjas negali, pavyzdžiui, spausti mygtuko *Play* | Pašalinių mygtukų spaudimas draudžiamas
+5 | Tiek žaidime, tiek tituliname ekrane esantį meniu žaidėjas gali uždaryti spausdamas meniu viršuje esantį mygtuką "Back to main menu" ir grįžti į titulinį ekraną | Nurodytomis sąlygomis grįžtama į titulinį ekraną | Abiem atvejais įvykdytas tas pats veiksmas
+6 | Žaidėjas gali keisti valdymo nustatymus | Paspaudęs ant atitinkamos funkcijos mygtuko ir įvedęs klavišą arba spustelėjęs pelės mygtuku, žaidėjas gali pakeisti funkciją įvykdantį klavišą/mygtuką | Sėkmingai pakeistas mygtukas/klavišas
+7 | Žaidėjo keisti valdymo nustatymai matomi žaidime arba meniu manipuliacijose iš karto | Pakeitus, pavyzdžiui, *Pause game and open settings* iš *Escape* į *I*, nauju meniu uždarymo mygtuku tampa *I* | Padaryti pokyčiai iš karto matyti žaidime arba meniu manipuliacijose
+8 | Žaidėjas gali atkurti numatytąsias valdymo nustatymų reikšmes | Numatytosios reikšmės visoms parinktims atstatomos paspaudus valdymo nustatymų skyriaus *Set defaults* mygtuką | Numatytosios parinktys atstatytos
+9 | Žaidėjas gali keisti garso nustatatymus | Į norimą vietą nutempęs tam tikro garso takelio slankiklį, žaidėjas gali pakeisti takelio garsumą | Pakeistas takelio garsumas
+10 | Žaidėjo keisti garso nustatymai matomi iš karto | Pakeitus, pavyzdžiui, *master* (bendrojo garso) takelio garsumą, pokytis girdimas iš karto | Pokytis buvo išgirstas
+11 | Žaidėjas gali atkurti numatytąsias garso takelių garsumo reikšmes | Numatytosios reikšmės visiems garso takeliams atstatomos paspaudus garso nustatymų skyriaus *Set defaults* mygtuką | Numatytosios parinktys atstatytos
+12 | Žaidėjas gali įjungti/išjungti viso ekrano rėžimą | Pažymėta *fullscreen* parinktis įjungia viso ekrano rėžimą (atžymėta – išjungia) | Perjungimas užfiksuotas
+13 | Viso ekrano rėžimas įjungiamas iš karto | Parinkties pokyčiai įsigalioja netrukus po pakeitimo | Pakeitimų įsigaliojimas užfiksuotas
+14 | Žaidėjas gali keisti veikėjo lytį pasirinkdamas vieną iš parinkčių | Galima keisti veikėjo lytį iš *male* į *female* ir atvirkščiai | Pakeitimas užfiksuotas
+15 | Veikėjo lyties pokytis matomas iš karto | Veikėjo tekstūra ir garso efektai pereina iš *male* parinkčių į *female* ir atvirkščiai | Pakeitimas užfiksuotas
+
+### Šeštasis testas ###
+
+Testo metu buvo tikrinamas titulinio ekrano mygtukų ir jų atidaromų meniu veikimas.
+
+Eksperimento nr. | Aprašymas | Teorinis rezultatas | Praktinis rezultatas
+--- | --- | --- | ---
+1 | Mygtuko *Play* veikimas | Atidaromas lygių pasirinkimo meniu | Atidarytas lygių pasirinkimo meniu
+2 | Mygtuko *Options* veikimas | Atidaromas nustatymų meniu | Atidarytas nustatymų meniu
+3 | Mygtuko *Quit* veikimas | Žaidimas uždaromas | Žaidimas uždarytas
+4 | Mygtuko *Credits* veikimas | Atidaroma speciali scena, dėkojanti žaidėjams už žaidimo išbandymą ir išvardijanti jo kūrėjus | Scenos atidarymas ir jos turinio atitikimas užfiksuotas
+5 | Lygių pasirinkimo meniu – parinktis "Back to main menu" | Žaidėjas grąžinamas į titulinį ekraną | Žaidėjas grąžintas į titulinį ekraną
+6 | Lygių pasirinkimo meniu – vieno iš išvardintų lygių pasirinkimas | Žaidėjas perkeliamas į norimą lygį | Žaidėjas perkeltas į norimą lygį
+7 | Lygių pasirinkimo meniu – *Pause game and open settings* klavišas | Žaidėjas taipogi grąžinamas į titulinį ekraną | Žaidėjas grąžintas į titulinį ekraną
+8 | Titrų scena – parinktis "Back to menu" | Žaidėjas grąžinamas į titulinį ekraną | Žaidėjas grąžintas į titulinį ekraną
+
+### Septintasis testas ###
+
+Testo metu buvo tikrinami žaidimo gebėjimai rašyti į failą bei iš jo skaityti.
+
+Eksperimento nr. | Aprašymas | Teorinis rezultatas | Praktinis rezultatas
+--- | --- | --- | ---
+1 | Nustatymų failo *settings.ini* kūrimas | Pirmąkart leidžiant žaidimą sugeneruojamas nustatymų failas su numatytomis parinktimis | Nustatymų failas su numatytomis parinktis buvo sugeneruotas
+2 | Nustatymų meniu ir nustatymų failo turinių atitikimas | Keičiant nustatymų failo turinį, keičiasi ir nustatymo meniu turinys (ir atvirkščiai) | Užfiksuotas turinio kitimas abiem atvejais
+3 | Tam tikrų nustatymų failo parinkčių eilučių ištrynimas | Žaidimas aptiks trūkstamas eilutes ir jas iš naujo sukurs | Žaidimas ištrintas eilutes aptiko ir sukūrė iš naujo
