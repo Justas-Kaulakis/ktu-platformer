@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dsbnyfbw0tml7"]
+[gd_scene load_steps=22 format=4 uid="uid://dsbnyfbw0tml7"]
 
 [ext_resource type="Script" uid="uid://cu23bis64evl" path="res://level/level_2.gd" id="1_mlmfg"]
 [ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://player/player.tscn" id="1_qk3ra"]
@@ -7,9 +7,10 @@
 [ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="4_qhnra"]
 [ext_resource type="TileSet" uid="uid://q1prew1alqhu" path="res://level/tileset.tres" id="4_xpp11"]
 [ext_resource type="PackedScene" uid="uid://dt1g4d40uoijb" path="res://level/Checkpoint.tscn" id="5_0t1lu"]
-[ext_resource type="Script" uid="uid://dv6orrhkd06db" path="res://level/input.gd" id="5_mdx7b"]
+[ext_resource type="PackedScene" uid="uid://e732545gjfo0" path="res://gui/individual_alert.tscn" id="6_drhu7"]
 [ext_resource type="PackedScene" uid="uid://cnsmoxui102qc" path="res://level/traps/poison_ivy.tscn" id="6_trkny"]
 [ext_resource type="PackedScene" uid="uid://c3ary26xq7cf7" path="res://level/traps/spikes.tscn" id="7_6mngv"]
+[ext_resource type="Script" uid="uid://buwenvcg308c" path="res://level/controls_instructions.gd" id="7_qg0ee"]
 [ext_resource type="PackedScene" uid="uid://c4rf33ebkv8an" path="res://level/doors/gate.tscn" id="8_eu4rd"]
 [ext_resource type="PackedScene" uid="uid://b5xqe73w71jhd" path="res://level/doors/key.tscn" id="9_mlmfg"]
 [ext_resource type="PackedScene" uid="uid://b7vhnpulw5yfq" path="res://level/powerups/powerup_wall_jump.tscn" id="10_vtesj"]
@@ -45,35 +46,40 @@ rotation = -0.021016
 JUMP_VELOCITY = -625.0
 
 [node name="UI" type="CanvasLayer" parent="."]
+layer = 69
 
 [node name="Options Menu" parent="UI" instance=ExtResource("2_ei2e4")]
 visible = false
 
-[node name="CenterContainer" type="CenterContainer" parent="UI"]
+[node name="Controls UI" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="Controls UI"]
+z_as_relative = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -125.0
-offset_right = 125.0
-offset_bottom = 125.0
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer"]
-custom_minimum_size = Vector2(250, 250)
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls UI/CenterContainer"]
+custom_minimum_size = Vector2(500, 400)
 layout_mode = 2
 alignment = 1
 
-[node name="rotate" type="TextEdit" parent="UI/CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
+[node name="rotate" parent="Controls UI/CenterContainer/VBoxContainer" instance=ExtResource("6_drhu7")]
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("4_qhnra")
-text = "rotate input"
-script = ExtResource("5_mdx7b")
+theme_override_fonts/normal_font = ExtResource("4_qhnra")
+bbcode_enabled = true
+text = "Rotate Input"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("7_qg0ee")
 
 [node name="Game Manager" parent="." instance=ExtResource("3_t37el")]
 

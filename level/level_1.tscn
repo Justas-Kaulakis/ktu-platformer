@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bew38jrmxp7v4"]
+[gd_scene load_steps=25 format=4 uid="uid://bew38jrmxp7v4"]
 
 [ext_resource type="Script" uid="uid://1nfd212a2xtm" path="res://level/level_1.gd" id="1_jfgjb"]
 [ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://player/player.tscn" id="1_nokfs"]
@@ -10,10 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://cnsmoxui102qc" path="res://level/traps/poison_ivy.tscn" id="5_vb5hv"]
 [ext_resource type="PackedScene" uid="uid://cvbjpguukek2x" path="res://level/doors/LevelChangeDoor.tscn" id="6_l1g64"]
 [ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="9_7fchg"]
-[ext_resource type="Script" uid="uid://dv6orrhkd06db" path="res://level/input.gd" id="10_nlkbw"]
+[ext_resource type="Script" uid="uid://b7t3bc4cxyf5p" path="res://level/controls_container.gd" id="10_5tdg5"]
 [ext_resource type="PackedScene" uid="uid://dt1g4d40uoijb" path="res://level/Checkpoint.tscn" id="11_hdc4k"]
 [ext_resource type="PackedScene" uid="uid://bi55575cmdtvs" path="res://level/powerups/powerup_double_jump.tscn" id="11_hdc4p"]
+[ext_resource type="PackedScene" uid="uid://e732545gjfo0" path="res://gui/individual_alert.tscn" id="11_vseoc"]
 [ext_resource type="PackedScene" uid="uid://b7vhnpulw5yfq" path="res://level/powerups/powerup_wall_jump.tscn" id="12_4h366"]
+[ext_resource type="Script" uid="uid://buwenvcg308c" path="res://level/controls_instructions.gd" id="13_svqf6"]
 [ext_resource type="PackedScene" uid="uid://c4rf33ebkv8an" path="res://level/doors/gate.tscn" id="14_6jaql"]
 [ext_resource type="PackedScene" uid="uid://b5xqe73w71jhd" path="res://level/doors/key.tscn" id="14_b2ana"]
 [ext_resource type="PackedScene" uid="uid://wdceyvi04vs3" path="res://level/traps/vietnam_trap.tscn" id="15_b2ana"]
@@ -423,62 +425,112 @@ position = Vector2(1279, 335)
 scale = Vector2(4.5, 4.5)
 
 [node name="UI" type="CanvasLayer" parent="."]
+layer = 69
 
 [node name="Options Menu" parent="UI" instance=ExtResource("3_l1g64")]
 visible = false
 
-[node name="CenterContainer" type="CenterContainer" parent="UI"]
+[node name="Controls UI" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="Controls UI"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -125.0
-offset_right = 125.0
-offset_bottom = 125.0
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("10_5tdg5")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer"]
-custom_minimum_size = Vector2(250, 250)
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls UI/CenterContainer"]
+custom_minimum_size = Vector2(500, 400)
 layout_mode = 2
 alignment = 1
 
-[node name="jump" type="TextEdit" parent="UI/CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
+[node name="jump" parent="Controls UI/CenterContainer/VBoxContainer" instance=ExtResource("11_vseoc")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("9_7fchg")
-text = "jump input"
-script = ExtResource("10_nlkbw")
+theme_override_fonts/normal_font = ExtResource("9_7fchg")
+bbcode_enabled = true
+text = "Jump Input"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("13_svqf6")
 
-[node name="move_left" type="TextEdit" parent="UI/CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
+[node name="move_left" parent="Controls UI/CenterContainer/VBoxContainer" instance=ExtResource("11_vseoc")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("9_7fchg")
-text = "move left input"
-script = ExtResource("10_nlkbw")
+theme_override_fonts/normal_font = ExtResource("9_7fchg")
+bbcode_enabled = true
+text = "Move Left Input"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("13_svqf6")
 
-[node name="move_right" type="TextEdit" parent="UI/CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
+[node name="move_right" parent="Controls UI/CenterContainer/VBoxContainer" instance=ExtResource("11_vseoc")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("9_7fchg")
-text = "move right input"
-script = ExtResource("10_nlkbw")
+theme_override_fonts/normal_font = ExtResource("9_7fchg")
+bbcode_enabled = true
+text = "Move Right Input"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("13_svqf6")
 
-[node name="reload" type="TextEdit" parent="UI/CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
+[node name="shoot" parent="Controls UI/CenterContainer/VBoxContainer" instance=ExtResource("11_vseoc")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("9_7fchg")
-text = "reload input"
-script = ExtResource("10_nlkbw")
+theme_override_fonts/normal_font = ExtResource("9_7fchg")
+bbcode_enabled = true
+text = "Shoot Input"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("13_svqf6")
 
-[node name="shoot" type="TextEdit" parent="UI/CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
+[node name="platform_1" parent="Controls UI/CenterContainer/VBoxContainer" instance=ExtResource("11_vseoc")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("9_7fchg")
-text = "shoot input"
-script = ExtResource("10_nlkbw")
+theme_override_fonts/normal_font = ExtResource("9_7fchg")
+bbcode_enabled = true
+text = "Platform 1 Input"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("13_svqf6")
+
+[node name="platform_2" parent="Controls UI/CenterContainer/VBoxContainer" instance=ExtResource("11_vseoc")]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("9_7fchg")
+bbcode_enabled = true
+text = "Platform 2 Input"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("13_svqf6")
+
+[node name="platform_3" parent="Controls UI/CenterContainer/VBoxContainer" instance=ExtResource("11_vseoc")]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("9_7fchg")
+bbcode_enabled = true
+text = "Platform 3 Input"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("13_svqf6")
+
+[node name="reload" parent="Controls UI/CenterContainer/VBoxContainer" instance=ExtResource("11_vseoc")]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("9_7fchg")
+bbcode_enabled = true
+text = "Reload Input"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("13_svqf6")
+
+[node name="preview" parent="Controls UI/CenterContainer/VBoxContainer" instance=ExtResource("11_vseoc")]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("9_7fchg")
+bbcode_enabled = true
+text = "Platform Preview Input"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("13_svqf6")
 
 [node name="Game Manager" parent="." instance=ExtResource("4_vb5hv")]
 
