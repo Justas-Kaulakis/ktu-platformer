@@ -17,8 +17,7 @@ func load_levels() -> void:
 	for level_path in level_scenes:
 		var stripped_name = level_path.get_file().replace(".tscn", "")
 		var new_name = stripped_name.capitalize()
-		var button_font = FontFile.new()
-		button_font.load_dynamic_font("res://gui/kenney_mini_square.ttf")
+		var button_font = preload("res://gui/kenney_mini_square.ttf")
 		var button = Button.new()
 		button.add_theme_font_override("font", button_font)
 		button.text = new_name

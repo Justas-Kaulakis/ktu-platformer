@@ -4,9 +4,12 @@ var config = ConfigFile.new()
 const CONFIG_FILE_PATH = "res://settings.ini"
 
 func _ready():
-	config.load(CONFIG_FILE_PATH)
-	set_defaults()
-	config.save(CONFIG_FILE_PATH)
+	if OS.has_feature("pc"):
+		config.load(CONFIG_FILE_PATH)
+		set_defaults()
+		config.save(CONFIG_FILE_PATH)
+	else:
+		set_defaults()
 	#if !FileAccess.file_exists(CONFIG_FILE_PATH):
 	#	set_defaults()
 	#else:

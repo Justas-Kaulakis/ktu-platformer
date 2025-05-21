@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d2u0fqa00o42h" path="res://gui/OptionsPanel.tscn" id="3_lnc0w"]
 [ext_resource type="PackedScene" uid="uid://yspi54bxpwv4" path="res://gui/level_select_screen.tscn" id="4_heart"]
 [ext_resource type="Texture2D" uid="uid://d0mcg8vcoj425" path="res://assets/textures/menu_bg.png" id="4_o6i5c"]
-[ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="5_heart"]
+[ext_resource type="FontFile" uid="uid://bktnjyqja7pgj" path="res://gui/kenney_mini_square.ttf" id="5_heart"]
 [ext_resource type="StyleBox" uid="uid://chugqj3dfu53s" path="res://gui/menu_btn.tres" id="5_vd72o"]
 [ext_resource type="Script" uid="uid://bnp884quc02dl" path="res://gui/ButtonWithSounds.gd" id="6_o6i5c"]
 [ext_resource type="Theme" uid="uid://da4noqsij73it" path="res://gui/theme.tres" id="8_ijvwb"]

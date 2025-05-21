@@ -43,7 +43,7 @@ func _ready() -> void:
 	$Camera.limit_right = limit_right
 	$Camera.limit_bottom = limit_bottom
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("reload"):
 		reset_player()
 

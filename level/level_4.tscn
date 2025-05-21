@@ -78,7 +78,7 @@ script = ExtResource("1_sdk3c")
 level_aesthetic_colour = Color(0.789063, 0.0544218, 0.03676, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_7o5yd")]
-position = Vector2(496, 178)
+position = Vector2(489.564, 178.985)
 limit_left = -420
 limit_top = -1900
 limit_right = 3160

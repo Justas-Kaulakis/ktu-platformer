@@ -10,21 +10,19 @@ extends CanvasLayer
 @onready var progress_info: RichTextLabel = $"Progress Information"
 @onready var roto_info: RichTextLabel = $"Rotation Information"
 @onready var platform_type: RichTextLabel = $"Platform Type"
-
+ 
 var active_pu_alerts: Array = []
 var active_checkpoint_alerts: Array = []
 var active_checkpoint_alerts_cn: Array = []
 var keys_collected_array: Array = []
 
-var font = FontFile.new()
+var font := preload("res://gui/kenney_mini_square.ttf")
 var default_text_colour = Color.from_rgba8(192, 192, 192).to_html()
 
 var keys_collected: int = 0
 var keys_collected_checkpoint: int = 0
 var keys_total: int = 0
 
-func _ready():
-	font.load_dynamic_font("res://gui/kenney_mini_square.ttf")
 
 func create_popup_alert(message):
 	popup.text = message

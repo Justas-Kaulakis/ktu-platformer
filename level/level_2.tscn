@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://player/player.tscn" id="1_qk3ra"]
 [ext_resource type="PackedScene" uid="uid://d2u0fqa00o42h" path="res://gui/OptionsPanel.tscn" id="2_ei2e4"]
 [ext_resource type="PackedScene" uid="uid://m2sqnkv38q0p" path="res://game_manager.tscn" id="3_t37el"]
-[ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="4_qhnra"]
+[ext_resource type="FontFile" uid="uid://bktnjyqja7pgj" path="res://gui/kenney_mini_square.ttf" id="4_qhnra"]
 [ext_resource type="TileSet" uid="uid://q1prew1alqhu" path="res://level/tileset.tres" id="4_xpp11"]
 [ext_resource type="PackedScene" uid="uid://dt1g4d40uoijb" path="res://level/Checkpoint.tscn" id="5_0t1lu"]
 [ext_resource type="PackedScene" uid="uid://e732545gjfo0" path="res://gui/individual_alert.tscn" id="6_drhu7"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dq4upsqp61b6v"]
 
 [ext_resource type="Script" uid="uid://b6j3g865sj25e" path="res://gui/volume_slider.gd" id="1_l4644"]
-[ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="1_rempp"]
+[ext_resource type="FontFile" uid="uid://bktnjyqja7pgj" path="res://gui/kenney_mini_square.ttf" id="1_rempp"]
 
 [node name="VolumeSlider" type="HBoxContainer"]
 script = ExtResource("1_l4644")

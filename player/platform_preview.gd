@@ -10,7 +10,7 @@ func attach_preview(platform: PackedScene) -> void:
 	var sprite = instance.get_node("Sprite2D") as Sprite2D
 	#sprite.rotation_degrees = instance.rotation_degrees#+Global.rotate
 	instance.remove_child(sprite) # Detach from the full platform instance
-
+	instance.queue_free()         # Clean up the rest
 	sprite.modulate = Color(0.8, 0.8, 0.8, 0.5) # Gray + transparent
 	sprite.global_position = get_global_mouse_position()
 	sprite.visible = vsbl

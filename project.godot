@@ -21,6 +21,7 @@ level, and the player is invincible, unlike the enemies."
 config/tags=PackedStringArray("2d", "demo", "official", "physics", "tilemap")
 run/main_scene="uid://cto2r1llqapws"
 config/features=PackedStringArray("4.4")
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
@@ -34,6 +35,7 @@ Alert="*res://gui/alert.tscn"
 
 window/size/viewport_width=800
 window/size/viewport_height=448
+window/size/resizable=false
 window/size/window_width_override=1600
 window/size/window_height_override=892
 window/subwindows/embed_subwindows=false

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dbcjep2m2mpbx" path="res://gui/input_settings.gd" id="1_do8lh"]
 [ext_resource type="PackedScene" uid="uid://bhswok6qbi5r5" path="res://gui/input_button.tscn" id="2_vr50r"]
-[ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="3_vr50r"]
+[ext_resource type="FontFile" uid="uid://bktnjyqja7pgj" path="res://gui/kenney_mini_square.ttf" id="3_vr50r"]
 [ext_resource type="Script" uid="uid://b6sul4uq7drx3" path="res://gui/volume_sliders.gd" id="4_3y1ff"]
 [ext_resource type="Script" uid="uid://bnp884quc02dl" path="res://gui/ButtonWithSounds.gd" id="4_nmfku"]
 [ext_resource type="PackedScene" uid="uid://dq4upsqp61b6v" path="res://gui/VolumeSlider.tscn" id="5_3l2em"]
@@ -22,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("7_theme")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -62,6 +63,7 @@ theme_override_colors/font_color = Color(0.996078, 0.984314, 0.741176, 1)
 theme_override_fonts/font = ExtResource("3_vr50r")
 theme_override_font_sizes/font_size = 24
 text = "Back to main menu"
+flat = true
 script = ExtResource("7_adcec")
 
 [node name="RemapControls" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
@@ -75,7 +77,6 @@ layout_mode = 2
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0.996078, 0.745098, 0, 1)
-theme_override_fonts/font = ExtResource("3_vr50r")
 text = "Controls"
 vertical_alignment = 1
 

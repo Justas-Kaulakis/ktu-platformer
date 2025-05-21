@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://yspi54bxpwv4"]
 
-[ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="1_7pq6s"]
+[ext_resource type="FontFile" uid="uid://bktnjyqja7pgj" path="res://gui/kenney_mini_square.ttf" id="1_7pq6s"]
 [ext_resource type="Script" uid="uid://coipc7qhwlb3o" path="res://gui/level_select_screen.gd" id="1_c8bup"]
 [ext_resource type="Script" uid="uid://bnp884quc02dl" path="res://gui/ButtonWithSounds.gd" id="2_c8bup"]
 

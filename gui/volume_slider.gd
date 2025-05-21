@@ -39,6 +39,6 @@ func _on_h_slider_value_changed(value: float) -> void:
 
 func set_volume(volume:float) -> void:
 	h_slider.value = volume
-	
+
 func _on_mouse_entered():
 		AudioManager.play_sfx("button_hover")

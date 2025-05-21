@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d0adyme0ljmo7"]
 
 [ext_resource type="Script" uid="uid://d1x3dyv0tx43d" path="res://gui/alerts.gd" id="1_avdj6"]
-[ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="2_x4g26"]
+[ext_resource type="FontFile" uid="uid://bktnjyqja7pgj" path="res://gui/kenney_mini_square.ttf" id="2_x4g26"]
 
 [node name="Alert" type="CanvasLayer"]
 script = ExtResource("1_avdj6")

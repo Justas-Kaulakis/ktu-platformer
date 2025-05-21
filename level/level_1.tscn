@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c3ary26xq7cf7" path="res://level/traps/spikes.tscn" id="4_vndax"]
 [ext_resource type="PackedScene" uid="uid://cnsmoxui102qc" path="res://level/traps/poison_ivy.tscn" id="5_vb5hv"]
 [ext_resource type="PackedScene" uid="uid://cvbjpguukek2x" path="res://level/doors/LevelChangeDoor.tscn" id="6_l1g64"]
-[ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="9_7fchg"]
+[ext_resource type="FontFile" uid="uid://bktnjyqja7pgj" path="res://gui/kenney_mini_square.ttf" id="9_7fchg"]
 [ext_resource type="Script" uid="uid://b7t3bc4cxyf5p" path="res://level/controls_container.gd" id="10_5tdg5"]
 [ext_resource type="PackedScene" uid="uid://dt1g4d40uoijb" path="res://level/Checkpoint.tscn" id="11_hdc4k"]
 [ext_resource type="PackedScene" uid="uid://bi55575cmdtvs" path="res://level/powerups/powerup_double_jump.tscn" id="11_hdc4p"]
